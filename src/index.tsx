@@ -23,10 +23,7 @@ root.render(
         <Header>Header</Header>
         <Content>
           <BrowserRouter>
-            {/* <CustomizedSnackbars /> */}
-            {/* <LayOut> */}
             <Router />
-            {/* </LayOut> */}
           </BrowserRouter>
         </Content>
         <Footer>Footer</Footer>
