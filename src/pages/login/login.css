@@ -1,0 +1,54 @@
+.login-container {
+  height: 100vh;
+  background-image: url('../../../public/img/login-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 9rem;
+}
+.login-form {
+  background: #ffffff;
+  box-shadow: 3px 4px 16px rgba(187, 187, 187, 0.25);
+  border-radius: 12px;
+  width: 418px;
+  height: 418px;
+  margin: auto;
+  padding: 3rem;
+}
+.login-p1 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 38px;
+  /* identical to box height */
+  /* body text 2 */
+  color: #2a363a;
+  text-align: center;
+  margin: 0;
+}
+.login-p2 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+
+  /* body text 2 */
+
+  color: #2a363a;
+  text-align: center;
+  margin: 2rem 0;
+}
+.login-row {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e1e1e1;
+}
+.login-buuton {
+  margin-top: 2rem;
+  background: #ff5c6a !important;
+  border-radius: 100px;
+  height: 48px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+
+  color: #ffffff !important;
+}
