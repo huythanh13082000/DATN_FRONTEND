@@ -4,4 +4,6 @@ export const AppColors = {
   textPrimary: "#2C405A",
   textSecondary: "#4E5A5F",
   textPlaceholder: "#758D96",
+  border: "#A5A5A5",
+  borderSecondary: "#E1E1E1",
 };
