@@ -1,25 +1,30 @@
-import {Route, Routes} from 'react-router-dom'
-import MyRouteProp from './MyRouteProp'
-import PrivateRoute from './privateRoute'
-import routes from './routes'
+import { useEffect } from "react";
+import {
+  Navigate,
+  Route,
+  RouteProps,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
+import Login from "../pages/login";
+import { LOCAL_STORAGE } from "../utils/constants";
+import { Url } from "./paths";
+import routes from "./routes";
 
 const Router = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem(LOCAL_STORAGE.TOKEN);
+    if (!token) navigate(Url.login);
+  }, [navigate]);
+
   return (
     <Routes>
-      {routes.map((item: MyRouteProp) => {
-        if (item.private) {
-          return (
-            <Route
-              key={item.path}
-              {...item}
-              element={<PrivateRoute item={item} />}
-            />
-          )
-        } else {
-          return <Route key={item.path} {...item} />
-        }
-      })}
+      {routes.map((item: RouteProps) => (
+        <Route key={item.path} {...item} element={item.element} />
+      ))}
     </Routes>
-  )
-}
-export default Router
+  );
+};
+export default Router;
