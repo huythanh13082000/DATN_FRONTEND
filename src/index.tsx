@@ -1,38 +1,26 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { Provider } from "react-redux";
-import { store } from "./app/store";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
-import "./index.css";
-import Router from "./routers";
-import MenuHome from "./components/menu";
-import { Layout } from "antd";
-const { Header, Footer, Sider, Content } = Layout;
+import React, {Suspense} from 'react'
+import {createRoot} from 'react-dom/client'
+import {Provider} from 'react-redux'
+import {store} from './app/store'
+import reportWebVitals from './reportWebVitals'
+import './index.css'
+import App from './app'
+import './i18n'
+import i18next from 'i18next'
 
-const container = document.getElementById("root")!;
-const root = createRoot(container);
+const container = document.getElementById('root')!
+const root = createRoot(container)
+i18next.changeLanguage('en')
 
 root.render(
   <Provider store={store}>
-    <Layout>
-      <Sider>
-        <MenuHome />
-      </Sider>
-      <Layout>
-        <Header>Header</Header>
-        <Content>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
-        </Content>
-        <Footer>Footer</Footer>
-      </Layout>
-    </Layout>
+    <Suspense fallback={<div>Loading</div>}>
+      <App />
+    </Suspense>
   </Provider>
-);
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals()

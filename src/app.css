@@ -1,0 +1,20 @@
+#components-layout-demo-side .logo {
+  height: 32px;
+  margin: 16px;
+  background: #fff;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+.app-p1{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  justify-content: space-between;
+}
+.fa-bars{
+  font-size: 28px;
+  padding-top: 1rem;
+}

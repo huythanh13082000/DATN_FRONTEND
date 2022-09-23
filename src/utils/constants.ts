@@ -1,5 +1,9 @@
-export const IMAGE_DEFAULT = "/assets/image/no_image.jpg";
-export enum typeAction {
-  DELETE = "DELETE",
-  CREATE = "CREATE",
+export const Config = {
+  HOST_API: '',
 }
+
+export enum LOCAL_STORAGE {
+  TOKEN = '@@TOKEN',
+}
+
+export const PATH_NO_LAYOUT = ['/login']

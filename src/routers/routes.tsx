@@ -1,26 +1,20 @@
-import {Url} from './paths'
-import Home from '../pages/home'
-import Login from '../pages/login'
-import MyRouteProp from './MyRouteProp'
+import { Url } from "./paths";
+import Home from "../pages/home";
+import Login from "../pages/login";
+import { RouteProps } from "react-router-dom";
 
-const routes: Array<MyRouteProp> = [
+const routes: Array<RouteProps> = [
   {
     path: Url.login,
     element: <Login />,
-    private: false,
-    roles: ['user', 'admin', 'super'],
   },
   {
     path: Url.home,
     element: <Home />,
-    private: false,
-    roles: ['user', 'admin', 'super'],
   },
   {
-    path: '/',
+    path: "/",
     element: <Home />,
-    private: false,
-    roles: ['user', 'admin', 'super'],
   },
-]
-export default routes
+];
+export default routes;
