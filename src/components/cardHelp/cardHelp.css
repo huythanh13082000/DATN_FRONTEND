@@ -22,8 +22,26 @@
 
   color: #4e5a5f;
   width: 180px;
+  margin: 0;
 }
-.ch-row1{
-  padding: 1rem 0;
-  border-bottom: 1px solid #E1E1E1;
+.ch-row1 {
+  padding: 1rem 1rem;
+  border-top: 1px solid #e1e1e1;
+  cursor: pointer;
+}
+.ch_title {
+  display: flex;
+  margin: 0;
+  background-color: #ff5c6a;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  width: 270px;
+  height: 50px;
+  align-items: center;
+  padding-left: 1rem;
+  /* identical to box height */
+
+  color: #ffffff;
 }

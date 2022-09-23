@@ -6,6 +6,7 @@
   justify-content: end;
   border-bottom: 1px solid #e1e1e1;
   background-color: #f0f2f5;;
+  padding: 0 2rem;
 }
 .header-img {
   margin: 0 1rem;
@@ -36,4 +37,7 @@
   left: 33px;
   font-size: 11px;
   color: white;
+}
+.ant-popover-inner-content{
+  padding: 0;
 }

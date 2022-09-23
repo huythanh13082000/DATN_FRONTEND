@@ -1,0 +1,48 @@
+.cg_div1 {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  /* identical to box height */
+  border-top: 1px solid #E1E1E1;
+  /* body text 1 */
+  padding: 1rem;
+  color: #4e5a5f;
+}
+.cg_p1 {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  /* identical to box height */
+  width: 232px;
+  /* body text 1 */
+
+  color: #4e5a5f;
+}
+.cg_p2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+  width: 232px;
+
+  /* body text 2 */
+
+  color: #2a363a;
+}
+.cg_p3 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  /* or 143% */
+
+  /* body text 1 */
+  width: 232px;
+  color: #4e5a5f;
+}
+.cg_container{
+  overflow: auto;
+  height: 80vh;
+}
+
