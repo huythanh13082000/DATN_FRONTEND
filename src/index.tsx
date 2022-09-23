@@ -1,21 +1,20 @@
-import React, { useState } from 'react'
+import React, {Suspense} from 'react'
 import {createRoot} from 'react-dom/client'
 import {Provider} from 'react-redux'
 import {store} from './app/store'
 import reportWebVitals from './reportWebVitals'
-import {BrowserRouter} from 'react-router-dom'
 import './index.css'
-import Router from './routers'
-import MenuHome from './components/menu'
-import {Layout} from 'antd'
 import App from './app'
+import './i18n'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
 
 root.render(
   <Provider store={store}>
-   <App/>
+    <Suspense fallback={<div>Loading</div>}>
+      <App />
+    </Suspense>
   </Provider>
 )
 

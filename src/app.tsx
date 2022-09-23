@@ -2,14 +2,21 @@ import {Breadcrumb, Layout} from 'antd'
 import React, {useState} from 'react'
 import MenuHome from './components/menu'
 import './app.css'
+import i18next from 'i18next'
+import {useTranslation} from 'react-i18next'
 
 const {Header, Content, Footer, Sider} = Layout
 
 const App: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false)
+  // i18next.changeLanguage('ko')
+  // const {t} = useTranslation()
 
   return (
     <Layout style={{minHeight: '100vh'}}>
+      {/* <p>
+        <h3>{t('Thanks.1')}</h3> <h3>{t('Why.1')}</h3>{' '}
+      </p> */}
       <Sider
         style={{backgroundColor: 'white'}}
         collapsible={false}

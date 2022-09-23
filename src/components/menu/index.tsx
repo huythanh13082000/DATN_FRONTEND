@@ -10,6 +10,7 @@ import {
 import type {MenuProps} from 'antd'
 import {Button, Menu} from 'antd'
 import React, {useState} from 'react'
+import {useTranslation} from 'react-i18next'
 import './menu.css'
 
 type MenuItem = Required<MenuProps>['items'][number]
@@ -31,8 +32,10 @@ function getItem(
 }
 
 const MenuHome: React.FC = () => {
+  const {t} = useTranslation()
+
   const items: MenuItem[] = [
-    getItem('Analytics', '1', <i className='fa-solid fa-house'></i>),
+    getItem(t('Analytics'), '1', <i className='fa-solid fa-house'></i>),
     getItem('Orgs', 'sub1', <i className='fa-solid fa-people-group'></i>, [
       getItem('Org', '8', <i className='fa-solid fa-sitemap'></i>),
       getItem('Role List', '9', <i className='fa-solid fa-circle-user'></i>),
