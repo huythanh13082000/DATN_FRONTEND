@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {createRoot} from 'react-dom/client'
 import {Provider} from 'react-redux'
 import {store} from './app/store'
@@ -8,27 +8,14 @@ import './index.css'
 import Router from './routers'
 import MenuHome from './components/menu'
 import {Layout} from 'antd'
-const {Header, Footer, Sider, Content} = Layout
+import App from './app'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
 
 root.render(
   <Provider store={store}>
-    {/* <Layout>
-      <Sider> */}
-    <MenuHome />
-    {/* </Sider>
-      <Layout>
-        <Header>Header</Header>
-        <Content>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
-        </Content>
-        <Footer>Footer</Footer>
-      </Layout>
-    </Layout> */}
+   <App/>
   </Provider>
 )
 

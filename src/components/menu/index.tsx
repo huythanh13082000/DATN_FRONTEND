@@ -32,21 +32,6 @@ function getItem(
 
 const MenuHome: React.FC = () => {
   const items: MenuItem[] = [
-    getItem(
-      <img
-        style={{height: '37px'}}
-        src='	https://campusride-dashboard.joyridecity.bike/logo/testing.svg'
-        alt=''
-      />,
-      'menu memu',
-      <>
-        <i
-          style={{fontSize: '20px', marginRight: '5rem'}}
-          className='fa-solid fa-bars'
-          onClick={() => toggleCollapsed()}
-        ></i>
-      </>
-    ),
     getItem('Analytics', '1', <i className='fa-solid fa-house'></i>),
     getItem('Orgs', 'sub1', <i className='fa-solid fa-people-group'></i>, [
       getItem('Org', '8', <i className='fa-solid fa-sitemap'></i>),
@@ -91,43 +76,20 @@ const MenuHome: React.FC = () => {
       getItem('Banner', '28'),
     ]),
     getItem('Application Theme', '5', <i className='fa-solid fa-palette'></i>),
-    getItem(
-      'Events',
-      '6',
-      <svg
-        viewBox='-21 -50 682.66669 682'
-        width='20px'
-        xmlns='http://www.w3.org/2000/svg'
-      >
-        <path d='m640 483.800781v-485.382812h-640v485.382812h247.328125l-14.65625 60.105469h-35.664063v37.5h245.992188v-37.5h-35.671875l-14.652344-60.105469zm-110-37.5v-52.882812h72.5v52.882812zm72.5-410.382812v320h-565v-320zm-565 357.5h455v52.882812h-455zm331.230469 150.480469h-97.460938l14.660157-60.097657h68.140624zm0 0'></path>
-        <path d='m214.394531 233.988281h-67.007812v-112.375h-40.574219v147.75h107.582031zm0 0'></path>
-        <path d='m228.546875 121.613281h40.574219v147.75h-40.574219zm0 0'></path>
-        <path d='m368.796875 269.363281 54.3125-147.75h-42.660156l-28.503907 96.769531-28.929687-96.769531h-42.867187l54.9375 147.75zm0 0'></path>
-        <path d='m539.644531 233.988281h-64.71875v-23.304687h53.6875v-32.882813h-53.6875v-20.808593h62.847657v-35.378907h-103.421876v147.75h105.292969zm0 0'></path>
-      </svg>
-    ),
+    getItem('Events', '6', <i className='fa-solid fa-calendar'></i>),
     getItem('Settings', '7', <i className='fa-solid fa-gear'></i>),
   ]
 
-  const [collapsed, setCollapsed] = useState(false)
-
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed)
-  }
-
   return (
-    <div style={{width: 256}}>
-      <Menu
-        style={{height: '100vh'}}
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
-        mode='inline'
-        theme='light'
-        inlineCollapsed={collapsed}
-        items={items}
-        title='logo'
-      />
-    </div>
+    <Menu
+      style={{color: '#758D96'}}
+      defaultSelectedKeys={['1']}
+      mode='inline'
+      theme='light'
+      // inlineCollapsed={collapsed}
+      items={items}
+      // title='logo'
+    />
   )
 }
 
