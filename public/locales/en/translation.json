@@ -1,9 +1,9 @@
 {
   "Login": {
-    "1": "Login",
-    "2": "Sign in to start your session",
-    "3": "Email",
-    "4": "Password"
+    "login": "Login",
+    "sign": "Sign in to start your session",
+    "email": "Email",
+    "password": "Password"
   },
   "Menu": {
     "1": "Analytics",

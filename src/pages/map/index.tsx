@@ -3,8 +3,8 @@ import { Breadcrumb, Layout } from "antd";
 import DashboardLayout from "../../components/layout/DashboardLayout";
 const { Header, Content, Footer, Sider } = Layout;
 
-const Home = () => {
-  return <div>home</div>;
+const Map = () => {
+  return <div>map</div>;
 };
 
-export default Home;
+export default Map;
