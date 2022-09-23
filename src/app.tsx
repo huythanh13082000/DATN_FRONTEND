@@ -2,6 +2,7 @@ import {Breadcrumb, Layout} from 'antd'
 import React, {useState} from 'react'
 import MenuHome from './components/menu'
 import './app.css'
+import HeaderComponent from './components/header'
 
 const {Header, Content, Footer, Sider} = Layout
 
@@ -17,6 +18,7 @@ const App: React.FC = () => {
       </p> */}
       <Sider
         style={{backgroundColor: 'white'}}
+        className='app-sider'
         collapsible={false}
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
@@ -38,8 +40,12 @@ const App: React.FC = () => {
         </div>
         <MenuHome />
       </Sider>
-      <Layout className='site-layout'>
-        <Header className='site-layout-background' style={{padding: 0}} />
+      <Layout className='site-layout' style={{backgroundColor: '#f5f5f5'}}>
+        <Header
+          className='site-layout-background'
+          style={{padding: '0 1rem', backgroundColor: '#f5f5f5'}}
+          children={<HeaderComponent />}
+        />
         <Content style={{margin: '0 16px'}}>
           <Breadcrumb style={{margin: '16px 0'}}>
             <Breadcrumb.Item>User</Breadcrumb.Item>

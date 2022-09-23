@@ -1,0 +1,30 @@
+.ci_div1 {
+  text-align: center;
+  padding-top: 2rem;
+  width: 242px;
+  height: 258px;
+}
+.ci_img1 {
+  border-radius: 50%;
+  width: 68px;
+  height: 68px;
+}
+.ci_p1 {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  margin: 0;
+  margin-top: 1rem;
+  /* identical to box height */
+  /* body text 2 */
+  color: #2a363a;
+}
+.ci_p2{
+  margin: 0;
+}
+.ci_div2{
+  display: flex;
+  justify-content: space-between;
+}
