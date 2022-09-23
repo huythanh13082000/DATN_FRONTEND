@@ -8,12 +8,16 @@ const DashboardLayout = ({children}) => {
   const [collapsed, setCollapsed] = useState(false)
 
   return (
-    <Layout style={{minHeight: '100vh'}}>
+    <Layout style={{minHeight: '100vh', backgroundColor: '#fafafa'}}>
       {/* <p>
         <h3>{t('Thanks.1')}</h3> <h3>{t('Why.1')}</h3>{' '}
       </p> */}
       <Sider
-        style={{backgroundColor: 'white'}}
+        style={{
+          backgroundColor: 'white',
+          boxShadow:
+            'rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px',
+        }}
         collapsible={false}
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
@@ -35,7 +39,10 @@ const DashboardLayout = ({children}) => {
         </div>
         <MenuHome />
       </Sider>
-      <Layout className='site-layout'>
+      <Layout
+        className='site-layout'
+        style={{backgroundColor: '#fafafa', margin: '0 1.5rem'}}
+      >
         <Header
           className='site-layout-background'
           style={{padding: 0}}

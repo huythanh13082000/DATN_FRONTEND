@@ -1,10 +1,15 @@
-import React from "react";
-import { Breadcrumb, Layout } from "antd";
-import DashboardLayout from "../../components/layout/DashboardLayout";
-const { Header, Content, Footer, Sider } = Layout;
+import React from 'react'
+import {Breadcrumb, Layout} from 'antd'
+import DashboardLayout from '../../components/layout/DashboardLayout'
+import ISearch from '../../components/search'
+const {Header, Content, Footer, Sider} = Layout
 
 const Home = () => {
-  return <div>home</div>;
-};
+  return (
+    <div>
+      <ISearch onChange={() => console.log(222)} />
+    </div>
+  )
+}
 
-export default Home;
+export default Home
