@@ -1,4 +1,4 @@
-import {Url} from '../contains'
+import {Url} from './paths'
 import Home from '../pages/home'
 import Login from '../pages/login'
 import MyRouteProp from './MyRouteProp'
