@@ -17,7 +17,7 @@ root.render(
   <Provider store={store}>
     <Layout>
       <Sider>
-        <MenuHome />
+        {/* <MenuHome /> */}
       </Sider>
       <Layout>
         <Header>Header</Header>

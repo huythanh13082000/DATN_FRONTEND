@@ -6,11 +6,10 @@ const argv = require("minimist")(process.argv.slice(2), {
 });
 const source = argv._[0];
 // const prefix = argv.prefix || "";
-const prefix = '@';
 const images = ffs
   .readdirRecursiveSync(source, true, source)
-  .filter(file => file.endsWith(".jpg") || file.endsWith(".png"))
-  .map(file => file.replace(/(@2x\.|@3x\.)/g, "."));
+  .filter((file) => file.endsWith(".jpg") || file.endsWith(".png"))
+  .map((file) => file.replace(/(@2x\.|@3x\.)/g, "."));
 
 const flowNeeded = argv.flow || false;
 const flow = flowNeeded ? "\n * @flow" : "";
@@ -30,10 +29,10 @@ const result = `/**
 export default class Images {
 ${images
   .map(
-    image =>
+    (image) =>
       `${indent}static ${readonly}${_.camelCase(
         image.substring(0, image.length - 4).substring(source.length)
-      )} = require(${quote}${prefix}${image}${quote});`
+      )} = require(${quote}../../../${image}${quote});`
   )
   .join("\n")}
 }`;
