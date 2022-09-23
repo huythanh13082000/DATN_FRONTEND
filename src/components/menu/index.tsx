@@ -19,6 +19,7 @@ function getItem(
     children,
     label,
     type,
+    style: {color: '#758D96'},
   } as MenuItem
 }
 
@@ -50,15 +51,12 @@ const MenuHome: React.FC = () => {
       getItem(t('Menu.6_4'), '17'),
       getItem(t('Menu.6_5'), '18'),
     ]),
-    getItem(t('Menu.7'), '19', <i className='fa-solid fa-person-biking'></i>),
+    getItem(t('Menu.7'), '19', <i className='fa-solid fa-head-side-mask'></i>),
     getItem(
       t('Menu.8'),
       'sub4',
       <i className='fa-solid fa-person-biking'></i>,
-      [
-        getItem(t('Menu.8_1'), '29'),
-        getItem(t('Menu.8_2'), '30'),
-      ]
+      [getItem(t('Menu.8_1'), '29'), getItem(t('Menu.8_2'), '30')]
     ),
     getItem(t('Menu.9'), '4', <i className='fa-solid fa-credit-card'></i>),
     getItem(
@@ -66,11 +64,11 @@ const MenuHome: React.FC = () => {
       'sub5',
       <i className='fa-solid fa-circle-dollar-to-slot'></i>,
       [
-        getItem( t('Menu.10_1'), '20'),
-        getItem( t('Menu.10_2'), '21'),
-        getItem( t('Menu.10_3'), '22'),
-        getItem( t('Menu.10_4'), '23'),
-        getItem( t('Menu.10_5'), '24'),
+        getItem(t('Menu.10_1'), '20'),
+        getItem(t('Menu.10_2'), '21'),
+        getItem(t('Menu.10_3'), '22'),
+        getItem(t('Menu.10_4'), '23'),
+        getItem(t('Menu.10_5'), '24'),
       ]
     ),
     getItem(t('Menu.11'), 'sub6', <i className='fa-solid fa-headset'></i>, [

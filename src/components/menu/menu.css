@@ -9,10 +9,10 @@
   margin: 0 1rem;
 }
 .ant-menu > .ant-menu-item:hover {
-  color: #ff5c6a;
+  color: #ff5c6a !important;
 }
 .ant-menu > .ant-menu-submenu:hover {
-  color: #ff5c6a;
+  color: #ff5c6a !important;
 }
 .ant-menu > .ant-menu-item-active,
 .ant-menu > .ant-menu-submenu-active,
@@ -20,5 +20,5 @@
 .ant-menu > .ant-menu-submenu-open,
 .ant-menu > .ant-menu-item-selected,
 .ant-menu > .ant-menu-submenu-selected {
-  color: #ff5c6a;
+  color: #ff5c6a !important; 
 }
