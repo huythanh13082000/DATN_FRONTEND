@@ -2,8 +2,6 @@ import {Breadcrumb, Layout} from 'antd'
 import React, {useState} from 'react'
 import MenuHome from './components/menu'
 import './app.css'
-import i18next from 'i18next'
-import {useTranslation} from 'react-i18next'
 
 const {Header, Content, Footer, Sider} = Layout
 

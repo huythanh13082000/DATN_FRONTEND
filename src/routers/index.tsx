@@ -12,8 +12,8 @@ import { Url } from "./paths";
 import routes from "./routes";
 
 const Router = () => {
+  
   const navigate = useNavigate();
-
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE.TOKEN);
     if (!token) navigate(Url.login);

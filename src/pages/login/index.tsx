@@ -1,20 +1,23 @@
 import React from 'react'
 import {Col, Row, Input, Button} from 'antd'
 import './login.css'
+import i18next from 'i18next'
+import {useTranslation} from 'react-i18next'
 
 const Login = () => {
+  const {t} = useTranslation()
   return (
     <>
       <div className='login-container'>
         <div className='login-form'>
-          <p className='login-p1'>Login</p>
-          <p className='login-p2'>Sign in to start your session</p>
+          <p className='login-p1'>{t('Login.1')}</p>
+          <p className='login-p2'>{t('Login.2')}</p>
           <Row className='login-row'>
             <Col span={22}>
               <Input
                 className='login-input'
                 bordered={false}
-                placeholder='Email'
+                placeholder={t('Login.3')}
               />
             </Col>
             <Col span={2}>
@@ -26,7 +29,7 @@ const Login = () => {
               <Input
                 className='login-input'
                 bordered={false}
-                placeholder='Password'
+                placeholder={t('Login.4')}
               />
             </Col>
             <Col span={2}>
@@ -34,7 +37,7 @@ const Login = () => {
             </Col>
           </Row>
 
-          <Button className='login-buuton'>Login</Button>
+          <Button className='login-buuton'>{t('Login.1')}</Button>
         </div>
       </div>
 
