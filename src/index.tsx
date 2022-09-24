@@ -10,7 +10,6 @@ import i18next from 'i18next'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
-i18next.changeLanguage('en')
 
 root.render(
   <Provider store={store}>

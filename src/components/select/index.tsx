@@ -19,7 +19,7 @@ const Container = styled.div`
     font-weight: 600;
   }
 
-  .select-input {
+  .input {
     background: white;
     margin-top: 4px;
     flex: 1;
@@ -30,21 +30,7 @@ const Container = styled.div`
     padding-right: 10px;
   }
 
-  .select-input::placeholder {
-    color: ${AppColors.textPlaceholder};
-  }
-
-  .c-input {
-    background: white;
-    margin-top: 4px;
-    height: 40px;
-    border: 1px solid ${AppColors.border};
-    border-radius: 4px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .c-input::placeholder {
+  .input::placeholder {
     color: ${AppColors.textPlaceholder};
   }
 
@@ -94,16 +80,13 @@ const Container = styled.div`
 export interface IProps {
   name: string;
   disabled?: boolean;
-  required?: boolean;
-  title?: string;
-  width?: any;
-  icon?: any;
   placeHolder?: string;
-  option?: Array<string>;
+  width?: any;
+  option: Array<string>;
   onChange: (event: any) => void;
 }
 
-const InputGroup = (props: IProps) => {
+const ISelect = (props: IProps) => {
   const [isExpand, setExpand] = useState(false);
   const [value, setValue] = useState("");
   const { t } = useTranslation();
@@ -129,58 +112,40 @@ const InputGroup = (props: IProps) => {
 
   return (
     <Container style={props.width ? { width: props.width } : {}}>
-      <div className='c-row'>
-        <span className='title'>{props.title}</span>
-        <span style={{ color: "red" }}>&nbsp;*</span>
-      </div>
-      {props.option ? (
-        <div className='relative'>
-          <div
-            id={props.name + "input"}
-            onClick={openOption}
-            className='view-input'
-          >
-            <input
-              style={props.width ? { width: props.width } : {}}
-              className='select-input'
-              disabled={true}
-              value={value}
-              placeholder={props.placeHolder ? props.placeHolder : t("SELECT")}
-            />
-            <img
-              className='arrow-down'
-              src={props.icon ? props.icon : Images.chevronDown}
-              alt=''
-            />
-          </div>
-          {!!isExpand && (
-            <div className='c-expand'>
-              {props.option.map((item, index) => (
-                <div
-                  onClick={() => {
-                    setValue(item);
-                    props.onChange(item);
-                  }}
-                  key={item + index}
-                  className='view-option'
-                >
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-          )}
+      <div className='relative'>
+        <div
+          id={props.name + "input"}
+          onClick={openOption}
+          className='view-input'
+        >
+          <input
+            style={props.width ? { width: props.width } : {}}
+            className='input'
+            disabled={true}
+            value={value}
+            placeholder={props.placeHolder ? props.placeHolder : t("SELECT")}
+          />
+          <img className='arrow-down' src={Images.chevronDown} alt='' />
         </div>
-      ) : (
-        <input
-          style={props.width ? { width: props.width } : {}}
-          className='c-input'
-          disabled={props.disabled}
-          onChange={props.onChange}
-          placeholder={props.placeHolder}
-        />
-      )}
+        {!!isExpand && (
+          <div className='c-expand'>
+            {props.option.map((item, index) => (
+              <div
+                onClick={() => {
+                  setValue(item);
+                  props.onChange(item);
+                }}
+                key={item + index}
+                className='view-option'
+              >
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </Container>
   );
 };
 
-export default InputGroup;
+export default ISelect;

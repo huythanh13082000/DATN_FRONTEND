@@ -25,23 +25,35 @@ export interface IProps {
   disabled?: boolean;
   iconLeft?: string;
   iconRight?: string;
+  icon?: string;
   title?: string;
   color?: string;
 }
 
 const BBtn = (props: IProps) => {
+  const _buildType1 = () => {
+    return <img src={props.icon} alt='' />;
+  };
+
+  const _buildType2 = () => {
+    return (
+      <>
+        {props.iconLeft && (
+          <img style={{ marginRight: 8 }} src={props.iconLeft} alt='' />
+        )}
+        <span>{props.title}</span>
+        {props.iconRight && (
+          <img style={{ marginLeft: 8 }} src={props.iconRight} alt='' />
+        )}
+      </>
+    );
+  };
   return (
     <Container
       style={{ background: props.color || AppColors.red }}
       disabled={props.disabled || false}
     >
-      {props.iconLeft && (
-        <img style={{ marginRight: 8 }} src={props.iconLeft} alt='' />
-      )}
-      <span>{props.title}</span>
-      {props.iconRight && (
-        <img style={{ marginLeft: 8 }} src={props.iconRight} alt='' />
-      )}
+      {props.icon ? _buildType1() : _buildType2()}
     </Container>
   );
 };

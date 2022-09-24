@@ -43,5 +43,7 @@
     "13": "Application Theme",
     "14": "Events",
     "15": "Settings"
-  }
+  },
+  "SELECT": "Select",
+  "TYPE_IN_SEARCH": "Type in search..."
 }

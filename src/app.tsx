@@ -1,3 +1,4 @@
+import i18next from "i18next";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./app.css";
@@ -7,8 +8,7 @@ import Router from "./routers";
 import { Config, IS_LOGGED, LOCAL_STORAGE } from "./utils/constants";
 
 const App: React.FC = () => {
-  // i18next.changeLanguage('ko')
-  // const {t} = useTranslation()
+  i18next.changeLanguage("ko");
   return (
     <BrowserRouter>
       <Router />
