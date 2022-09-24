@@ -43,5 +43,15 @@
     "13": "애플리케이션 테마",
     "14": "이벤트",
     "15": "세팅"
+  },
+  "inforBoxHomePage": {
+    "riders": "라이더",
+    "rides": "놀이기구",
+    "vehicles": "차량",
+    "tickets": "티켓"
+  },
+  "button": {
+    "changePassword": "비밀번호 변경",
+    "logOut": "로그 아웃"
   }
 }

@@ -1,8 +1,10 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import BBtn from '../button'
 import './cardInfor.css'
 
 const CardInfor = () => {
+  const {t}=useTranslation()
   return (
     <div className='ci_div1'>
       <img
@@ -15,8 +17,8 @@ const CardInfor = () => {
       <p className='ci_p3'>greenapp@kicks.kr</p>
       <p style={{borderTop: '1px solid #E1E1E1'}}></p>
       <div className='ci_div2'>
-        <BBtn title='Change Password' color='#24BB69' />
-        <BBtn title='Log Out' />
+        <BBtn title={t('button.changePassword')} color='#24BB69' />
+        <BBtn title={t('button.logOut')} />
       </div>
     </div>
   )

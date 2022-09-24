@@ -43,5 +43,15 @@
     "13": "Application Theme",
     "14": "Events",
     "15": "Settings"
+  },
+  "inforBoxHomePage": {
+    "riders": "Riders",
+    "rides": "Rides",
+    "vehicles": "Vehicles",
+    "tickets":"Tickets"
+  },
+  "button":{
+    "changePassword":"Change Password",
+    "logOut":"Log Out"
   }
 }
