@@ -37,7 +37,7 @@ const Container = styled.div`
       position: absolute;
       width: 16px;
       height: 16px;
-      z-index: 10000;
+      z-index: 1000;
     }
   }
 `;
