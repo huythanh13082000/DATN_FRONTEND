@@ -55,5 +55,8 @@
     "logOut":"Log Out"
   },
   "SELECT": "Select",
-  "TYPE_IN_SEARCH": "Type in search..."
+  "TYPE_IN_SEARCH": "Type in search...",
+  "PREVIOUS": "Previous",
+  "NEXT": "Next",
+  "SHOWING_ENTRIES": "Showing %{from} to %{to} of entries"
 }

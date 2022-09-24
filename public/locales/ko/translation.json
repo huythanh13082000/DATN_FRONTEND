@@ -55,5 +55,8 @@
     "logOut": "로그 아웃"
   },
   "SELECT": "고르다",
-  "TYPE_IN_SEARCH": "검색 을 입력 ..."
+  "TYPE_IN_SEARCH": "검색 을 입력 ...",
+  "PREVIOUS": "너무 이른",
+  "NEXT": "다음",
+  "SHOWING_ENTRIES": "항목 중 {{from}}~{{to}}개 표시"
 }
