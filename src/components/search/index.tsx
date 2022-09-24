@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import Images from "../../assets/gen";
 import { AppColors } from "../../utils/appColors";
@@ -47,6 +48,8 @@ export interface IProps {
 }
 
 const ISearch = (props: IProps) => {
+  const { t } = useTranslation();
+
   return (
     <Container>
       <div className='relative'>
@@ -55,7 +58,9 @@ const ISearch = (props: IProps) => {
           <input
             className='input'
             onChange={props.onChange}
-            placeholder={props.placeHolder || "Type in search..."}
+            placeholder={
+              props.placeHolder ? props.placeHolder : t("TYPE_IN_SEARCH")
+            }
           />
         </div>
       </div>

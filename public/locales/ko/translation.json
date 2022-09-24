@@ -53,5 +53,7 @@
   "button": {
     "changePassword": "비밀번호 변경",
     "logOut": "로그 아웃"
-  }
+  },
+  "SELECT": "고르다",
+  "TYPE_IN_SEARCH": "검색 을 입력 ..."
 }

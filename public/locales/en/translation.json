@@ -53,5 +53,7 @@
   "button":{
     "changePassword":"Change Password",
     "logOut":"Log Out"
-  }
+  },
+  "SELECT": "Select",
+  "TYPE_IN_SEARCH": "Type in search..."
 }

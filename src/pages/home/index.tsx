@@ -17,7 +17,7 @@ const Home = () => {
         className='home_row1'
         wrap={true}
         gutter={24}
-      >
+      >s
         <Col span={6}>
           <InforBoxHomePage
             type={1}
