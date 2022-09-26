@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import styled from "styled-components";
-import Images from "../../assets/gen";
-import { AppColors } from "../../utils/appColors";
+import {useEffect, useState} from 'react'
+import {useTranslation} from 'react-i18next'
+import styled from 'styled-components'
+import Images from '../../assets/gen'
+import {AppColors} from '../../utils/appColors'
 
 const Container = styled.div`
   display: flex;
@@ -90,77 +90,76 @@ const Container = styled.div`
       }
     }
   }
-`;
+`
 
 export interface IProps {
-  name: string;
-  disabled?: boolean;
-  required?: boolean;
-  title?: string;
-  width?: any;
-  icon?: any;
-  placeHolder?: string;
-  option?: Array<string>;
-  value?: string;
-  background?: string;
-  onChange: (event: any) => void;
+  name: string
+  disabled?: boolean
+  required?: boolean
+  title?: string
+  width?: any
+  icon?: any
+  placeHolder?: string
+  option?: Array<string>
+  value?: string
+  background?: string
+  onChange: (event: any) => void
 }
 
 const InputGroup = (props: IProps) => {
-  const [isExpand, setExpand] = useState(false);
-  const [value, setValue] = useState("");
-  const { t } = useTranslation();
-  const style1 = props.width ? props.width : null;
+  const [isExpand, setExpand] = useState(false)
+  const [value, setValue] = useState('')
+  const {t} = useTranslation()
+  const style1 = props.width ? props.width : null
   const style2 = props.background
     ? {
-        background: props.background ? props.background : "white",
-        border: props.background ? "none" : `1px solid ${AppColors.border}`,
+        background: props.background ? props.background : 'white',
+        border: props.background ? 'none' : `1px solid ${AppColors.border}`,
       }
-    : null;
+    : null
 
   const openOption = () => {
-    setExpand(!isExpand);
-  };
+    setExpand(!isExpand)
+  }
 
   useEffect(() => {
-    console.log("value", props.value);
-    setValue(props.value || "");
-  }, [props.value]);
+    setValue(props.value || '')
+  }, [props.value])
 
   useEffect(() => {
-    document.addEventListener("click", function (event: any) {
+    document.addEventListener('click', function (event: any) {
       var myElementToCheckIfClicksAreInsideOf = document.getElementById(
-        props.name + "input"
-      );
+        props.name + 'input'
+      )
       if (
         myElementToCheckIfClicksAreInsideOf &&
         myElementToCheckIfClicksAreInsideOf.contains(event.target)
       ) {
       } else {
-        setExpand(false);
+        setExpand(false)
       }
-    });
-  }, [props.name]);
+    })
+  }, [props.name])
 
   return (
-    <Container style={props.width ? { width: props.width } : {}}>
+    <Container style={props.width ? {width: props.width} : {}}>
       <div className='c-row'>
         <span className='c-title'>{props.title}</span>
-        {props.required && <span style={{ color: "red" }}>&nbsp;*</span>}
+        {props.required && <span style={{color: 'red'}}>&nbsp;*</span>}
       </div>
       {props.option ? (
         <div className='relative'>
           <div
-            id={props.name + "input"}
+            id={props.name + 'input'}
             onClick={openOption}
             className='view-input'
           >
             <input
-              style={props.width ? { width: props.width } : {}}
+              style={props.width ? {width: props.width} : {}}
               className='select-input'
               disabled={true}
               value={value}
-              placeholder={props.placeHolder ? props.placeHolder : t("SELECT")}
+              placeholder={props.placeHolder ? props.placeHolder : t('SELECT')}
             />
             <img
               className='arrow-down'
@@ -173,8 +172,8 @@ const InputGroup = (props: IProps) => {
               {props.option.map((item, index) => (
                 <div
                   onClick={() => {
-                    setValue(item);
-                    props.onChange(item);
+                    setValue(item)
+                    props.onChange(item)
                   }}
                   key={item + index}
                   className='view-option'
@@ -187,19 +186,19 @@ const InputGroup = (props: IProps) => {
         </div>
       ) : (
         <input
-          style={{ ...style1, ...style2 }}
+          style={{...style1, ...style2}}
           className='c-input'
           disabled={props.disabled}
           onChange={(event) => {
-            props.onChange(event.target.value);
-            setValue(event.target.value);
+            props.onChange(event.target.value)
+            setValue(event.target.value)
           }}
           value={value}
           placeholder={props.placeHolder}
         />
       )}
     </Container>
-  );
-};
+  )
+}
 
-export default InputGroup;
+export default InputGroup

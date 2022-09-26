@@ -26,7 +26,7 @@ const MenuHome: React.FC = () => {
       label,
       type,
       onClick: () => {
-        console.log("key", key);
+        console.log('key', key)
 
         switch (key) {
           case '1':
@@ -37,12 +37,15 @@ const MenuHome: React.FC = () => {
             console.log('key', key)
             navigate(Url.org)
             break
-          case "2":
-            navigate(Url.map);
-            break;
-          case "7":
-            navigate(Url.setting);
-            break;
+          case '2':
+            navigate(Url.map)
+            break
+          case '7':
+            navigate(Url.setting)
+            break
+          case '9':
+            navigate(Url.role)
+            break
 
           default:
             break

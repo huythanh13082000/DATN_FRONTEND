@@ -106,6 +106,7 @@ export interface IProps {
   width?: number
   pageSize: number
   total: number
+  onClickRow?: (params: any) => void
   onChangePage: (event: any) => void
 }
 
@@ -140,7 +141,7 @@ const ITable = (props: IProps) => {
         onRow={(record, rowIndex) => {
           return {
             onClick: () => {
-              console.log(rowIndex)
+              props.onClickRow && props.onClickRow(record)
             }, // click row
           }
         }}
