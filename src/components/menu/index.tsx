@@ -49,6 +49,9 @@ const MenuHome: React.FC = () => {
           case '10':
             navigate(Url.permission)
             break
+          case 'sub2':
+            navigate(Url.fleets)
+            break
 
           default:
             break

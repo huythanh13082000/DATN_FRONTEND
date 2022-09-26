@@ -7,6 +7,7 @@ import Org from '../pages/org'
 import Setting from '../pages/setting'
 import Permission from '../pages/permission'
 import Role from '../pages/role'
+import Fleets from '../pages/fleets'
 
 const routes: Array<RouteProps> = [
   {
@@ -32,5 +33,6 @@ const routes: Array<RouteProps> = [
   {path: Url.org, element: <Org />},
   {path: Url.role, element: <Role />},
   {path: Url.permission, element: <Permission />},
+  {path: Url.fleets, element: <Fleets />},
 ]
 export default routes
