@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { Pagination, Table } from "antd";
-import type { ColumnsType } from "antd/es/table";
-import { AppColors } from "../../utils/appColors";
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { calculateColumnsWidth } from "../../utils/tableHelper";
+import styled from 'styled-components'
+import {Pagination, Table} from 'antd'
+import type {ColumnsType} from 'antd/es/table'
+import {AppColors} from '../../utils/appColors'
+import {useEffect, useState} from 'react'
+import {useTranslation} from 'react-i18next'
+import {calculateColumnsWidth} from '../../utils/tableHelper'
 
 const Container = styled.div`
   display: flex;
@@ -98,50 +98,57 @@ const Container = styled.div`
       color: #ffffff;
     }
   }
-`;
+`
 
 export interface IProps {
-  column: Array<any>;
-  data: Array<any>;
-  width?: number;
-  pageSize: number;
-  total: number;
-  onChangePage: (event: any) => void;
+  column: Array<any>
+  data: Array<any>
+  width?: number
+  pageSize: number
+  total: number
+  onChangePage: (event: any) => void
 }
 
 const ITable = (props: IProps) => {
-  const [dataColumn, setData] = useState<any>();
-  const [currentPage, setCurrentPage] = useState(1);
-  const { t } = useTranslation();
+  const [dataColumn, setData] = useState<any>()
+  const [currentPage, setCurrentPage] = useState(1)
+  const {t} = useTranslation()
 
   useEffect(() => {
     const newData = props.column.map((item, index) => {
       return {
         ...item,
-        className: "thead",
-      };
-    });
-    setData(newData);
-  }, [props.column]);
+        className: 'thead',
+      }
+    })
+    setData(newData)
+  }, [props.column])
 
-  const dataTable = calculateColumnsWidth(props.column, props.data, 200);
+  const dataTable = calculateColumnsWidth(props.column, props.data, 200)
 
   return (
     <Container>
       <Table
         rowClassName={(record, index) =>
-          index % 2 === 0 ? "table-row-light" : "table-row-dark"
+          index % 2 === 0 ? 'table-row-light' : 'table-row-dark'
         }
         columns={dataColumn}
         dataSource={props.data}
-        scroll={{ x: props.width ? props.width : dataTable.tableWidth }}
+        scroll={{x: props.width ? props.width : dataTable.tableWidth}}
         size='middle'
         pagination={false}
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: () => {
+              console.log(rowIndex)
+            }, // click row
+          }
+        }}
       />
-      <div style={{ height: 16 }}></div>
+      <div style={{height: 16}}></div>
       <div className='c-row'>
         <div className='text-show'>
-          {t("SHOWING_ENTRIES", {
+          {t('SHOWING_ENTRIES', {
             from: (currentPage - 1) * props.pageSize + 1,
             to: currentPage * props.pageSize,
           })}
@@ -153,27 +160,27 @@ const ITable = (props: IProps) => {
           defaultCurrent={1}
           total={props.total}
           itemRender={(page, type, element) => {
-            if (type === "page") {
-              return <div>{page}</div>;
-            } else if (type === "prev") {
-              return <div>{t("PREVIOUS")}</div>;
-            } else if (type === "next") {
-              return <div>{t("NEXT")}</div>;
+            if (type === 'page') {
+              return <div>{page}</div>
+            } else if (type === 'prev') {
+              return <div>{t('PREVIOUS')}</div>
+            } else if (type === 'next') {
+              return <div>{t('NEXT')}</div>
             } else {
-              return <div style={{ fontWeight: "bold" }}>...</div>;
+              return <div style={{fontWeight: 'bold'}}>...</div>
             }
           }}
           onChange={(page) => {
-            setCurrentPage(page);
-            props.onChangePage(page);
+            setCurrentPage(page)
+            props.onChangePage(page)
           }}
         />
       </div>
     </Container>
-  );
-};
+  )
+}
 
-export default ITable;
+export default ITable
 
 // const data: UserModel[] = [
 //   {
@@ -298,7 +305,8 @@ export default ITable;
 //   },
 // ];
 
-{/* <ITable
+{
+  /* <ITable
   onChangePage={(page) => {
     console.log("page", page);
   }}
@@ -308,4 +316,5 @@ export default ITable;
   pageSize={100}
   total={500}
   column={columns}
-/>; */}
+/>; */
+}

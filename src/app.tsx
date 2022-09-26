@@ -8,7 +8,7 @@ import Router from './routers'
 import {Config, IS_LOGGED, LOCAL_STORAGE} from './utils/constants'
 
 const App: React.FC = () => {
-  i18next.changeLanguage('en')
+  i18next.changeLanguage('ko')
   return (
     <BrowserRouter>
       <Router />

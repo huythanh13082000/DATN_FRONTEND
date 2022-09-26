@@ -48,15 +48,15 @@
     "riders": "Riders",
     "rides": "Rides",
     "vehicles": "Vehicles",
-    "tickets":"Tickets"
+    "tickets": "Tickets"
   },
-  "button":{
-    "changePassword":"Change Password",
-    "logOut":"Log Out"
+  "button": {
+    "changePassword": "Change Password",
+    "logOut": "Log Out"
   },
   "SELECT": "Select",
   "TYPE_IN_SEARCH": "Type in search...",
   "PREVIOUS": "Previous",
   "NEXT": "Next",
-  "SHOWING_ENTRIES": "Showing %{from} to %{to} of entries"
+  "SHOWING_ENTRIES": "Showing {{from}}~{{to}} of entries"
 }
