@@ -23,18 +23,26 @@ const DashboardLayout = ({children}) => {
         onCollapse={(value) => setCollapsed(value)}
       >
         <div className='logo'>
-          <p className='app-p1'>
+          <p
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-around',
+              paddingTop: '1rem',
+            }}
+          >
             <i
               className='fa-solid fa-bars'
               style={{paddingLeft: collapsed ? '0.35rem' : 0}}
               onClick={() => setCollapsed(!collapsed)}
             ></i>
-            {!collapsed && (
+            {/* {!collapsed && (
               <img
-                src='https://campusride-dashboard.joyridecity.bike/logo/testing.svg'
+                src='/img/logo.png'
+                style={{width: '80px', height: '50px'}}
                 alt=''
               />
-            )}
+            )} */}
           </p>
         </div>
         <MenuHome />

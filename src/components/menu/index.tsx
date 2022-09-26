@@ -62,76 +62,47 @@ const MenuHome: React.FC = () => {
   }
 
   const items: MenuItem[] = [
-    //home
-    getItem(t('Menu.1'), '1', <i className='fa-solid fa-house'></i>),
-    //org
-    getItem(t('Menu.2'), 'sub1', <i className='fa-solid fa-people-group'></i>, [
-      getItem(t('Menu.2_1'), '8', <i className='fa-solid fa-sitemap'></i>),
-      getItem(t('Menu.2_2'), '9', <i className='fa-solid fa-circle-user'></i>),
-      getItem(t('Menu.2_3'), '10', <i className='fa-solid fa-key'></i>),
+    //tong quan
+    getItem('Tổng quan', '1', <i className='fa-solid fa-house'></i>),
+    //thanh phan luong
+    getItem('TP lương', '2', <i className='fa-brands fa-elementor'></i>),
+    //mẫu bảng lương
+    getItem('Mẫu bảng lương', '3', <i className='fa-solid fa-table'></i>),
+    //Dữ liệu tính lương
+    getItem('DL tính lương', 'sub3', <i className='fa-solid fa-database'></i>, [
+      getItem('Chấm công', '11'),
+      getItem('Doanh số', '12'),
+      getItem('KPI', '13'),
+      getItem('Sản phẩm', '12'),
+      getItem('Thu nhập khác', '13'),
+      getItem('Khấu trừ khác', '13'),
     ]),
-    //map
-    getItem(t('Menu.3'), '2', <i className='fa-solid fa-location-dot'></i>),
-    //Fleets
+
+    //Tính lương
+    getItem('Tính lương', '3', <i className='fa-solid fa-calculator'></i>, [
+      getItem('Bảng lương', '14'),
+      getItem('Tạm ứng', '15'),
+      getItem('Bảng tổng hợp lương', '16'),
+      getItem('Bảng phân bổ lương', '17'),
+      getItem('Ngân sách lương', '18'),
+      getItem('Bảng thuế', '18'),
+      getItem('Bảng quyết toán thuế', '18'),
+    ]),
     getItem(
-      t('Menu.4'),
-      'sub2',
-      <i className='fa-solid fa-map-location-dot'></i>
+      'Chi trả lương',
+      'sub3',
+      <i className='fa-solid fa-money-bill-wave'></i>,
+      [getItem('Bảng chi trả', '11'), getItem('Tổng hợp chi trả', '12')]
     ),
-    //Vehicles
-    getItem(t('Menu.5'), 'sub3', <i className='fa-solid fa-motorcycle'></i>, [
-      getItem(t('Menu.5_1'), '11'),
-      getItem(t('Menu.5_2'), '12'),
-      getItem(t('Menu.5_3'), '13'),
+    getItem('Báo cáo', 'sub4', <i className='fa-solid fa-bug'></i>, [
+      getItem('Tổng hợp thu nhập nhân viên', '29'),
+      getItem('Thống kê thu nhập theo tháng', '30'),
+      getItem('Phân tích cơ cấu thu nhập', '30'),
+      getItem('Tổng hợp chi phí lương', '29'),
+      getItem('Lịch sử lương của nhân viên', '30'),
+      getItem('Tổng hợp công nợ', '30'),
+      getItem('Tình hình thực hiện ngân sách lương', '30'),
     ]),
-    //Geofence
-    getItem(t('Menu.6'), '3', <i className='fa-brands fa-product-hunt'></i>, [
-      getItem(t('Menu.6_1'), '14'),
-      getItem(t('Menu.6_2'), '15'),
-      getItem(t('Menu.6_3'), '16'),
-      getItem(t('Menu.6_4'), '17'),
-      getItem(t('Menu.6_5'), '18'),
-    ]),
-    //Riders
-    getItem(t('Menu.7'), '19', <i className='fa-solid fa-head-side-mask'></i>),
-    //Rides
-    getItem(
-      t('Menu.8'),
-      'sub4',
-      <i className='fa-solid fa-person-biking'></i>,
-      [getItem(t('Menu.8_1'), '29'), getItem(t('Menu.8_2'), '30')]
-    ),
-    //Payments
-    getItem(t('Menu.9'), '4', <i className='fa-solid fa-credit-card'></i>),
-    //Pricing
-    getItem(
-      t('Menu.10'),
-      'sub5',
-      <i className='fa-solid fa-circle-dollar-to-slot'></i>,
-      [
-        getItem(t('Menu.10_1'), '20'),
-        getItem(t('Menu.10_2'), '21'),
-        getItem(t('Menu.10_3'), '22'),
-        getItem(t('Menu.10_4'), '23'),
-        getItem(t('Menu.10_5'), '24'),
-      ]
-    ),
-    //Support
-    getItem(t('Menu.11'), 'sub6', <i className='fa-solid fa-headset'></i>, [
-      getItem(t('Menu.11_1'), '25'),
-      getItem(t('Menu.11_2'), '26'),
-    ]),
-    //Campaigns
-    getItem(t('Menu.12'), 'sub7', <i className='fa-solid fa-bullhorn'></i>, [
-      getItem(t('Menu.12_1'), '27'),
-      getItem(t('Menu.12_2'), '28'),
-    ]),
-    //Application Theme
-    getItem(t('Menu.13'), '5', <i className='fa-solid fa-palette'></i>),
-    //Events
-    getItem(t('Menu.14'), '6', <i className='fa-solid fa-calendar'></i>),
-    //Settings
-    getItem(t('Menu.15'), '7', <i className='fa-solid fa-gear'></i>),
   ]
 
   return (
