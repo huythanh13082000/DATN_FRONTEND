@@ -1,8 +1,9 @@
-import { Url } from "./paths";
-import Home from "../pages/home";
-import Login from "../pages/login";
-import Map from "../pages/map";
-import { RouteProps } from "react-router-dom";
+import {Url} from './paths'
+import Home from '../pages/home'
+import Login from '../pages/login'
+import Map from '../pages/map'
+import {RouteProps} from 'react-router-dom'
+import Org from '../pages/org'
 
 const routes: Array<RouteProps> = [
   {
@@ -18,8 +19,9 @@ const routes: Array<RouteProps> = [
     element: <Map />,
   },
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
-];
-export default routes;
+  {path: Url.org, element: <Org />},
+]
+export default routes

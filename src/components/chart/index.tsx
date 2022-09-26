@@ -37,47 +37,6 @@ export const options = {
   },
 }
 
-export const dataLine = {
-  labels: [
-    '2022-06-07',
-    '2022-06-09',
-    '2022-06-011',
-    '2022-06-013',
-    '2022-06-15',
-    '2022-06-07',
-    '2022-06-09',
-    '2022-06-011',
-    '2022-06-013',
-    '2022-06-15',
-    '2022-06-07',
-    '2022-06-09',
-    '2022-06-011',
-    '2022-06-013',
-    '2022-06-15',
-  ],
-  datasets: [
-    {
-      label: 'Total User',
-      data: [33, 53, 85, 41, 44, 65, 33, 53, 85, 41, 44, 65, 33, 53, 85],
-      fill: true,
-      backgroundColor: 'rgba(75,192,192,0.2)',
-      borderColor: '#758D96',
-    },
-  ],
-}
-export const dataDoughnut = {
-  labels: ['item1', 'item2', 'item3', 'item4', 'item5', 'item6'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: ['#3980B5', '#3980B5', '#95BBD7', '#679DC6', '#0B62A4'],
-      borderColor: ['white', 'white', 'white', 'white', 'white'],
-      borderWidth: 2,
-    },
-  ],
-}
-
 export function ChartCustom(props: {
   title?: string
   type: 'Bar' | 'Line' | 'Doughnut'

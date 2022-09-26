@@ -4,6 +4,7 @@ import InforBoxHomePage from '../../components/inforBoxHomePage'
 import './home.css'
 import {useTranslation} from 'react-i18next'
 import {ChartCustom} from '../../components/chart'
+import ISelect from '../../components/select'
 
 const Home = () => {
   const {t} = useTranslation()
@@ -12,6 +13,20 @@ const Home = () => {
     <div>
       <br></br>
       <br></br>
+      <Row justify='end'>
+        <Col>
+          <ISelect
+            name='selectFleets'
+            placeHolder='All Fleets'
+            option={['All Fleets', 'campusride']}
+            onChange={() => {
+              console.log(111)
+            }}
+            width='120px'
+          />
+        </Col>
+      </Row>
+
       <Row
         justify='space-between'
         className='home_row1'
