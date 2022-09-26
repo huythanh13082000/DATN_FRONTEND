@@ -6,7 +6,7 @@ import BBtn from '../../components/button'
 import ITable from '../../components/table'
 import InputGroup from '../../components/textInput'
 import './org.css'
-import {OrgModel} from '../../models/org.model'
+// import {OrgModel} from '../../models/org.model'
 
 const Org = () => {
   const [dataOrg, setDataOrg] = useState<any>()
@@ -182,7 +182,11 @@ const Org = () => {
               <Row style={{borderTop: '1px solid #E1E1E1'}}></Row>
               <br />
               <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                <BBtn title='Back' color='#FF5C6A' />
+                <BBtn
+                  title='Back'
+                  color='#FF5C6A'
+                  onClick={() => setDataOrg(undefined)}
+                />
                 <BBtn title='Save Changes' color='#24BB69' />
               </div>
             </div>
@@ -297,7 +301,11 @@ const Org = () => {
               <Row style={{borderTop: '1px solid #E1E1E1'}}></Row>
               <br />
               <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                <BBtn title='Back' color='#FF5C6A' />
+                <BBtn
+                  title='Back'
+                  color='#FF5C6A'
+                  onClick={() => setDataOrgUser(undefined)}
+                />
                 <BBtn title='Save Changes' color='#24BB69' />
               </div>
             </div>

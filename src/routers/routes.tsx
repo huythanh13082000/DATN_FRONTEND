@@ -5,6 +5,7 @@ import Map from '../pages/map'
 import {RouteProps} from 'react-router-dom'
 import Org from '../pages/org'
 import Setting from '../pages/setting'
+import Permission from '../pages/permission'
 import Role from '../pages/role'
 
 const routes: Array<RouteProps> = [
@@ -30,5 +31,6 @@ const routes: Array<RouteProps> = [
   },
   {path: Url.org, element: <Org />},
   {path: Url.role, element: <Role />},
+  {path: Url.permission, element: <Permission />},
 ]
 export default routes

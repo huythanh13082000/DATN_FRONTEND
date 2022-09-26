@@ -46,6 +46,9 @@ const MenuHome: React.FC = () => {
           case '9':
             navigate(Url.role)
             break
+          case '10':
+            navigate(Url.permission)
+            break
 
           default:
             break
