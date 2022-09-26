@@ -28,6 +28,7 @@ export interface IProps {
   icon?: string;
   title?: string;
   color?: string;
+  styleText?: React.CSSProperties;
 }
 
 const BBtn = (props: IProps) => {
@@ -41,7 +42,9 @@ const BBtn = (props: IProps) => {
         {props.iconLeft && (
           <img style={{ marginRight: 8 }} src={props.iconLeft} alt='' />
         )}
-        <span>{props.title}</span>
+        <span style={props.styleText ? props.styleText : {}}>
+          {props.title}
+        </span>
         {props.iconRight && (
           <img style={{ marginLeft: 8 }} src={props.iconRight} alt='' />
         )}

@@ -14,9 +14,10 @@ const Container = styled.div`
     flex-direction: row;
   }
 
-  .title {
+  .c-title {
     color: ${AppColors.textPrimary};
     font-weight: 600;
+    font-size: 14px;
   }
 
   .select-input {
@@ -100,6 +101,8 @@ export interface IProps {
   icon?: any;
   placeHolder?: string;
   option?: Array<string>;
+  value?: string;
+  background?: string;
   onChange: (event: any) => void;
 }
 
@@ -107,10 +110,22 @@ const InputGroup = (props: IProps) => {
   const [isExpand, setExpand] = useState(false);
   const [value, setValue] = useState("");
   const { t } = useTranslation();
+  const style1 = props.width ? props.width : null;
+  const style2 = props.background
+    ? {
+        background: props.background ? props.background : "white",
+        border: props.background ? "none" : `1px solid ${AppColors.border}`,
+      }
+    : null;
 
   const openOption = () => {
     setExpand(!isExpand);
   };
+
+  useEffect(() => {
+    console.log("value", props.value);
+    setValue(props.value || "");
+  }, [props.value]);
 
   useEffect(() => {
     document.addEventListener("click", function (event: any) {
@@ -130,8 +145,8 @@ const InputGroup = (props: IProps) => {
   return (
     <Container style={props.width ? { width: props.width } : {}}>
       <div className='c-row'>
-        <span className='title'>{props.title}</span>
-        <span style={{ color: "red" }}>&nbsp;*</span>
+        <span className='c-title'>{props.title}</span>
+        {props.required && <span style={{ color: "red" }}>&nbsp;*</span>}
       </div>
       {props.option ? (
         <div className='relative'>
@@ -172,10 +187,14 @@ const InputGroup = (props: IProps) => {
         </div>
       ) : (
         <input
-          style={props.width ? { width: props.width } : {}}
+          style={{ ...style1, ...style2 }}
           className='c-input'
           disabled={props.disabled}
-          onChange={props.onChange}
+          onChange={(event) => {
+            props.onChange(event.target.value);
+            setValue(event.target.value);
+          }}
+          value={value}
           placeholder={props.placeHolder}
         />
       )}
