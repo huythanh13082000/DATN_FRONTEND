@@ -82,6 +82,16 @@ const MenuHome: React.FC = () => {
       getItem('Tổng hợp công nợ', '7_6'),
       getItem('Ngân sách lương', '7_7'),
     ]),
+    getItem('Thiết lập', '8', <i className='fa-solid fa-gear'></i>, [
+      getItem('Nhân viên', '8_1'),
+      getItem('Thông số mặc định', '8_2'),
+      getItem('Biểu mẫu', '8_3'),
+      getItem('Tùy chỉnh', '8_4'),
+      getItem('Vai trò', '8_5'),
+      getItem('Người dùng', '8_6'),
+      getItem('Kết nối', '8_7'),
+      getItem('Hệ thống', '8_8'),
+    ]),
   ]
 
   return (

@@ -29,7 +29,7 @@ const HeaderComponent = () => {
 
       <Popover placement='bottomRight' content={content} trigger='click'>
         <p className='header-p1'>
-          GreenApp <i className='fa-solid fa-angle-down'></i>
+          Huy Thành <i className='fa-solid fa-angle-down'></i>
         </p>
       </Popover>
     </div>
