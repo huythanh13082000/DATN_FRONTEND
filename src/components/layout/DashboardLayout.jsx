@@ -18,7 +18,7 @@ const DashboardLayout = ({children}) => {
           boxShadow:
             'rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px',
         }}
-        collapsible={false}
+        collapsible={true}
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
@@ -31,18 +31,30 @@ const DashboardLayout = ({children}) => {
               paddingTop: '1rem',
             }}
           >
-            <i
+            {/* <i
               className='fa-solid fa-bars'
               style={{paddingLeft: collapsed ? '0.35rem' : 0}}
               onClick={() => setCollapsed(!collapsed)}
-            ></i>
-            {/* {!collapsed && (
-              <img
-                src='/img/logo.png'
-                style={{width: '80px', height: '50px'}}
-                alt=''
-              />
-            )} */}
+            ></i> */}
+            {!collapsed && (
+              <>
+                {/* <img
+                  src='/img/logo.png'
+                  style={{width: '80px', height: '50px'}}
+                  alt=''
+                /> */}
+                <p
+                  style={{
+                    fontWeight: 'bold',
+                    fontSize: '20px',
+                    color: '#002140',
+                    margin: 0,
+                  }}
+                >
+                  Quản lý tiền lương
+                </p>
+              </>
+            )}
           </p>
         </div>
         <MenuHome />

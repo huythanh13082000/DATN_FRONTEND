@@ -1,67 +1,14 @@
 import React from 'react'
 import {Col, Row} from 'antd'
-import InforBoxHomePage from '../../components/inforBoxHomePage'
 import './home.css'
 import {useTranslation} from 'react-i18next'
 import {ChartCustom} from '../../components/chart'
-import ISelect from '../../components/select'
 
 const Home = () => {
   const {t} = useTranslation()
 
   return (
     <div>
-      <br></br>
-      <br></br>
-      <Row justify='end'>
-        <Col>
-          <ISelect
-            name='selectFleets'
-            placeHolder='All Fleets'
-            option={['All Fleets', 'campusride']}
-            onChange={() => {
-              console.log(111)
-            }}
-            width='120px'
-          />
-        </Col>
-      </Row>
-
-      <Row
-        justify='space-between'
-        className='home_row1'
-        wrap={true}
-        gutter={24}
-      >
-        <Col span={6}>
-          <InforBoxHomePage
-            type={1}
-            title={t('inforBoxHomePage.riders')}
-            icon={<i className='fa-solid fa-head-side-mask'></i>}
-          />
-        </Col>
-        <Col span={6}>
-          <InforBoxHomePage
-            type={2}
-            title={t('inforBoxHomePage.rides')}
-            icon={<i className='fa-solid fa-person-biking'></i>}
-          />
-        </Col>
-        <Col span={6}>
-          <InforBoxHomePage
-            type={1}
-            title={t('inforBoxHomePage.vehicles')}
-            icon={<i className='fa-solid fa-motorcycle'></i>}
-          />
-        </Col>
-        <Col span={6}>
-          <InforBoxHomePage
-            type={1}
-            title={t('inforBoxHomePage.tickets')}
-            icon={<i className='fa-solid fa-ticket'></i>}
-          />
-        </Col>
-      </Row>
       <br></br>
       <br></br>
       <Row

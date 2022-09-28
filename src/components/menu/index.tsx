@@ -27,32 +27,11 @@ const MenuHome: React.FC = () => {
       type,
       onClick: () => {
         console.log('key', key)
-
         switch (key) {
           case '1':
             console.log('key', key)
             navigate(Url.home)
             break
-          case '8':
-            console.log('key', key)
-            navigate(Url.org)
-            break
-          case '2':
-            navigate(Url.map)
-            break
-          case '7':
-            navigate(Url.setting)
-            break
-          case '9':
-            navigate(Url.role)
-            break
-          case '10':
-            navigate(Url.permission)
-            break
-          case 'sub2':
-            navigate(Url.fleets)
-            break
-
           default:
             break
         }
@@ -69,39 +48,39 @@ const MenuHome: React.FC = () => {
     //mẫu bảng lương
     getItem('Mẫu bảng lương', '3', <i className='fa-solid fa-table'></i>),
     //Dữ liệu tính lương
-    getItem('DL tính lương', 'sub3', <i className='fa-solid fa-database'></i>, [
-      getItem('Chấm công', '11'),
-      getItem('Doanh số', '12'),
-      getItem('KPI', '13'),
-      getItem('Sản phẩm', '12'),
-      getItem('Thu nhập khác', '13'),
-      getItem('Khấu trừ khác', '13'),
+    getItem('DL tính lương', '4', <i className='fa-solid fa-database'></i>, [
+      getItem('Chấm công', '4_1'),
+      getItem('Doanh số', '4_2'),
+      getItem('KPI', '4_3'),
+      getItem('Sản phẩm', '4_4'),
+      getItem('Thu nhập khác', '4_5'),
+      getItem('Khấu trừ khác', '4_6'),
     ]),
 
     //Tính lương
-    getItem('Tính lương', '3', <i className='fa-solid fa-calculator'></i>, [
-      getItem('Bảng lương', '14'),
-      getItem('Tạm ứng', '15'),
-      getItem('Bảng tổng hợp lương', '16'),
-      getItem('Bảng phân bổ lương', '17'),
-      getItem('Ngân sách lương', '18'),
-      getItem('Bảng thuế', '18'),
-      getItem('Bảng quyết toán thuế', '18'),
+    getItem('Tính lương', '5', <i className='fa-solid fa-calculator'></i>, [
+      getItem('Bảng lương', '5_1'),
+      getItem('Tạm ứng', '5_2'),
+      getItem('Tổng hợp lương', '5_3'),
+      getItem('Bảng phân bổ lương', '5_4'),
+      getItem('Ngân sách lương', '5_5'),
+      getItem('Bảng thuế', '5_6'),
+      getItem('Quyết toán thuế', '5_7'),
     ]),
     getItem(
       'Chi trả lương',
-      'sub3',
+      '6',
       <i className='fa-solid fa-money-bill-wave'></i>,
-      [getItem('Bảng chi trả', '11'), getItem('Tổng hợp chi trả', '12')]
+      [getItem('Bảng chi trả', '6_1'), getItem('Tổng hợp chi trả', '6_2')]
     ),
-    getItem('Báo cáo', 'sub4', <i className='fa-solid fa-bug'></i>, [
-      getItem('Tổng hợp thu nhập nhân viên', '29'),
-      getItem('Thống kê thu nhập theo tháng', '30'),
-      getItem('Phân tích cơ cấu thu nhập', '30'),
-      getItem('Tổng hợp chi phí lương', '29'),
-      getItem('Lịch sử lương của nhân viên', '30'),
-      getItem('Tổng hợp công nợ', '30'),
-      getItem('Tình hình thực hiện ngân sách lương', '30'),
+    getItem('Báo cáo', '7', <i className='fa-solid fa-bug'></i>, [
+      getItem('THTN nhân viên', '7_1'),
+      getItem('TKTN theo tháng', '7_2'),
+      getItem('PTCC thu nhập', '7_3'),
+      getItem('TH chi phí lương', '7_4'),
+      getItem('LS lương nhân viên', '7_5'),
+      getItem('Tổng hợp công nợ', '7_6'),
+      getItem('Ngân sách lương', '7_7'),
     ]),
   ]
 
