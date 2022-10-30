@@ -15,10 +15,8 @@ import routes from "./routes";
 const Router = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    // const token = localStorage.getItem(LOCAL_STORAGE.TOKEN);
-    // console.log("token", token);
-
-    if (!IS_LOGGED) navigate(Url.login);
+    const token = localStorage.getItem(LOCAL_STORAGE.TOKEN);
+    if (!token) navigate(Url.login);
   }, [navigate]);
 
   return (

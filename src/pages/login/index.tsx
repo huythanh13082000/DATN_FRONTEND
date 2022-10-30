@@ -11,7 +11,7 @@ const Login = () => {
       <div className='login-container'>
         <div className='login-form'>
           <p className='login-p1'>{t('Login.login')}</p>
-          <p className='login-p2'>{t('Login.sign')}</p>
+          {/* <p className='login-p2'>{t('Login.sign')}</p> */}
           <Row className='login-row'>
             <Col span={22}>
               <Input
@@ -30,6 +30,7 @@ const Login = () => {
                 className='login-input'
                 bordered={false}
                 placeholder={t('Login.password')}
+                type='password'
               />
             </Col>
             <Col span={2}>

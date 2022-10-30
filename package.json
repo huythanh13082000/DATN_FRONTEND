@@ -1,5 +1,6 @@
 {
   "name": "kich",
+  "proxy": "http://localhost:4200/api/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

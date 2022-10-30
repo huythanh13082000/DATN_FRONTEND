@@ -1,8 +1,6 @@
 .login-container {
   height: 100vh;
-  background-image: url('../../../public/img/login-bg.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: aliceblue;
   padding-top: 9rem;
 }
 .login-form {
@@ -22,7 +20,7 @@
   /* body text 2 */
   color: #2a363a;
   text-align: center;
-  margin: 0;
+  margin: 1rem 0 2rem 0;
 }
 .login-p2 {
   font-weight: 400;

@@ -1,11 +1,45 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Col, Row} from 'antd'
 import './home.css'
 import {useTranslation} from 'react-i18next'
 import {ChartCustom} from '../../components/chart'
+import axiosClient from '../../apis/axiosClient'
+import axios, {AxiosRequestConfig} from 'axios'
 
 const Home = () => {
   const {t} = useTranslation()
+  useEffect(() => {
+    const b = async () => {
+      // Its important to set the 'Content-Type': 'blob' and responseType:'arraybuffer'.
+      const headers = {'Content-Type': 'blob'}
+      const config: AxiosRequestConfig = {
+        method: 'GET',
+        url: 'http://localhost:4200/api',
+        responseType: 'arraybuffer',
+        headers,
+      }
+
+      try {
+        const response = await axios(config)
+
+        const outputFilename = `${Date.now()}.xls`
+
+        // If you want to download file automatically using link attribute.
+        const url = URL.createObjectURL(new Blob([response.data]))
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', outputFilename)
+        document.body.appendChild(link)
+        link.click()
+
+        // OR you can save/write file locally.
+        // fs.writeFileSync(outputFilename, response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    b()
+  }, [])
 
   return (
     <div>
