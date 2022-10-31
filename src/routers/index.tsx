@@ -1,13 +1,11 @@
 import { useEffect } from "react";
 import {
-  Navigate,
   Route,
   RouteProps,
   Routes,
   useNavigate,
 } from "react-router-dom";
 import DashboardLayout from "../components/layout/DashboardLayout";
-import Login from "../pages/login";
 import { Config, IS_LOGGED, LOCAL_STORAGE } from "../utils/constants";
 import { Url } from "./paths";
 import routes from "./routes";

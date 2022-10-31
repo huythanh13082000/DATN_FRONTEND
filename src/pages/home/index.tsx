@@ -3,7 +3,6 @@ import {Col, Row} from 'antd'
 import './home.css'
 import {useTranslation} from 'react-i18next'
 import {ChartCustom} from '../../components/chart'
-import axiosClient from '../../apis/axiosClient'
 import axios, {AxiosRequestConfig} from 'axios'
 
 const Home = () => {

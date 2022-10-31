@@ -1,9 +1,9 @@
-import axios from "axios";
-import { Config, LOCAL_STORAGE } from "../utils/constants";
+import axios from 'axios'
+import {Config, LOCAL_STORAGE} from '../utils/constants'
 
 const req = axios.create({
   baseURL: Config.HOST_API,
-});
+})
 
 const postService = async (
   url: string,
@@ -12,34 +12,33 @@ const postService = async (
   isFormData = false
 ) => {
   const headers: any = isFormData
-    ? { "Content-Type": "multipart/form-data" }
-    : { Accept: "application/json", "Content-Type": "application/json" };
+    ? {'Content-Type': 'multipart/form-data'}
+    : {Accept: 'application/json', 'Content-Type': 'application/json'}
 
-  const token = localStorage.getItem(LOCAL_STORAGE.TOKEN);
-  if (!!token && token !== "") {
+  const token = localStorage.getItem(LOCAL_STORAGE.TOKEN)
+  if (!!token && token !== '') {
     headers.Authorization =
-      "Bearer " + localStorage.getItem(LOCAL_STORAGE.TOKEN);
+      'Bearer ' + localStorage.getItem(LOCAL_STORAGE.TOKEN)
   }
 
   const requestOptions: any = {
-    method: "POST",
+    method: 'POST',
     headers: headers,
-    credentials: "include",
-  };
+    credentials: 'include',
+  }
 
-  const response = req.post(url, JSON.stringify(body), requestOptions);
+  const response = req.post(url, JSON.stringify(body), requestOptions)
   try {
-    await response;
+    await response
   } catch (error: any) {
-    console.log("error", error.response);
     if ([401].includes(error.response.status)) {
-      localStorage.setItem(LOCAL_STORAGE.TOKEN, "");
+      localStorage.setItem(LOCAL_STORAGE.TOKEN, '')
       // configureStore.store.dispatch(signOut());
     }
   }
 
-  return response;
-};
+  return (await response).data
+}
 const updateService = async (
   url: string,
   body?: object,
@@ -47,33 +46,33 @@ const updateService = async (
   isFormData = false
 ) => {
   const headers: any = isFormData
-    ? { "Content-Type": "multipart/form-data" }
-    : { Accept: "application/json", "Content-Type": "application/json" };
-  const token = localStorage.getItem(LOCAL_STORAGE.TOKEN);
-  if (!!token && token !== "") {
+    ? {'Content-Type': 'multipart/form-data'}
+    : {Accept: 'application/json', 'Content-Type': 'application/json'}
+  const token = localStorage.getItem(LOCAL_STORAGE.TOKEN)
+  if (!!token && token !== '') {
     headers.Authorization =
-      "Bearer " + localStorage.getItem(LOCAL_STORAGE.TOKEN);
+      'Bearer ' + localStorage.getItem(LOCAL_STORAGE.TOKEN)
   }
 
   const requestOptions: any = {
-    method: "PUT",
+    method: 'PUT',
     headers: headers,
-    credentials: "include",
-  };
+    credentials: 'include',
+  }
 
-  const response = req.patch(url, JSON.stringify(body), requestOptions);
+  const response = req.patch(url, JSON.stringify(body), requestOptions)
   try {
-    await response;
+    await response
   } catch (error: any) {
-    console.log("error", error.response);
+    // console.log('error', error.response)
     if ([401, 404].includes(error.response.status)) {
-      localStorage.setItem(LOCAL_STORAGE.TOKEN, "");
+      localStorage.setItem(LOCAL_STORAGE.TOKEN, '')
       // configureStore.store.dispatch(signOut());
     }
   }
 
-  return response;
-};
+  return (await response).data
+}
 
 const getService = async (
   url: string,
@@ -82,35 +81,35 @@ const getService = async (
   isAuthorization = true
 ) => {
   const headers: any = {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  };
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  }
 
-  const token = localStorage.getItem(LOCAL_STORAGE.TOKEN);
-  if (!!token && token !== "") {
+  const token = localStorage.getItem(LOCAL_STORAGE.TOKEN)
+  if (!!token && token !== '') {
     headers.Authorization =
-      "Bearer " + localStorage.getItem(LOCAL_STORAGE.TOKEN);
+      'Bearer ' + localStorage.getItem(LOCAL_STORAGE.TOKEN)
   }
 
   const requestOptions: any = {
-    method: "GET",
+    method: 'GET',
     headers: headers,
     params: params,
-  };
+  }
 
-  const response = req.get(url, requestOptions);
+  const response = req.get(url, requestOptions)
   try {
-    await response;
+    await response
   } catch (error: any) {
-    console.log("error", error.response);
+    // console.log('error', error.response)
     if ([401, 404].includes(error.response.status)) {
-      localStorage.setItem(LOCAL_STORAGE.TOKEN, "");
+      localStorage.setItem(LOCAL_STORAGE.TOKEN, '')
       // configureStore.store.dispatch(signOut());
     }
   }
 
-  return response;
-};
+  return (await response).data
+}
 
 const uploadService = async (
   url: string,
@@ -118,25 +117,25 @@ const uploadService = async (
   isAuthorization = true
 ) => {
   const headers: any = {
-    Accept: "application/json",
-    "Content-Type": "multipart/form-data",
-    "Access-Control-Allow-Origin": "*",
-  };
+    Accept: 'application/json',
+    'Content-Type': 'multipart/form-data',
+    'Access-Control-Allow-Origin': '*',
+  }
 
-  const token = localStorage.getItem(LOCAL_STORAGE.TOKEN);
-  if (!!token && token !== "") {
+  const token = localStorage.getItem(LOCAL_STORAGE.TOKEN)
+  if (!!token && token !== '') {
     headers.Authorization =
-      "Bearer " + localStorage.getItem(LOCAL_STORAGE.TOKEN);
+      'Bearer ' + localStorage.getItem(LOCAL_STORAGE.TOKEN)
   }
 
   const requestOptions: any = {
-    method: "POST",
+    method: 'POST',
     headers: headers,
-    credentials: "include",
-  };
+    credentials: 'include',
+  }
 
-  const response = req.post(url, formData, requestOptions);
-  return response;
-};
+  const response = req.post(url, formData, requestOptions)
+  return (await response).data
+}
 
-export default { postService, getService, updateService, uploadService };
+export default {postService, getService, updateService, uploadService}

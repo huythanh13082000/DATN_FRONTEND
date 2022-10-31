@@ -5,10 +5,13 @@ import {
   combineReducers,
 } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
+import {authReducer} from '../feature/auth/authSlice'
 import rootSaga from './rootSaga'
 // import counterReducer from '../features/counter/counterSlice'
 
-const rootReducer = combineReducers({})
+const rootReducer = combineReducers({
+  auth: authReducer,
+})
 
 const sagaMiddleware = createSagaMiddleware()
 

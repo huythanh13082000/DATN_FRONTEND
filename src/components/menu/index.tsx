@@ -26,10 +26,8 @@ const MenuHome: React.FC = () => {
       label,
       type,
       onClick: () => {
-        console.log('key', key)
         switch (key) {
           case '1':
-            console.log('key', key)
             navigate(Url.home)
             break
           default:

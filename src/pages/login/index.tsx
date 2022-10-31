@@ -1,11 +1,27 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Col, Row, Input, Button} from 'antd'
 import './login.css'
 import i18next from 'i18next'
 import {useTranslation} from 'react-i18next'
+import {useAppDispatch, useAppSelector} from '../../app/hooks'
+import {authActions, selectLoginStatus} from '../../feature/auth/authSlice'
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
   const {t} = useTranslation()
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const loginStatus = useAppSelector(selectLoginStatus)
+  const [username, setUsername] = useState<string>('')
+  const [passWord, setPassWord] = useState<string>('')
+  const handleLogin = () => {
+    dispatch(authActions.login({username, passWord}))
+  }
+  useEffect(() => {
+    if (loginStatus) {
+      navigate('/home')
+    }
+  }, [loginStatus, navigate])
   return (
     <>
       <div className='login-container'>
@@ -18,6 +34,8 @@ const Login = () => {
                 className='login-input'
                 bordered={false}
                 placeholder={t('Login.email')}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </Col>
             <Col span={2}>
@@ -31,6 +49,8 @@ const Login = () => {
                 bordered={false}
                 placeholder={t('Login.password')}
                 type='password'
+                value={passWord}
+                onChange={(e) => setPassWord(e.target.value)}
               />
             </Col>
             <Col span={2}>
@@ -38,7 +58,9 @@ const Login = () => {
             </Col>
           </Row>
 
-          <Button className='login-buuton'>{t('Login.login')}</Button>
+          <Button className='login-buuton' onClick={handleLogin}>
+            {t('Login.login')}
+          </Button>
         </div>
       </div>
 
