@@ -1,12 +1,18 @@
 import React from 'react'
 import {useTranslation} from 'react-i18next'
+import {useNavigate} from 'react-router-dom'
 import {UserModel} from '../../models/user.model'
-import {FILE} from '../../utils/constants'
+import {FILE, LOCAL_STORAGE} from '../../utils/constants'
 import BBtn from '../button'
 import './cardInfor.css'
 
 const CardInfor = (props: {user: UserModel}) => {
   const {t} = useTranslation()
+  const navigate = useNavigate()
+  const hanleLogout = () => {
+    localStorage.removeItem(LOCAL_STORAGE.TOKEN)
+    navigate('/login')
+  }
   return (
     <div className='ci_div1'>
       <img
@@ -20,7 +26,7 @@ const CardInfor = (props: {user: UserModel}) => {
       <p style={{borderTop: '1px solid #E1E1E1'}}></p>
       <div className='ci_div2'>
         <BBtn title={t('button.changePassword')} color='#24BB69' />
-        <BBtn title={t('button.logOut')} />
+        <BBtn title={t('button.logOut')} onClick={hanleLogout} />
       </div>
     </div>
   )
