@@ -1,6 +1,6 @@
 import {PayloadAction} from '@reduxjs/toolkit'
 import {message} from 'antd'
-import {call, put, takeEvery} from 'redux-saga/effects'
+import {call, put, take, takeEvery} from 'redux-saga/effects'
 import {authApi} from '../../apis/authApi'
 import {UserModel} from '../../models/user.model'
 import {LOCAL_STORAGE} from '../../utils/constants'
@@ -20,6 +20,17 @@ function* login(action: PayloadAction<{username: string; passWord: string}>) {
   }
 }
 
+function* getProfile() {
+  try {
+    const user: UserModel = yield call(authApi.getProfile)
+    yield put(authActions.getProfileSuccess(user))
+  } catch (error) {
+    console.log(error)
+    yield put(authActions.getProfileFail())
+  }
+}
+
 export default function* authSaga() {
   yield takeEvery(authActions.login.type, login)
+  yield takeEvery(authActions.getProfile.type, getProfile)
 }

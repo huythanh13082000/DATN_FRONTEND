@@ -5,4 +5,7 @@ export const authApi = {
   login(params: {username: string; passWord: string}) {
     return axiosClient.postService(urlApi.login, params)
   },
+  getProfile() {
+    return axiosClient.getService(urlApi.getProfile)
+  },
 }

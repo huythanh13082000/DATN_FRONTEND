@@ -1,14 +1,16 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import { RootState } from '../../app/store'
+import {RootState} from '../../app/store'
 import {UserModel} from '../../models/user.model'
 
 interface authState {
   loadding: boolean
   loginStatus: boolean
+  user: UserModel | undefined
 }
 const initialState: authState = {
   loadding: false,
   loginStatus: false,
+  user: undefined,
 }
 
 const authSlice = createSlice({
@@ -26,11 +28,22 @@ const authSlice = createSlice({
       state.loadding = false
       state.loginStatus = false
     },
+    getProfile(state) {
+      state.loadding = true
+    },
+    getProfileSuccess(state, action: PayloadAction<UserModel>) {
+      state.user = action.payload
+      state.loadding = false
+    },
+    getProfileFail(state) {
+      state.loadding = false
+    },
   },
 })
 
 export const authActions = authSlice.actions
 
-export const selectLoginStatus = (state:RootState)=> state.auth.loginStatus
+export const selectLoginStatus = (state: RootState) => state.auth.loginStatus
+export const selectUser = (state: RootState) => state.auth.user
 
 export const authReducer = authSlice.reducer

@@ -1,24 +1,28 @@
 import {Popover} from 'antd'
-import React from 'react'
+import React, {useEffect} from 'react'
+import {useAppDispatch, useAppSelector} from '../../app/hooks'
 import Images from '../../assets/gen'
+import {authActions, selectUser} from '../../feature/auth/authSlice'
 import CardGift from '../cardGift'
 import CardHelp from '../cardHelp'
 import CardInfor from '../cardInfor'
 import './header.css'
 
-const content = <CardInfor />
-const content1 = <CardHelp />
-const content2 = <CardGift />
-
 const buttonWidth = 70
 
 const HeaderComponent = () => {
+  const dispatch = useAppDispatch()
+  const user = useAppSelector(selectUser)
+  useEffect(() => {
+    dispatch(authActions.getProfile())
+  }, [dispatch])
+  console.log(6666, user)
   return (
     <div className='header-container'>
-      <Popover placement='top' content={content1} trigger='click'>
+      <Popover placement='top' content={<CardHelp />} trigger='click'>
         <img className='header-img' src={Images.headerIcon} alt='' />
       </Popover>
-      <Popover placement='top' content={content2} trigger='click'>
+      <Popover placement='top' content={<CardGift />} trigger='click'>
         <img className='header-img' src={Images.gift} alt='' />
       </Popover>
       <div className='header-div1'>
@@ -26,12 +30,17 @@ const HeaderComponent = () => {
         <img className='header-img1' src={Images.headerIcon1} alt='' />
         <span className='header-span1'>11</span>
       </div>
-
-      <Popover placement='bottomRight' content={content} trigger='click'>
-        <p className='header-p1'>
-          Huy Thành <i className='fa-solid fa-angle-down'></i>
-        </p>
-      </Popover>
+      {user && (
+        <Popover
+          placement='bottomRight'
+          content={<CardInfor user={user} />}
+          trigger='click'
+        >
+          <p className='header-p1'>
+            {user.username} <i className='fa-solid fa-angle-down'></i>
+          </p>
+        </Popover>
+      )}
     </div>
   )
 }
