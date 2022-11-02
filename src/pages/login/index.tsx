@@ -22,6 +22,7 @@ const Login = () => {
       navigate('/home')
     }
   }, [loginStatus, navigate])
+  console.log(111, loginStatus)
   return (
     <>
       <div className='login-container'>

@@ -38,6 +38,13 @@ const authSlice = createSlice({
     getProfileFail(state) {
       state.loadding = false
     },
+    setLoginStatus(state, action: PayloadAction<boolean>) {
+      state.loginStatus = action.payload
+    },
+    changePassWord(
+      state,
+      action: PayloadAction<{newPassWord: string; oldPassWord: string}>
+    ) {},
   },
 })
 

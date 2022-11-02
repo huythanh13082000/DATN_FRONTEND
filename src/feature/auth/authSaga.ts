@@ -29,8 +29,22 @@ function* getProfile() {
     yield put(authActions.getProfileFail())
   }
 }
+function* changePassWord(
+  action: PayloadAction<{newPassWord: string; oldPassWord: string}>
+) {
+  try {
+    const mess: {description: string} = yield call(
+      authApi.changePassWord,
+      action.payload
+    )
+    yield message.success(mess.description)
+  } catch (error: any) {
+    yield message.error(error.response.data.description)
+  }
+}
 
 export default function* authSaga() {
   yield takeEvery(authActions.login.type, login)
   yield takeEvery(authActions.getProfile.type, getProfile)
+  yield takeEvery(authActions.changePassWord.type, changePassWord)
 }

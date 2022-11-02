@@ -8,4 +8,7 @@ export const authApi = {
   getProfile() {
     return axiosClient.getService(urlApi.getProfile)
   },
+  changePassWord(params: {newPassWord: string; oldPassWord: string}) {
+    return axiosClient.updateService(urlApi.changePassWord, params)
+  },
 }

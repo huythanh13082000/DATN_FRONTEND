@@ -60,7 +60,7 @@ const updateService = async (
     credentials: 'include',
   }
 
-  const response = req.patch(url, JSON.stringify(body), requestOptions)
+  const response = req.put(url, JSON.stringify(body), requestOptions)
   try {
     await response
   } catch (error: any) {
