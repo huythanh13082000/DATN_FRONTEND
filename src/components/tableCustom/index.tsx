@@ -4,13 +4,6 @@ import {url} from 'inspector'
 import React, {useState, useEffect} from 'react'
 import axiosClient from '../../apis/axiosClient'
 
-interface DataType {
-  key: React.Key
-  name: string
-  age: number
-  address: string
-}
-
 // const columns: ColumnsType<DataType> = [
 //   {
 //     title: 'Name',
@@ -72,11 +65,11 @@ interface DataType {
 //   })
 // }
 
-const TableCustom = (props: {url: string; urlColumn: string}) => {
+const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
   const [limit, setLimit] = useState<number>(20)
   const [page, setPage] = useState<number>(1)
   const [data, setData] = useState<any>([])
-  const [columns, setColumns] = useState<ColumnsType<DataType>>([])
+  // const [columns, setColumns] = useState<ColumnsType<DataType>>([])
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
   const [loading, setLoading] = useState(false)
   const [total, setTotal] = useState<number>(20)
@@ -97,18 +90,19 @@ const TableCustom = (props: {url: string; urlColumn: string}) => {
     }
     getListData()
   }, [limit, page, props.url])
-  useEffect(() => {
-    const getColumn = async () => {
-      const column: string[] = await axiosClient.getService(props.urlColumn)
-      console.log(3333, column)
-      const newColumn = column.map((item) => {
-        return {title: item, dataIndex: item}
-      })
-      setColumns(newColumn)
-      console.log(4444, newColumn)
-    }
-    getColumn()
-  }, [props.urlColumn])
+  // useEffect(() => {
+  //   const getColumn = async () => {
+  //     const column: string[] = await axiosClient.getService(props.urlColumn)
+  //     console.log(3333, column)
+  //     const newColumn = column.map((item) => {
+  //       return {title: item, dataIndex: item}
+  //     })
+  //     setColumns(newColumn)
+  //     console.log(4444, newColumn)
+  //   }
+  //   getColumn()
+  // }, [props.urlColumn])
+  console.log(9999, props.columns)
   const start = () => {
     setLoading(true)
     // ajax request after empty completing
@@ -146,7 +140,7 @@ const TableCustom = (props: {url: string; urlColumn: string}) => {
       </div>
       <Table
         rowSelection={rowSelection}
-        columns={columns}
+        columns={props.columns}
         dataSource={data}
         pagination={{pageSize: 20, total: total}}
         scroll={{y: 240}}
