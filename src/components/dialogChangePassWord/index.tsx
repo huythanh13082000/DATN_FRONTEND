@@ -17,6 +17,11 @@ const ChangePassWord: React.FC = () => {
   const showModal = () => {
     setOpen(true)
   }
+  const clear = () => {
+    setNewPassWord('')
+    setConfirmPassWord('')
+    setOldPassWord('')
+  }
 
   const handleOk = () => {
     setModalText('The modal will be closed after two seconds')
@@ -26,7 +31,6 @@ const ChangePassWord: React.FC = () => {
 
     dispatch(authActions.changePassWord({newPassWord, oldPassWord}))
     // setTimeout(() => {
-    //   setOpen(false)
     //   setConfirmLoading(false)
     // }, 2000)
   }
@@ -34,13 +38,11 @@ const ChangePassWord: React.FC = () => {
   const handleCancel = () => {
     console.log('Clicked cancel button')
     setOpen(false)
+    clear()
   }
 
   return (
     <>
-      {/* <Button type='primary' onClick={showModal}>
-        Open Modal with async logic
-      </Button> */}
       <BBtn
         title={t('button.changePassword')}
         color='#24BB69'
@@ -55,6 +57,7 @@ const ChangePassWord: React.FC = () => {
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
       >
+        <p style={{margin: '5px 0'}}>Old PassWord</p>
         <Input
           style={{marginBottom: '1rem'}}
           placeholder='Old PassWord'
@@ -64,6 +67,7 @@ const ChangePassWord: React.FC = () => {
             setOldPassWord(e.target.value)
           }}
         />
+        <p style={{margin: '5px 0'}}>New PassWord</p>
         <Input
           placeholder='New PassWord'
           type='PassWord'
@@ -73,6 +77,7 @@ const ChangePassWord: React.FC = () => {
             setNewPassWord(e.target.value)
           }}
         />
+        <p style={{margin: '5px 0'}}>Confirm PassWord</p>
         <Input
           placeholder='Confirm PassWord'
           type='PassWord'

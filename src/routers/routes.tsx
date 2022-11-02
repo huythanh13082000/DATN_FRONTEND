@@ -2,12 +2,13 @@ import {Url} from './paths'
 import Home from '../pages/home'
 import Login from '../pages/login'
 import {RouteProps} from 'react-router-dom'
+import Personnel from '../pages/personnel'
+import Department from '../pages/department'
 
 const routes: Array<RouteProps> = [
   {
     path: Url.login,
     element: <Login />,
-    
   },
   {
     path: Url.home,
@@ -16,6 +17,14 @@ const routes: Array<RouteProps> = [
   {
     path: '/',
     element: <Home />,
+  },
+  {
+    path: Url.personnel,
+    element: <Personnel />,
+  },
+  {
+    path: Url.department,
+    element: <Department />,
   },
 ]
 export default routes
