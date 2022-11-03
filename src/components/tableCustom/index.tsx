@@ -13,7 +13,7 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
   const [columns, setColumns] = useState<any>([])
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
   const [total, setTotal] = useState<number>(0)
-  const [id, setId] = useState<string>('')
+  const [dataRow, setDataRow] = useState<any>()
   const [openUpdate, setOpenUpdate] = useState(false)
 
   useEffect(() => {
@@ -26,7 +26,6 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
           <Tooltip title='Sửa' style={{marginRight: '1rem'}}>
             <Button
               onClick={() => {
-                setId(text)
                 setOpenUpdate(true)
               }}
             >
@@ -52,7 +51,7 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
       setTotal(data.total)
     }
     getListData()
-  }, [limit, page, props.url])
+  }, [limit, page, props.url, openUpdate])
 
   const handleDelete = async () => {
     const messageDelete = await axiosClient.deleteService(props.url, {
@@ -115,10 +114,18 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
           setPage(Number(e.current))
           setLimit(Number(e.pageSize))
         }}
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: () => {
+              console.log(4444, record)
+              setDataRow(record)
+            }, // click row
+          }
+        }}
       />
       {openUpdate && (
         <UpdatePage
-          id={id}
+          dataRow={dataRow}
           url={props.url}
           open={openUpdate}
           setOpen={() => {

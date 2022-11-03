@@ -6,11 +6,13 @@ import {
 } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
 import {authReducer} from '../feature/auth/authSlice'
+import {departmentReducer} from '../feature/department/departmentSlice'
 import rootSaga from './rootSaga'
 // import counterReducer from '../features/counter/counterSlice'
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  department: departmentReducer,
 })
 
 const sagaMiddleware = createSagaMiddleware()
