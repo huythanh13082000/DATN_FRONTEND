@@ -111,6 +111,42 @@ const getService = async (
   return (await response).data
 }
 
+const deleteService = async (
+  url: string,
+  body?: object,
+  isAuthorization = true
+) => {
+  const headers: any = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  }
+
+  const token = localStorage.getItem(LOCAL_STORAGE.TOKEN)
+  if (!!token && token !== '') {
+    headers.Authorization =
+      'Bearer ' + localStorage.getItem(LOCAL_STORAGE.TOKEN)
+  }
+
+  const requestOptions: any = {
+    method: 'DELETE',
+    headers: headers,
+    data: body,
+  }
+
+  const response = req.delete(url, requestOptions)
+  try {
+    await response
+  } catch (error: any) {
+    // console.log('error', error.response)
+    if ([401, 404].includes(error.response.status)) {
+      localStorage.setItem(LOCAL_STORAGE.TOKEN, '')
+      // configureStore.store.dispatch(signOut());
+    }
+  }
+
+  return (await response).data
+}
+
 const uploadService = async (
   url: string,
   formData: any,
@@ -138,4 +174,10 @@ const uploadService = async (
   return (await response).data
 }
 
-export default {postService, getService, updateService, uploadService}
+export default {
+  postService,
+  getService,
+  updateService,
+  uploadService,
+  deleteService,
+}

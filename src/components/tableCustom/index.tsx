@@ -1,78 +1,16 @@
-import {Button, Table} from 'antd'
+import {DeleteOutlined, FileAddOutlined} from '@ant-design/icons'
+import {Button, Col, message, Row, Table, Tooltip} from 'antd'
 import type {ColumnsType} from 'antd/es/table'
-import {url} from 'inspector'
 import React, {useState, useEffect} from 'react'
 import axiosClient from '../../apis/axiosClient'
 
-// const columns: ColumnsType<DataType> = [
-//   {
-//     title: 'Name',
-//     dataIndex: 'name',
-//   },
-//   {
-//     title: 'Address',
-//     dataIndex: 'address',
-//   },
-//   {
-//     title: 'Rank',
-//     dataIndex: 'rank',
-//   },
-//   {
-//     title: 'Department',
-//     dataIndex: 'department',
-//   },
-//   {
-//     title: 'Email',
-//     dataIndex: 'email',
-//   },
-//   {
-//     title: 'PhoneNumber',
-//     dataIndex: 'phoneNumber',
-//   },
-//   {
-//     title: 'CitizenIdentification',
-//     dataIndex: 'citizenIdentification',
-//   },
-//   {
-//     title: 'CreatedAt',
-//     dataIndex: 'createdAt',
-//   },
-//   {
-//     title: 'Department',
-//     dataIndex: 'department',
-//   },
-//   {
-//     title: 'Department',
-//     dataIndex: 'department',
-//   },
-//   {
-//     title: 'Department',
-//     dataIndex: 'department',
-//   },
-//   {
-//     title: 'Department',
-//     dataIndex: 'department',
-//   },
-// ]
-
-// const data: DataType[] = []
-// for (let i = 0; i < 46; i++) {
-//   data.push({
-//     key: i,
-//     name: `Edward King ${i}`,
-//     age: 32,
-//     address: `London, Park Lane no. ${i}`,
-//   })
-// }
-
 const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
-  const [limit, setLimit] = useState<number>(20)
+  const [limit, setLimit] = useState<number>(10)
   const [page, setPage] = useState<number>(1)
   const [data, setData] = useState<any>([])
   // const [columns, setColumns] = useState<ColumnsType<DataType>>([])
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
-  const [loading, setLoading] = useState(false)
-  const [total, setTotal] = useState<number>(20)
+  const [total, setTotal] = useState<number>(0)
 
   useEffect(() => {
     const getListData = async () => {
@@ -80,36 +18,31 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
         props.url,
         {limit, page}
       )
-      console.log(456, data)
       const newData = data.list.map((item: any) => {
         return {...item, key: item._id}
       })
       console.log(newData)
       setData(newData)
-      // setTotal(data.total)
+      setTotal(data.total)
     }
     getListData()
   }, [limit, page, props.url])
-  // useEffect(() => {
-  //   const getColumn = async () => {
-  //     const column: string[] = await axiosClient.getService(props.urlColumn)
-  //     console.log(3333, column)
-  //     const newColumn = column.map((item) => {
-  //       return {title: item, dataIndex: item}
-  //     })
-  //     setColumns(newColumn)
-  //     console.log(4444, newColumn)
-  //   }
-  //   getColumn()
-  // }, [props.urlColumn])
-  console.log(9999, props.columns)
-  const start = () => {
-    setLoading(true)
-    // ajax request after empty completing
-    setTimeout(() => {
-      setSelectedRowKeys([])
-      setLoading(false)
-    }, 1000)
+
+  const handleDelete = async () => {
+    const messageDelete = await axiosClient.deleteService(props.url, {
+      ids: selectedRowKeys,
+    })
+    message.info(messageDelete)
+    const data: {list: []; total: number} = await axiosClient.getService(
+      props.url,
+      {limit, page}
+    )
+    const newData = data.list.map((item: any) => {
+      return {...item, key: item._id}
+    })
+    setData(newData)
+    setTotal(data.total)
+    setSelectedRowKeys([])
   }
 
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
@@ -125,26 +58,37 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
 
   return (
     <div>
-      <div style={{marginBottom: 16}}>
-        {/* <Button
-          type='primary'
-          onClick={start}
-          disabled={!hasSelected}
-          loading={loading}
-        >
-          Reload
-        </Button> */}
+      <Row justify='space-between' align='middle' style={{marginTop: '2rem'}}>
         <span style={{marginLeft: 8}}>
           {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
         </span>
-      </div>
+        <div style={{display: 'flex'}}>
+          <Tooltip title='Thêm'>
+            <Button>
+              <FileAddOutlined />
+            </Button>
+          </Tooltip>
+          <div style={{margin: '0 8px'}}></div>
+          {selectedRowKeys.length > 0 ? (
+            <Tooltip title='Xóa' style={{marginRight: '1rem'}}>
+              <Button>
+                <DeleteOutlined onClick={() => handleDelete()} />
+              </Button>
+            </Tooltip>
+          ) : null}
+        </div>
+      </Row>
+
       <Table
         rowSelection={rowSelection}
         columns={props.columns}
         dataSource={data}
-        pagination={{pageSize: 20, total: total}}
+        pagination={{pageSize: limit, total: total}}
         scroll={{y: 240}}
-        onChange={(e) => console.log(e)}
+        onChange={(e) => {
+          setPage(Number(e.current))
+          setLimit(Number(e.pageSize))
+        }}
       />
     </div>
   )
