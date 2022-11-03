@@ -1,4 +1,4 @@
-import {ColumnsType} from 'antd/lib/table'
+
 import {momentFomat} from './constants'
 
 export const columnsDepartment: any = [
@@ -16,4 +16,5 @@ export const columnsDepartment: any = [
     dataIndex: 'updatedAt',
     render: (text: string) => <span>{momentFomat(text)}</span>,
   },
+  
 ]

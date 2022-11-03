@@ -1,16 +1,42 @@
-import {DeleteOutlined, FileAddOutlined} from '@ant-design/icons'
+import {DeleteOutlined, EditOutlined, FileAddOutlined} from '@ant-design/icons'
 import {Button, Col, message, Row, Table, Tooltip} from 'antd'
 import type {ColumnsType} from 'antd/es/table'
 import React, {useState, useEffect} from 'react'
 import axiosClient from '../../apis/axiosClient'
+import UpdatePage from './drawerUpdate'
+import DrawerUpdatePage from './drawerUpdate'
 
 const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
   const [limit, setLimit] = useState<number>(10)
   const [page, setPage] = useState<number>(1)
   const [data, setData] = useState<any>([])
-  // const [columns, setColumns] = useState<ColumnsType<DataType>>([])
+  const [columns, setColumns] = useState<any>([])
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
   const [total, setTotal] = useState<number>(0)
+  const [id, setId] = useState<string>('')
+  const [openUpdate, setOpenUpdate] = useState(false)
+
+  useEffect(() => {
+    setColumns([
+      ...props.columns,
+      {
+        title: 'Hành động',
+        dataIndex: '_id',
+        render: (text: string) => (
+          <Tooltip title='Sửa' style={{marginRight: '1rem'}}>
+            <Button
+              onClick={() => {
+                setId(text)
+                setOpenUpdate(true)
+              }}
+            >
+              <EditOutlined />
+            </Button>
+          </Tooltip>
+        ),
+      },
+    ])
+  }, [props.columns])
 
   useEffect(() => {
     const getListData = async () => {
@@ -81,7 +107,7 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
 
       <Table
         rowSelection={rowSelection}
-        columns={props.columns}
+        columns={columns}
         dataSource={data}
         pagination={{pageSize: limit, total: total}}
         scroll={{y: 240}}
@@ -90,6 +116,16 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
           setLimit(Number(e.pageSize))
         }}
       />
+      {openUpdate && (
+        <UpdatePage
+          id={id}
+          url={props.url}
+          open={openUpdate}
+          setOpen={() => {
+            setOpenUpdate(false)
+          }}
+        />
+      )}
     </div>
   )
 }
