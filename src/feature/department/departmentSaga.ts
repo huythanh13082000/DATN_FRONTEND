@@ -15,7 +15,19 @@ function* updateDepartment(action: PayloadAction<{_id: string; name: string}>) {
     yield message.error('lỗi')
   }
 }
+function* createDepartment(action: PayloadAction<{name: string}>) {
+  try {
+    const messageUpdate: string = yield call(
+      departmentApi.createDepartment,
+      action.payload
+    )
+    yield message.success(messageUpdate)
+  } catch (error) {
+    yield message.error('lỗi')
+  }
+}
 
 export function* departmentSaga() {
   yield takeEvery(departmentAction.updateDepartment.type, updateDepartment)
+  yield takeEvery(departmentAction.createDepartment.type, createDepartment)
 }

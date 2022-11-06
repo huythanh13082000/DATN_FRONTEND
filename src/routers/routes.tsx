@@ -4,6 +4,7 @@ import Login from '../pages/login'
 import {RouteProps} from 'react-router-dom'
 import Personnel from '../pages/personnel'
 import Department from '../pages/department'
+import Rank from '../pages/rank'
 
 const routes: Array<RouteProps> = [
   {
@@ -26,5 +27,6 @@ const routes: Array<RouteProps> = [
     path: Url.department,
     element: <Department />,
   },
+  {path: Url.rank, element: <Rank />},
 ]
 export default routes

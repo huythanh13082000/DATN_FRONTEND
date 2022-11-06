@@ -3,6 +3,7 @@ import {Button, Col, message, Row, Table, Tooltip} from 'antd'
 import type {ColumnsType} from 'antd/es/table'
 import React, {useState, useEffect} from 'react'
 import axiosClient from '../../apis/axiosClient'
+import CreatePage from './drawerCreate'
 import UpdatePage from './drawerUpdate'
 import DrawerUpdatePage from './drawerUpdate'
 
@@ -15,7 +16,7 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
   const [total, setTotal] = useState<number>(0)
   const [dataRow, setDataRow] = useState<any>()
   const [openUpdate, setOpenUpdate] = useState(false)
-
+  const [openCreate, setOpenCreate] = useState(false)
   useEffect(() => {
     setColumns([
       ...props.columns,
@@ -51,7 +52,7 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
       setTotal(data.total)
     }
     getListData()
-  }, [limit, page, props.url, openUpdate])
+  }, [limit, page, props.url, openUpdate, openCreate])
 
   const handleDelete = async () => {
     const messageDelete = await axiosClient.deleteService(props.url, {
@@ -85,22 +86,22 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
     <div>
       <Row justify='space-between' align='middle' style={{marginTop: '2rem'}}>
         <span style={{marginLeft: 8}}>
-          {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
+          {hasSelected ? `Chọn ${selectedRowKeys.length} bản ghi` : ''}
         </span>
         <div style={{display: 'flex'}}>
-          <Tooltip title='Thêm'>
-            <Button>
-              <FileAddOutlined />
-            </Button>
-          </Tooltip>
-          <div style={{margin: '0 8px'}}></div>
           {selectedRowKeys.length > 0 ? (
             <Tooltip title='Xóa' style={{marginRight: '1rem'}}>
-              <Button>
-                <DeleteOutlined onClick={() => handleDelete()} />
+              <Button onClick={() => handleDelete()}>
+                <DeleteOutlined />
               </Button>
             </Tooltip>
           ) : null}
+          <div style={{margin: '0 8px'}}></div>
+          <Tooltip title='Thêm'>
+            <Button onClick={() => setOpenCreate(true)}>
+              <FileAddOutlined />
+            </Button>
+          </Tooltip>
         </div>
       </Row>
 
@@ -130,6 +131,15 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
           open={openUpdate}
           setOpen={() => {
             setOpenUpdate(false)
+          }}
+        />
+      )}
+      {openCreate && (
+        <CreatePage
+          url={props.url}
+          open={openCreate}
+          setOpen={() => {
+            setOpenCreate(false)
           }}
         />
       )}

@@ -36,6 +36,9 @@ const MenuHome: React.FC = () => {
           case '8_9':
             navigate(Url.department)
             break
+          case '8_10':
+            navigate(Url.rank)
+            break
           default:
             break
         }
@@ -89,6 +92,7 @@ const MenuHome: React.FC = () => {
     getItem('Thiết lập', '8', <i className='fa-solid fa-gear'></i>, [
       getItem('Nhân viên', '8_1'),
       getItem('Phòng ban', '8_9'),
+      getItem('Chức vụ', '8_10'),
       getItem('Thông số mặc định', '8_2'),
       getItem('Biểu mẫu', '8_3'),
       getItem('Tùy chỉnh', '8_4'),

@@ -20,6 +20,15 @@ const departmentSlice = createSlice({
     updateDepartmentFail(state) {
       state.loading = false
     },
+    createDepartment(state, action: PayloadAction<{name: string}>) {
+      state.loading = true
+    },
+    createDepartmentSuccess(state) {
+      state.loading = false
+    },
+    createDepartmentFail(state) {
+      state.loading = false
+    },
   },
 })
 
