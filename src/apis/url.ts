@@ -4,4 +4,5 @@ export const urlApi = {
   changePassWord: '/user/changePassWord',
   department: '/departments',
   rank: '/ranks',
+  personnel: '/personnels',
 }

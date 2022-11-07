@@ -16,3 +16,6 @@ export const momentFomat = (params: string) => {
   if (params) return moment(params).format('DD/MM/YYYY hh:mm')
   else return ''
 }
+export const formatNumberAsCurrency = (params: number | string) => {
+  return params.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
