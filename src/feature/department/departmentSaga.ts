@@ -6,22 +6,23 @@ import {departmentAction} from './departmentSlice'
 
 function* updateDepartment(action: PayloadAction<{_id: string; name: string}>) {
   try {
-    const messageUpdate: string = yield call(
+    const messageUpdate: {description: string} = yield call(
       departmentApi.updateDepartment,
       action.payload
     )
-    yield message.success(messageUpdate)
+    console.log(8977, messageUpdate)
+    yield message.success(messageUpdate.description)
   } catch (error) {
     yield message.error('lỗi')
   }
 }
 function* createDepartment(action: PayloadAction<{name: string}>) {
   try {
-    const messageUpdate: string = yield call(
+    const messageCreate: {description: string} = yield call(
       departmentApi.createDepartment,
       action.payload
     )
-    yield message.success(messageUpdate)
+    yield message.success(messageCreate.description)
   } catch (error) {
     yield message.error('lỗi')
   }

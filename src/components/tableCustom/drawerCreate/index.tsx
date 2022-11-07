@@ -1,6 +1,7 @@
 import {Drawer} from 'antd'
 import React from 'react'
 import CreateDepartment from '../../../pages/department/createDepartment'
+import RankCreate from '../../../pages/rank/rankCreate'
 import {Url} from '../../../routers/paths'
 
 const CreatePage = (props: {
@@ -12,6 +13,8 @@ const CreatePage = (props: {
     switch (props.url) {
       case Url.department:
         return <CreateDepartment />
+      case Url.rank:
+        return <RankCreate />
       default:
         break
     }

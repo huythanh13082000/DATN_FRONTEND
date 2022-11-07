@@ -17,6 +17,7 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
   const [dataRow, setDataRow] = useState<any>()
   const [openUpdate, setOpenUpdate] = useState(false)
   const [openCreate, setOpenCreate] = useState(false)
+
   useEffect(() => {
     setColumns([
       ...props.columns,
@@ -55,10 +56,11 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
   }, [limit, page, props.url, openUpdate, openCreate])
 
   const handleDelete = async () => {
-    const messageDelete = await axiosClient.deleteService(props.url, {
-      ids: selectedRowKeys,
-    })
-    message.info(messageDelete)
+    const messageDelete: {description: string} =
+      await axiosClient.deleteService(props.url, {
+        ids: selectedRowKeys,
+      })
+    message.info(messageDelete.description)
     const data: {list: []; total: number} = await axiosClient.getService(
       props.url,
       {limit, page}
@@ -86,9 +88,15 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
     <div>
       <Row justify='space-between' align='middle' style={{marginTop: '2rem'}}>
         <span style={{marginLeft: 8}}>
-          {hasSelected ? `Chọn ${selectedRowKeys.length} bản ghi` : ''}
+          {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
         </span>
         <div style={{display: 'flex'}}>
+          <Tooltip title='Thêm'>
+            <Button onClick={() => setOpenCreate(true)}>
+              <FileAddOutlined />
+            </Button>
+          </Tooltip>
+          <div style={{margin: '0 8px'}}></div>
           {selectedRowKeys.length > 0 ? (
             <Tooltip title='Xóa' style={{marginRight: '1rem'}}>
               <Button onClick={() => handleDelete()}>
@@ -96,12 +104,6 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
               </Button>
             </Tooltip>
           ) : null}
-          <div style={{margin: '0 8px'}}></div>
-          <Tooltip title='Thêm'>
-            <Button onClick={() => setOpenCreate(true)}>
-              <FileAddOutlined />
-            </Button>
-          </Tooltip>
         </div>
       </Row>
 

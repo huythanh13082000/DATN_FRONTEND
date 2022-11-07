@@ -30,7 +30,9 @@ export const columnsRank: any = [
   {
     title: 'Phòng ban',
     dataIndex: 'department',
-    render: (department: DepartmentModel) => <span>{department.name}</span>,
+    render: (department: DepartmentModel) => (
+      <span>{department && department.name}</span>
+    ),
   },
   {
     title: 'Ngày tạo',

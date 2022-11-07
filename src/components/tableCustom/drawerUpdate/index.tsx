@@ -2,6 +2,7 @@ import {EditOutlined} from '@ant-design/icons'
 import {Button, Drawer, Tooltip} from 'antd'
 import React, {useEffect, useState} from 'react'
 import UpdateDepartment from '../../../pages/department/updateDepartment'
+import RankUpdate from '../../../pages/rank/rankUpdate'
 import {Url} from '../../../routers/paths'
 
 const UpdatePage = (props: {
@@ -14,6 +15,8 @@ const UpdatePage = (props: {
     switch (props.url) {
       case Url.department:
         return <UpdateDepartment data={props.dataRow} />
+      case Url.rank:
+        return <RankUpdate data={props.dataRow} />
       default:
         break
     }
