@@ -1,6 +1,6 @@
 import {DepartmentModel} from '../models/department'
 import {RankModel} from '../models/rank'
-import {formatNumberAsCurrency, momentFomat} from './constants'
+import {FILE, formatNumberAsCurrency, momentFomat} from './constants'
 
 export const columnsDepartment: any = [
   {
@@ -51,6 +51,7 @@ export const columnsPersonnel: any = [
   {
     title: 'Ảnh',
     dataIndex: 'avatar',
+    render: (avatar: string) => <img src={`${FILE}/${avatar}`} alt='avatar' />,
   },
   {
     title: 'Tên nhân viên',

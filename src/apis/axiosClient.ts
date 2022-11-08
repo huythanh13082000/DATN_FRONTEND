@@ -8,13 +8,15 @@ const req = axios.create({
 const postService = async (
   url: string,
   body?: object,
-  isAuthorization = true,
-  isFormData = false
+  isFormData = false,
+  isAuthorization = true
 ) => {
   const headers: any = isFormData
-    ? {'Content-Type': 'multipart/form-data'}
+    ? {
+        'Content-Type': 'multipart/form-data',
+      }
     : {Accept: 'application/json', 'Content-Type': 'application/json'}
-
+  console.log(6666, headers)
   const token = localStorage.getItem(LOCAL_STORAGE.TOKEN)
   if (!!token && token !== '') {
     headers.Authorization =
@@ -26,8 +28,10 @@ const postService = async (
     headers: headers,
     credentials: 'include',
   }
-
-  const response = req.post(url, JSON.stringify(body), requestOptions)
+  let response: any = undefined
+  if (!isFormData)
+    response = req.post(url, JSON.stringify(body), requestOptions)
+  else response = req.post(url, body, requestOptions)
   try {
     await response
   } catch (error: any) {

@@ -14,28 +14,32 @@ import {useDispatch} from 'react-redux'
 import {urlApi} from '../../apis/url'
 import SelectApi from '../../components/selectApi'
 import UploadAvatar from '../../components/uploadAvatar'
+import {personnelAction} from '../../feature/personnel/personnelSlice'
 import {rankAction} from '../../feature/rank/rankSlice'
 
 const PersonnelCreate = () => {
   const dispatch = useDispatch()
   const [name, setName] = useState<string>('')
   const [rank, setRank] = useState<string>('')
-  const [department, setDepartment] = useState<string>('')
   const [address, setAddress] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [phoneNumber, setPhoneNumber] = useState<string>('')
   const [dateOfBirth, setDateOfBirth] = useState<string>()
   const [sex, setSex] = useState<string>('')
-  const [status, setStatus] = useState<boolean>()
+  const [status, setStatus] = useState<boolean>(false)
+  const [avatar, setAvatar] = useState<File>()
   const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
   const createRank = () => {
-    // dispatch(
-    //   rankAction.createRank({
-    //     name,
-    //     value,
-    //     department,
-    //   })
-    // )
+    const formData = new FormData()
+    formData.append('name', name)
+    formData.append('avatar', JSON.stringify(avatar))
+    formData.append('address', address)
+    formData.append('email', email)
+    formData.append('phoneNumber', phoneNumber)
+    formData.append('dateOfBirth', JSON.stringify(dateOfBirth))
+    formData.append('sex', sex)
+    formData.append('status', JSON.stringify(status))
+    dispatch(personnelAction.createPersonnel(formData))
   }
   console.log(dateOfBirth)
   return (
