@@ -18,7 +18,7 @@ export interface CreatePersonnel {
 }
 
 export const personnelApi = {
-  createPersonnel(params: FormData) {
+  createPersonnel(params: any) {
     return axiosClient.postService(urlApi.personnel, params, true)
   },
 }

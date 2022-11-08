@@ -7,6 +7,7 @@ import {
   InputNumber,
   Radio,
   Row,
+  UploadFile,
 } from 'antd'
 import moment from 'moment'
 import React, {useState} from 'react'
@@ -27,31 +28,36 @@ const PersonnelCreate = () => {
   const [dateOfBirth, setDateOfBirth] = useState<string>()
   const [sex, setSex] = useState<string>('')
   const [status, setStatus] = useState<boolean>(false)
-  const [avatar, setAvatar] = useState<File>()
+  const [avatar, setAvatar] = useState<any>()
   const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
+  console.log(111333, avatar)
   const createRank = () => {
     const formData = new FormData()
-    formData.append('name', name)
-    formData.append('avatar', JSON.stringify(avatar))
-    formData.append('address', address)
-    formData.append('email', email)
-    formData.append('phoneNumber', phoneNumber)
-    formData.append('dateOfBirth', JSON.stringify(dateOfBirth))
-    formData.append('sex', sex)
-    formData.append('status', JSON.stringify(status))
+    // formData.append('name', name)
+    avatar && formData.append('avatar', avatar)
+    // formData.append('address', address)
+    // formData.append('email', email)
+    // formData.append('phoneNumber', phoneNumber)
+    // formData.append('dateOfBirth', JSON.stringify(dateOfBirth))
+    // formData.append('sex', sex)
+    // formData.append('status', JSON.stringify(status))
     dispatch(personnelAction.createPersonnel(formData))
   }
   console.log(dateOfBirth)
   return (
     <Row>
       <p>Chọn ảnh :</p>
-      <UploadAvatar />
+      {/* <UploadAvatar
+        file={avatar}
+        setFile={(file: Blob | string | UploadFile) => setAvatar(file)}
+      /> */}
+      <input type='file' onChange={(e: any) => setAvatar(e.target.files[0])} />
       <p>Tên nhân viên :</p>
       <Input
         placeholder='name'
         value={name}
         onChange={(e) => {
-          setName(e.target.value)
+          setAvatar(e.target.value)
         }}
       />
       <p>Địa chỉ :</p>

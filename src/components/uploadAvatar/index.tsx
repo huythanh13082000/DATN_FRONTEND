@@ -3,7 +3,10 @@ import {RcFile} from 'antd/lib/upload'
 import React, {useState} from 'react'
 import ImgCrop from 'antd-img-crop'
 
-const UploadAvatar = () => {
+const UploadAvatar = (props: {
+  file?: Blob | string | UploadFile
+  setFile: (params: Blob | string | UploadFile) => void
+}) => {
   const [fileList, setFileList] = useState<UploadFile[]>([
     // {
     //   uid: '-1',
@@ -15,6 +18,7 @@ const UploadAvatar = () => {
 
   const onChange: UploadProps['onChange'] = ({fileList: newFileList}) => {
     setFileList(newFileList)
+    props.setFile(newFileList[0])
   }
 
   const onPreview = async (file: UploadFile) => {
