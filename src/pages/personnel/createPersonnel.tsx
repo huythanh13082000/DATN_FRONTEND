@@ -33,14 +33,14 @@ const PersonnelCreate = () => {
   console.log(111333, avatar)
   const createRank = () => {
     const formData = new FormData()
-    // formData.append('name', name)
+    formData.append('name', name)
     avatar && formData.append('avatar', avatar)
-    // formData.append('address', address)
-    // formData.append('email', email)
-    // formData.append('phoneNumber', phoneNumber)
-    // formData.append('dateOfBirth', JSON.stringify(dateOfBirth))
-    // formData.append('sex', sex)
-    // formData.append('status', JSON.stringify(status))
+    formData.append('address', address)
+    formData.append('email', email)
+    formData.append('phoneNumber', phoneNumber)
+    formData.append('dateOfBirth', JSON.stringify(dateOfBirth))
+    formData.append('sex', sex)
+    formData.append('status', JSON.stringify(status))
     dispatch(personnelAction.createPersonnel(formData))
   }
   console.log(dateOfBirth)
@@ -57,7 +57,7 @@ const PersonnelCreate = () => {
         placeholder='name'
         value={name}
         onChange={(e) => {
-          setAvatar(e.target.value)
+          setName(e.target.value)
         }}
       />
       <p>Địa chỉ :</p>

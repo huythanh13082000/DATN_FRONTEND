@@ -103,6 +103,8 @@ export const columnsPersonnel: any = [
   {
     title: 'Trạng thái',
     dataIndex: 'status',
-    // render: (text: string) => <span>{formatNumberAsCurrency(text)}</span>,
+    render: (status: boolean) => (
+      <span>{status ? 'Đang hoạt động' : 'Đã nghỉ việc'}</span>
+    ),
   },
 ]
