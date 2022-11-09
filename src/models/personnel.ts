@@ -1,17 +1,18 @@
 import {RankModel} from './rank'
 
 export interface PersonnelModel {
-  name: String
-  address: String
+  _id: string
+  name: string
+  address: string
   rank: RankModel
-  email: String
-  phoneNumber: String
-  IDCard: String
+  email: string
+  phoneNumber: string
+  IDCard: string
   createdAt: string
   updatedAt: string
   dateOfBirth: string
   sex: 'male' | 'female'
-  avatar: String
-  note: String
-  status: Boolean
+  avatar: string
+  note: string
+  status: boolean
 }

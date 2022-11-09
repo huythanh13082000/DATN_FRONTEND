@@ -21,9 +21,11 @@ const SelectApi = (props: {
     }
     getListData()
   }, [props.url])
+  console.log(555, props.field)
   return (
     <div style={{width: '100%'}}>
       <Select
+        defaultValue={props.field}
         showSearch
         value={props.field}
         style={{width: '100%'}}
@@ -36,7 +38,10 @@ const SelectApi = (props: {
             .localeCompare((optionB?.label ?? '').toLowerCase())
         }
         options={data}
-        onChange={(e) => props.setField(e)}
+        onChange={(e) => {
+          props.setField(e)
+          console.log(e)
+        }}
       />
     </div>
   )

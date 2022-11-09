@@ -21,6 +21,15 @@ const personnelSlice = createSlice({
     createPersonnelFail(state) {
       state.loadding = false
     },
+    updatePersonnel(state, action: PayloadAction<FormData>) {
+      state.loadding = true
+    },
+    updatePersonnelSuccess(state) {
+      state.loadding = false
+    },
+    updatePersonnelFail(state) {
+      state.loadding = false
+    },
   },
 })
 

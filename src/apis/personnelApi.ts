@@ -21,4 +21,7 @@ export const personnelApi = {
   createPersonnel(params: any) {
     return axiosClient.postService(urlApi.personnel, params, true)
   },
+  updatePersonnel(params: any) {
+    return axiosClient.updateService(urlApi.personnel, params, true)
+  },
 }

@@ -51,7 +51,13 @@ export const columnsPersonnel: any = [
   {
     title: 'Ảnh',
     dataIndex: 'avatar',
-    render: (avatar: string) => <img src={`${FILE}/${avatar}`} alt='avatar' />,
+    render: (avatar: string) => (
+      <img
+        src={`${FILE}/${avatar}`}
+        alt='avatar'
+        style={{width: '70px', height: '70px', objectFit: 'cover'}}
+      />
+    ),
   },
   {
     title: 'Tên nhân viên',

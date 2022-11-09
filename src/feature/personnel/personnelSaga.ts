@@ -15,7 +15,19 @@ function* createPersonnel(action: PayloadAction<FormData>) {
     yield message.error(error.toString())
   }
 }
+function* updatePersonnel(action: PayloadAction<FormData>) {
+  try {
+    const messageupdate: {description: string} = yield call(
+      personnelApi.updatePersonnel,
+      action.payload
+    )
+    yield message.success(messageupdate.description)
+  } catch (error: any) {
+    yield message.error(error.toString())
+  }
+}
 
 export default function* personnelSaga() {
   yield takeEvery(personnelAction.createPersonnel.type, createPersonnel)
+  yield takeEvery(personnelAction.updatePersonnel.type, updatePersonnel)
 }

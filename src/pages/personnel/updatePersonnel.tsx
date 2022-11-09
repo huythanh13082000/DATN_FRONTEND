@@ -10,14 +10,17 @@ import {
   UploadFile,
 } from 'antd'
 import moment from 'moment'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import {urlApi} from '../../apis/url'
 import SelectApi from '../../components/selectApi'
 import {personnelAction} from '../../feature/personnel/personnelSlice'
 import {rankAction} from '../../feature/rank/rankSlice'
+import {PersonnelModel} from '../../models/personnel'
+import {RankModel} from '../../models/rank'
+import {FILE} from '../../utils/constants'
 
-const PersonnelCreate = () => {
+const PersonnelUpdate = (props: {data: PersonnelModel}) => {
   const dispatch = useDispatch()
   const [name, setName] = useState<string>('')
   const [rank, setRank] = useState<string>('')
@@ -30,8 +33,20 @@ const PersonnelCreate = () => {
   const [avatar, setAvatar] = useState<any>()
   const [urlAvatar, setUrlAvatar] = useState<string>('')
   const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
-  console.log(111333, avatar)
-  const createRank = () => {
+  console.log(111333, props.data.rank._id)
+  useEffect(() => {
+    setName(props.data.name)
+    props.data.rank && props.data.rank._id && setRank(props.data.rank._id)
+    setAddress(props.data.address)
+    setEmail(props.data.email)
+    setPhoneNumber(props.data.phoneNumber)
+    setDateOfBirth(props.data.dateOfBirth)
+    setSex(props.data.sex)
+    setUrlAvatar(props.data.avatar)
+    setStatus(props.data.status)
+  }, [props.data])
+
+  const updatePersonnel = () => {
     const formData = new FormData()
     formData.append('name', name)
     formData.append('rank', rank)
@@ -42,7 +57,8 @@ const PersonnelCreate = () => {
     dateOfBirth && formData.append('dateOfBirth', dateOfBirth)
     formData.append('sex', sex)
     formData.append('status', JSON.stringify(status))
-    dispatch(personnelAction.createPersonnel(formData))
+    formData.append('_id', props.data._id)
+    dispatch(personnelAction.updatePersonnel(formData))
   }
   console.log(dateOfBirth)
   return (
@@ -60,7 +76,7 @@ const PersonnelCreate = () => {
         />
         {urlAvatar && (
           <img
-            src={urlAvatar}
+            src={`${FILE}${urlAvatar}`}
             alt='avatar'
             style={{
               marginTop: '0.5rem',
@@ -135,7 +151,7 @@ const PersonnelCreate = () => {
         </Checkbox>
       </div>
       <Col span={24} style={{marginTop: '1rem'}}>
-        <Button type='primary' onClick={createRank}>
+        <Button type='primary' onClick={updatePersonnel}>
           Lưu
         </Button>
       </Col>
@@ -143,4 +159,4 @@ const PersonnelCreate = () => {
   )
 }
 
-export default PersonnelCreate
+export default PersonnelUpdate

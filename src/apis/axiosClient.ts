@@ -46,8 +46,8 @@ const postService = async (
 const updateService = async (
   url: string,
   body?: object,
-  isAuthorization = true,
-  isFormData = false
+  isFormData = false,
+  isAuthorization = true
 ) => {
   const headers: any = isFormData
     ? {'Content-Type': 'multipart/form-data'}
@@ -64,7 +64,9 @@ const updateService = async (
     credentials: 'include',
   }
 
-  const response = req.put(url, JSON.stringify(body), requestOptions)
+  let response: any = undefined
+  if (!isFormData) response = req.put(url, JSON.stringify(body), requestOptions)
+  else response = req.put(url, body, requestOptions)
   try {
     await response
   } catch (error: any) {
