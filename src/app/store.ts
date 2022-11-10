@@ -9,6 +9,7 @@ import {authReducer} from '../feature/auth/authSlice'
 import {departmentReducer} from '../feature/department/departmentSlice'
 import {personnelReducer} from '../feature/personnel/personnelSlice'
 import {rankReducer} from '../feature/rank/rankSlice'
+import {timeSheetReducer} from '../feature/timeSheet/timeSheetSlice'
 import rootSaga from './rootSaga'
 // import counterReducer from '../features/counter/counterSlice'
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   department: departmentReducer,
   rank: rankReducer,
   personnel: personnelReducer,
+  timeSheet: timeSheetReducer,
 })
 
 const sagaMiddleware = createSagaMiddleware()

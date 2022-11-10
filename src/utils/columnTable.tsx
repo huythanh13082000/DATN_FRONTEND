@@ -114,3 +114,38 @@ export const columnsPersonnel: any = [
     ),
   },
 ]
+
+export const columnsTableCreateTimeSheet = [
+  {
+    title: 'Ảnh',
+    dataIndex: 'avatar',
+    render: (avatar: string) => (
+      <img
+        src={`${FILE}/${avatar}`}
+        alt='avatar'
+        style={{width: '70px', height: '70px', objectFit: 'cover'}}
+      />
+    ),
+  },
+  {
+    title: 'Tên nhân viên',
+    dataIndex: 'name',
+  },
+  {
+    title: 'Chức vụ',
+    dataIndex: 'rank',
+    render: (rank: RankModel) => <span>{rank && rank.name}</span>,
+  },
+  {
+    title: 'Giới tính',
+    dataIndex: 'sex',
+  },
+
+  {
+    title: 'Trạng thái',
+    dataIndex: 'status',
+    // render: (status: boolean) => (
+    //   <span>{status ? 'Đang hoạt động' : 'Đã nghỉ việc'}</span>
+    // ),
+  },
+]

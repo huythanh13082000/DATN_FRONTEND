@@ -5,4 +5,5 @@ export const urlApi = {
   department: '/departments',
   rank: '/ranks',
   personnel: '/personnels',
+  timeSheet: '/timeSheets',
 }
