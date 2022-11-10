@@ -39,6 +39,9 @@ const MenuHome: React.FC = () => {
           case '8_10':
             navigate(Url.rank)
             break
+          case '4_1':
+            navigate(Url.timeSheet)
+            break
           default:
             break
         }

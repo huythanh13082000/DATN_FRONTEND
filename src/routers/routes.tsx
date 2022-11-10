@@ -5,6 +5,7 @@ import {RouteProps} from 'react-router-dom'
 import Personnel from '../pages/personnel'
 import Department from '../pages/department'
 import Rank from '../pages/rank'
+import TimeSheet from '../pages/timeSheet'
 
 const routes: Array<RouteProps> = [
   {
@@ -28,5 +29,6 @@ const routes: Array<RouteProps> = [
     element: <Department />,
   },
   {path: Url.rank, element: <Rank />},
+  {path: Url.timeSheet, element: <TimeSheet />},
 ]
 export default routes
