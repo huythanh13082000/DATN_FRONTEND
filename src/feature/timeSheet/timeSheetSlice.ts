@@ -28,6 +28,15 @@ const timeSheetSlice = createSlice({
     getListPersonnelTimeSheetFail(state) {
       state.loadding = false
     },
+    timeSheetCheckDate(state, action: PayloadAction<{workingDay: string}>) {
+      state.loadding = true
+    },
+    timeSheetCheckDateSuccess(state) {
+      state.loadding = false
+    },
+    timeSheetCheckDateFail(state) {
+      state.loadding = false
+    },
   },
 })
 

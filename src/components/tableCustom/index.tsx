@@ -7,7 +7,12 @@ import CreatePage from './drawerCreate'
 import UpdatePage from './drawerUpdate'
 import DrawerUpdatePage from './drawerUpdate'
 
-const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
+const TableCustom = (props: {
+  url: string
+  columns: ColumnsType<{}>
+  disableAdd?: boolean
+  disableDelete?: boolean
+}) => {
   const [limit, setLimit] = useState<number>(10)
   const [page, setPage] = useState<number>(1)
   const [data, setData] = useState<any>([])
@@ -17,6 +22,7 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
   const [dataRow, setDataRow] = useState<any>()
   const [openUpdate, setOpenUpdate] = useState(false)
   const [openCreate, setOpenCreate] = useState(false)
+  const [disableAdd, setDisableAdd] = useState(false)
 
   useEffect(() => {
     setColumns([
@@ -91,19 +97,21 @@ const TableCustom = (props: {url: string; columns: ColumnsType<{}>}) => {
           {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
         </span>
         <div style={{display: 'flex'}}>
-          <Tooltip title='Thêm'>
-            <Button onClick={() => setOpenCreate(true)}>
-              <FileAddOutlined />
-            </Button>
-          </Tooltip>
-          <div style={{margin: '0 8px'}}></div>
-          {selectedRowKeys.length > 0 ? (
+          {selectedRowKeys.length > 0 && !props.disableDelete ? (
             <Tooltip title='Xóa' style={{marginRight: '1rem'}}>
               <Button onClick={() => handleDelete()}>
                 <DeleteOutlined />
               </Button>
             </Tooltip>
           ) : null}
+          <div style={{margin: '0 8px'}}></div>
+          {!props.disableAdd && (
+            <Tooltip title='Thêm'>
+              <Button onClick={() => setOpenCreate(true)}>
+                <FileAddOutlined />
+              </Button>
+            </Tooltip>
+          )}
         </div>
       </Row>
 

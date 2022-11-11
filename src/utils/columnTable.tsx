@@ -1,3 +1,4 @@
+import {Radio} from 'antd'
 import {DepartmentModel} from '../models/department'
 import {RankModel} from '../models/rank'
 import {FILE, formatNumberAsCurrency, momentFomat} from './constants'
@@ -144,8 +145,12 @@ export const columnsTableCreateTimeSheet = [
   {
     title: 'Trạng thái',
     dataIndex: 'status',
-    // render: (status: boolean) => (
-    //   <span>{status ? 'Đang hoạt động' : 'Đã nghỉ việc'}</span>
-    // ),
+    render: (status: boolean) => (
+      <Radio.Group>
+        <Radio value={1}>Nghỉ</Radio>
+        <Radio value={2}>làm nửa ngày</Radio>
+        <Radio value={3}>làm cả ngày</Radio>
+      </Radio.Group>
+    ),
   },
 ]
