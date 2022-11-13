@@ -6,6 +6,8 @@ import Personnel from '../pages/personnel'
 import Department from '../pages/department'
 import Rank from '../pages/rank'
 import TimeSheet from '../pages/timeSheet'
+import BonusPage from '../pages/bonus'
+import AllowancePage from '../pages/allowance'
 
 const routes: Array<RouteProps> = [
   {
@@ -30,5 +32,7 @@ const routes: Array<RouteProps> = [
   },
   {path: Url.rank, element: <Rank />},
   {path: Url.timeSheet, element: <TimeSheet />},
+  {path: Url.bonus, element: <BonusPage />},
+  {path: Url.allowance, element: <AllowancePage />},
 ]
 export default routes

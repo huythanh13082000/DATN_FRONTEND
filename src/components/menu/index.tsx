@@ -36,11 +36,18 @@ const MenuHome: React.FC = () => {
           case '8_9':
             navigate(Url.department)
             break
+
           case '8_10':
             navigate(Url.rank)
             break
           case '4_1':
             navigate(Url.timeSheet)
+            break
+          case '4_7':
+            navigate(Url.allowance)
+            break
+          case '4_8':
+            navigate(Url.bonus)
             break
           default:
             break

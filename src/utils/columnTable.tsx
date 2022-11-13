@@ -181,3 +181,37 @@ export const columnsTableTimeSheet = [
     ),
   },
 ]
+
+export const columnsMoney = [
+  {
+    title: 'Tên thưởng',
+    dataIndex: 'name',
+  },
+
+  {
+    title: 'Số tiền',
+    dataIndex: 'value',
+  },
+  {
+    title: 'Ngày tạo',
+    dataIndex: 'createdAt',
+    render: (text: string) => <span>{momentFomat(text)}</span>,
+  },
+]
+
+// export const columns = [
+//   {
+//     title: 'Tên thưởng',
+//     dataIndex: 'name',
+//   },
+
+//   {
+//     title: 'Số tiền',
+//     dataIndex: 'value',
+//   },
+//   {
+//     title: 'Ngày tạo',
+//     dataIndex: 'createdAt',
+//     render: (text: string) => <span>{momentFomat(text)}</span>,
+//   },
+// ]

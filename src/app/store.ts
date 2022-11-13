@@ -5,7 +5,9 @@ import {
   combineReducers,
 } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
+import {allowanceReducer} from '../feature/allowance/allowanceSlice'
 import {authReducer} from '../feature/auth/authSlice'
+import {bonusReducer} from '../feature/bonus/bonusSlice'
 import {departmentReducer} from '../feature/department/departmentSlice'
 import {personnelReducer} from '../feature/personnel/personnelSlice'
 import {rankReducer} from '../feature/rank/rankSlice'
@@ -19,6 +21,8 @@ const rootReducer = combineReducers({
   rank: rankReducer,
   personnel: personnelReducer,
   timeSheet: timeSheetReducer,
+  bonus: bonusReducer,
+  allowance: allowanceReducer,
 })
 
 const sagaMiddleware = createSagaMiddleware()

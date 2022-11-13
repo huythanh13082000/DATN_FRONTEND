@@ -8,4 +8,6 @@ export const urlApi = {
   timeSheet: '/timeSheets',
   bonus: '/bonus',
   personnelBonus: '/personnelBonus',
+  allowance: '/allowances',
+  personnelAllowance: '/personnelAllowances',
 }

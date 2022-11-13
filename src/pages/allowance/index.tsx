@@ -3,10 +3,10 @@ import { urlApi } from '../../apis/url'
 import TableCustom from '../../components/tableCustom'
 import { columnsMoney } from '../../utils/columnTable'
 
-const BonusPage = () => {
+const AllowancePage = () => {
   return (
-    <div><TableCustom columns={columnsMoney} url={urlApi.bonus}/></div>
+    <div><TableCustom columns={columnsMoney} url={urlApi.allowance}/></div>
   )
 }
 
-export default BonusPage
+export default AllowancePage

@@ -1,6 +1,9 @@
 import {EditOutlined} from '@ant-design/icons'
 import {Button, Drawer, Tooltip} from 'antd'
 import React, {useEffect, useState} from 'react'
+import UpdateAllowance from '../../../pages/allowance/updateAllowance'
+import CreateBonus from '../../../pages/bonus/createBonus'
+import UpdateBonus from '../../../pages/bonus/updateBonus'
 import UpdateDepartment from '../../../pages/department/updateDepartment'
 import PersonnelUpdate from '../../../pages/personnel/updatePersonnel'
 import RankUpdate from '../../../pages/rank/rankUpdate'
@@ -20,6 +23,10 @@ const UpdatePage = (props: {
         return <RankUpdate data={props.dataRow} />
       case Url.personnel:
         return <PersonnelUpdate data={props.dataRow} />
+      case Url.bonus:
+        return <UpdateBonus data={props.dataRow} />
+      case Url.allowance:
+        return <UpdateAllowance data={props.dataRow} />
       default:
         break
     }
