@@ -1,10 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '../../app/store'
-import {PersonnelModel} from '../../models/personnel'
+import { TimeSheetModel } from '../../models/timeSheetModel'
 
 export interface timeSheetState {
   loadding: boolean
-  listPersonnelTimeSheet?: PersonnelModel[]
+  listTimeSheet?: TimeSheetModel[]
 }
 
 const initialState: timeSheetState = {
@@ -15,32 +15,42 @@ const timeSheetSlice = createSlice({
   name: 'timeSheet',
   initialState,
   reducers: {
-    getListPersonnelTimeSheet(state) {
+    // getListPersonnelTimeSheet(state) {
+    //   state.loadding = true
+    // },
+    // getListPersonnelTimeSheetSuccess(
+    //   state,
+    //   action: PayloadAction<PersonnelModel[]>
+    // ) {
+    //   state.loadding = false
+    //   state.listPersonnelTimeSheet = action.payload
+    // },
+    // getListPersonnelTimeSheetFail(state) {
+    //   state.loadding = false
+    // },
+    createTimeSheets(state, action: PayloadAction<{workingDay: string}>) {
       state.loadding = true
     },
-    getListPersonnelTimeSheetSuccess(
-      state,
-      action: PayloadAction<PersonnelModel[]>
-    ) {
+    createTimeSheetsSuccess(state, action: PayloadAction<TimeSheetModel[]>) {
       state.loadding = false
-      state.listPersonnelTimeSheet = action.payload
+      state.listTimeSheet = action.payload
     },
-    getListPersonnelTimeSheetFail(state) {
+    createTimeSheetsFail(state) {
       state.loadding = false
     },
-    timeSheetCheckDate(state, action: PayloadAction<{workingDay: string}>) {
+    updateTimeSheet(state,action:PayloadAction<{_id:string;status:number}>){
       state.loadding = true
     },
-    timeSheetCheckDateSuccess(state) {
+    updateTimeSheetSuccess(state,action:PayloadAction<{_id:string;status:number}>){
       state.loadding = false
     },
-    timeSheetCheckDateFail(state) {
+    updateTimeSheetFail(state,action:PayloadAction<{_id:string;status:number}>){
       state.loadding = false
-    },
+    }
   },
 })
 
 export const timeSheetAction = timeSheetSlice.actions
-export const selectListPersonnelTimeSheet = (state: RootState) =>
-  state.timeSheet.listPersonnelTimeSheet
+export const selectListTimeSheet = (state: RootState) =>
+  state.timeSheet.listTimeSheet
 export const timeSheetReducer = timeSheetSlice.reducer

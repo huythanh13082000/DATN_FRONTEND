@@ -1,4 +1,9 @@
-import {DeleteOutlined, EditOutlined, FileAddOutlined} from '@ant-design/icons'
+import {
+  DeleteOutlined,
+  EditOutlined,
+  FileAddOutlined,
+  ReloadOutlined,
+} from '@ant-design/icons'
 import {Button, Col, message, Row, Table, Tooltip} from 'antd'
 import type {ColumnsType} from 'antd/es/table'
 import React, {useState, useEffect} from 'react'
@@ -12,6 +17,7 @@ const TableCustom = (props: {
   columns: ColumnsType<{}>
   disableAdd?: boolean
   disableDelete?: boolean
+  disableEdit?: boolean
 }) => {
   const [limit, setLimit] = useState<number>(10)
   const [page, setPage] = useState<number>(1)
@@ -23,27 +29,30 @@ const TableCustom = (props: {
   const [openUpdate, setOpenUpdate] = useState(false)
   const [openCreate, setOpenCreate] = useState(false)
   const [disableAdd, setDisableAdd] = useState(false)
+  const [reload, setReload] = useState(false)
 
   useEffect(() => {
-    setColumns([
-      ...props.columns,
-      {
-        title: 'Hành động',
-        dataIndex: '_id',
-        render: (text: string) => (
-          <Tooltip title='Sửa' style={{marginRight: '1rem'}}>
-            <Button
-              onClick={() => {
-                setOpenUpdate(true)
-              }}
-            >
-              <EditOutlined />
-            </Button>
-          </Tooltip>
-        ),
-      },
-    ])
-  }, [props.columns])
+    !props.disableEdit
+      ? setColumns([
+          ...props.columns,
+          {
+            title: 'Hành động',
+            dataIndex: '_id',
+            render: (text: string) => (
+              <Tooltip title='Sửa' style={{marginRight: '1rem'}}>
+                <Button
+                  onClick={() => {
+                    setOpenUpdate(true)
+                  }}
+                >
+                  <EditOutlined />
+                </Button>
+              </Tooltip>
+            ),
+          },
+        ])
+      : setColumns([...props.columns])
+  }, [props.columns, props.disableEdit])
 
   useEffect(() => {
     const getListData = async () => {
@@ -59,7 +68,7 @@ const TableCustom = (props: {
       setTotal(data.total)
     }
     getListData()
-  }, [limit, page, props.url, openUpdate, openCreate])
+  }, [limit, page, props.url, openUpdate, reload, openCreate])
 
   const handleDelete = async () => {
     const messageDelete: {description: string} =
@@ -112,6 +121,12 @@ const TableCustom = (props: {
               </Button>
             </Tooltip>
           )}
+          <div style={{margin: '0 8px'}}></div>
+          <Tooltip title='làm mới'>
+            <Button onClick={() => setReload(!reload)}>
+              <ReloadOutlined />
+            </Button>
+          </Tooltip>
         </div>
       </Row>
 
@@ -120,7 +135,7 @@ const TableCustom = (props: {
         columns={columns}
         dataSource={data}
         pagination={{pageSize: limit, total: total}}
-        scroll={{y: 240}}
+        scroll={{y: 440}}
         onChange={(e) => {
           setPage(Number(e.current))
           setLimit(Number(e.pageSize))

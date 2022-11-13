@@ -60,11 +60,14 @@ const MenuHome: React.FC = () => {
     //Dữ liệu tính lương
     getItem('DL tính lương', '4', <i className='fa-solid fa-database'></i>, [
       getItem('Chấm công', '4_1'),
-      getItem('Doanh số', '4_2'),
-      getItem('KPI', '4_3'),
-      getItem('Sản phẩm', '4_4'),
-      getItem('Thu nhập khác', '4_5'),
-      getItem('Khấu trừ khác', '4_6'),
+      getItem('Tiền trợ cấp', '4_7'),
+      getItem('Tiền thưởng', '4_8'),
+      getItem('Tiền phạt', '4_9'),
+      // getItem('Doanh số', '4_2'),
+      // getItem('KPI', '4_3'),
+      // getItem('Sản phẩm', '4_4'),
+      // getItem('Thu nhập khác', '4_5'),
+      // getItem('Khấu trừ khác', '4_6'),
     ]),
 
     //Tính lương

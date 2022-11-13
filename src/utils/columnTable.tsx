@@ -1,5 +1,7 @@
 import {Radio} from 'antd'
+import moment from 'moment'
 import {DepartmentModel} from '../models/department'
+import {PersonnelModel} from '../models/personnel'
 import {RankModel} from '../models/rank'
 import {FILE, formatNumberAsCurrency, momentFomat} from './constants'
 
@@ -56,7 +58,12 @@ export const columnsPersonnel: any = [
       <img
         src={`${FILE}/${avatar}`}
         alt='avatar'
-        style={{width: '70px', height: '70px', objectFit: 'cover'}}
+        style={{
+          width: '70px',
+          height: '70px',
+          objectFit: 'cover',
+          borderRadius: '50%',
+        }}
       />
     ),
   },
@@ -105,6 +112,9 @@ export const columnsPersonnel: any = [
   {
     title: 'Giới tính',
     dataIndex: 'sex',
+    render: (personnel: PersonnelModel) => (
+      <span>{personnel.sex === 'male' ? 'Nam' : 'Nữ'}</span>
+    ),
   },
 
   {
@@ -116,40 +126,57 @@ export const columnsPersonnel: any = [
   },
 ]
 
-export const columnsTableCreateTimeSheet = [
+export const columnsTableTimeSheet = [
   {
     title: 'Ảnh',
-    dataIndex: 'avatar',
-    render: (avatar: string) => (
+    dataIndex: 'personnel',
+    render: (personnel: PersonnelModel) => (
       <img
-        src={`${FILE}/${avatar}`}
+        src={`${FILE}/${personnel.avatar}`}
         alt='avatar'
-        style={{width: '70px', height: '70px', objectFit: 'cover'}}
+        style={{
+          width: '60px',
+          height: '60px',
+          objectFit: 'cover',
+          borderRadius: '50%',
+        }}
       />
     ),
   },
   {
     title: 'Tên nhân viên',
-    dataIndex: 'name',
-  },
-  {
-    title: 'Chức vụ',
-    dataIndex: 'rank',
-    render: (rank: RankModel) => <span>{rank && rank.name}</span>,
+    dataIndex: 'personnel',
+    render: (personnel: PersonnelModel) => <span>{personnel.name}</span>,
   },
   {
     title: 'Giới tính',
-    dataIndex: 'sex',
+    dataIndex: 'personnel',
+    render: (personnel: PersonnelModel) => (
+      <span>{personnel.sex === 'male' ? 'Nam' : 'Nữ'}</span>
+    ),
   },
-
+  {
+    title: 'Email',
+    dataIndex: 'personnel',
+    render: (personnel: PersonnelModel) => <span>{personnel.email}</span>,
+  },
+  {
+    title: 'Ngày làm việc',
+    dataIndex: 'workingDay',
+    render: (workingDay: string) => (
+      <span>{moment(workingDay).format('DD/MM/YYYY')}</span>
+    ),
+  },
   {
     title: 'Trạng thái',
     dataIndex: 'status',
-    render: (status: boolean) => (
-      <Radio.Group>
-        <Radio value={1}>Nghỉ</Radio>
-        <Radio value={2}>làm nửa ngày</Radio>
-        <Radio value={3}>làm cả ngày</Radio>
+    render: (status: number) => (
+      <Radio.Group value={status}>
+        <>
+          <Radio value={1}>Nghỉ</Radio>
+          <Radio value={2}>làm nửa ngày</Radio>
+          <Radio value={3}>làm cả ngày</Radio>
+        </>
       </Radio.Group>
     ),
   },

@@ -6,4 +6,6 @@ export const urlApi = {
   rank: '/ranks',
   personnel: '/personnels',
   timeSheet: '/timeSheets',
+  bonus: '/bonus',
+  personnelBonus: '/personnelBonus',
 }

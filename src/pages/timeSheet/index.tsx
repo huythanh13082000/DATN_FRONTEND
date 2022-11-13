@@ -1,5 +1,6 @@
 import {Tabs} from 'antd'
 import React from 'react'
+import HistoryTimeSheets from './historyTimeSheets'
 import TimeSheetDay from './timeSheetDay'
 
 const TimeSheet = () => {
@@ -13,7 +14,15 @@ const TimeSheet = () => {
         </>
       ),
     }, // remember to pass the key prop
-    {label: 'Lịch sử chấm công', key: '2', children: <>Lịch sử chấm công</>},
+    {
+      label: 'Lịch sử chấm công',
+      key: '2',
+      children: (
+        <>
+          <HistoryTimeSheets />
+        </>
+      ),
+    },
   ]
   return (
     <div>
