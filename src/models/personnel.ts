@@ -11,7 +11,7 @@ export interface PersonnelModel {
   createdAt: string
   updatedAt: string
   dateOfBirth: string
-  sex: 'male' | 'female'
+  sex: string
   avatar: string
   note: string
   status: boolean

@@ -5,6 +5,7 @@ import UpdateAllowance from '../../../pages/allowance/updateAllowance'
 import CreateBonus from '../../../pages/bonus/createBonus'
 import UpdateBonus from '../../../pages/bonus/updateBonus'
 import UpdateDepartment from '../../../pages/department/updateDepartment'
+import UpdateFine from '../../../pages/fine/updateFine'
 import PersonnelUpdate from '../../../pages/personnel/updatePersonnel'
 import RankUpdate from '../../../pages/rank/rankUpdate'
 import {Url} from '../../../routers/paths'
@@ -27,6 +28,8 @@ const UpdatePage = (props: {
         return <UpdateBonus data={props.dataRow} />
       case Url.allowance:
         return <UpdateAllowance data={props.dataRow} />
+      case Url.fine:
+        return <UpdateFine data={props.dataRow} />
       default:
         break
     }

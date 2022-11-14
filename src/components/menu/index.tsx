@@ -49,6 +49,9 @@ const MenuHome: React.FC = () => {
           case '4_8':
             navigate(Url.bonus)
             break
+          case '4_9':
+            navigate(Url.fine)
+            break
           default:
             break
         }
@@ -61,9 +64,9 @@ const MenuHome: React.FC = () => {
     //tong quan
     getItem('Tổng quan', '1', <i className='fa-solid fa-house'></i>),
     //thanh phan luong
-    getItem('TP lương', '2', <i className='fa-brands fa-elementor'></i>),
+    // getItem('TP lương', '2', <i className='fa-brands fa-elementor'></i>),
     //mẫu bảng lương
-    getItem('Mẫu bảng lương', '3', <i className='fa-solid fa-table'></i>),
+    // getItem('Mẫu bảng lương', '3', <i className='fa-solid fa-table'></i>),
     //Dữ liệu tính lương
     getItem('DL tính lương', '4', <i className='fa-solid fa-database'></i>, [
       getItem('Chấm công', '4_1'),
@@ -106,13 +109,13 @@ const MenuHome: React.FC = () => {
       getItem('Nhân viên', '8_1'),
       getItem('Phòng ban', '8_9'),
       getItem('Chức vụ', '8_10'),
-      getItem('Thông số mặc định', '8_2'),
-      getItem('Biểu mẫu', '8_3'),
-      getItem('Tùy chỉnh', '8_4'),
-      getItem('Vai trò', '8_5'),
-      getItem('Người dùng', '8_6'),
-      getItem('Kết nối', '8_7'),
-      getItem('Hệ thống', '8_8'),
+      // getItem('Thông số mặc định', '8_2'),
+      // getItem('Biểu mẫu', '8_3'),
+      // getItem('Tùy chỉnh', '8_4'),
+      // getItem('Vai trò', '8_5'),
+      // getItem('Người dùng', '8_6'),
+      // getItem('Kết nối', '8_7'),
+      // getItem('Hệ thống', '8_8'),
     ]),
   ]
 

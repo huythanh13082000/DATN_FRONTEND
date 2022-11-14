@@ -61,6 +61,7 @@ const PersonnelUpdate = (props: {data: PersonnelModel}) => {
     dispatch(personnelAction.updatePersonnel(formData))
   }
   console.log(dateOfBirth)
+  console.log(111, urlAvatar)
   return (
     <Row>
       <div>
@@ -76,7 +77,9 @@ const PersonnelUpdate = (props: {data: PersonnelModel}) => {
         />
         {urlAvatar && (
           <img
-            src={`${FILE}${urlAvatar}`}
+            src={
+              !urlAvatar.includes('blob') ? `${FILE}${urlAvatar}` : urlAvatar
+            }
             alt='avatar'
             style={{
               marginTop: '0.5rem',

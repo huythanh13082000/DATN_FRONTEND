@@ -3,6 +3,7 @@ import React from 'react'
 import CreateAllowance from '../../../pages/allowance/createAllowance'
 import CreateBonus from '../../../pages/bonus/createBonus'
 import CreateDepartment from '../../../pages/department/createDepartment'
+import CreateFine from '../../../pages/fine/createFine'
 import PersonnelCreate from '../../../pages/personnel/createPersonnel'
 import RankCreate from '../../../pages/rank/rankCreate'
 import {Url} from '../../../routers/paths'
@@ -24,6 +25,8 @@ const CreatePage = (props: {
         return <CreateBonus />
       case Url.allowance:
         return <CreateAllowance />
+      case Url.fine:
+        return <CreateFine />
       default:
         break
     }

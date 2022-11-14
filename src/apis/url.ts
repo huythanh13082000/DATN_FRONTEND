@@ -9,5 +9,6 @@ export const urlApi = {
   bonus: '/bonus',
   personnelBonus: '/personnelBonus',
   allowance: '/allowances',
+  fine:'/fines',
   personnelAllowance: '/personnelAllowances',
 }

@@ -112,9 +112,7 @@ export const columnsPersonnel: any = [
   {
     title: 'Giới tính',
     dataIndex: 'sex',
-    render: (personnel: PersonnelModel) => (
-      <span>{personnel.sex === 'male' ? 'Nam' : 'Nữ'}</span>
-    ),
+    render: (sex: string) => <span>{sex === 'male' ? 'Nam' : 'Nữ'}</span>,
   },
 
   {
@@ -184,7 +182,7 @@ export const columnsTableTimeSheet = [
 
 export const columnsMoney = [
   {
-    title: 'Tên thưởng',
+    title: 'Tên',
     dataIndex: 'name',
   },
 

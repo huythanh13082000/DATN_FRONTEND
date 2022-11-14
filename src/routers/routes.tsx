@@ -8,6 +8,7 @@ import Rank from '../pages/rank'
 import TimeSheet from '../pages/timeSheet'
 import BonusPage from '../pages/bonus'
 import AllowancePage from '../pages/allowance'
+import FinePage from '../pages/fine'
 
 const routes: Array<RouteProps> = [
   {
@@ -34,5 +35,6 @@ const routes: Array<RouteProps> = [
   {path: Url.timeSheet, element: <TimeSheet />},
   {path: Url.bonus, element: <BonusPage />},
   {path: Url.allowance, element: <AllowancePage />},
+  {path: Url.fine, element: <FinePage />},
 ]
 export default routes

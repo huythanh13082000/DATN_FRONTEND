@@ -3,6 +3,7 @@ import AllowanceSaga from '../feature/allowance/allowanceSaga'
 import authSaga from '../feature/auth/authSaga'
 import bonusSaga from '../feature/bonus/bonusSaga'
 import {departmentSaga} from '../feature/department/departmentSaga'
+import fineSaga from '../feature/fine/fineSaga'
 import personnelSaga from '../feature/personnel/personnelSaga'
 import rankSaga from '../feature/rank/rankSaga'
 import {timeSheetSaga} from '../feature/timeSheet/timeSheetSaga'
@@ -16,5 +17,6 @@ export default function* rootSaga() {
     timeSheetSaga(),
     bonusSaga(),
     AllowanceSaga(),
+    fineSaga(),
   ])
 }
