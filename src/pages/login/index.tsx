@@ -12,10 +12,10 @@ const Login = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const loginStatus = useAppSelector(selectLoginStatus)
-  const [username, setUsername] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
   const [passWord, setPassWord] = useState<string>('')
   const handleLogin = () => {
-    dispatch(authActions.login({username, passWord}))
+    dispatch(authActions.login({email, passWord}))
   }
   useEffect(() => {
     if (loginStatus) {
@@ -35,8 +35,8 @@ const Login = () => {
                 className='login-input'
                 bordered={false}
                 placeholder={t('Login.email')}
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Col>
             <Col span={2}>

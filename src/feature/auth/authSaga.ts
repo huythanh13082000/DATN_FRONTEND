@@ -6,7 +6,7 @@ import {UserModel} from '../../models/user.model'
 import {LOCAL_STORAGE} from '../../utils/constants'
 import {authActions} from './authSlice'
 
-function* login(action: PayloadAction<{username: string; passWord: string}>) {
+function* login(action: PayloadAction<{email: string; passWord: string}>) {
   try {
     const token: {accessToken: string; refreshToken: string} = yield call(
       authApi.login,

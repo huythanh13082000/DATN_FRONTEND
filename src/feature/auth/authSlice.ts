@@ -17,7 +17,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login(state, action: PayloadAction<{username: string; passWord: string}>) {
+    login(state, action: PayloadAction<{email: string; passWord: string}>) {
       state.loadding = true
     },
     loginSuccess(state) {

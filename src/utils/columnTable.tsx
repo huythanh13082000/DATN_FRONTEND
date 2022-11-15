@@ -162,22 +162,22 @@ export const columnsTableTimeSheet = [
     title: 'Ngày làm việc',
     dataIndex: 'workingDay',
     render: (workingDay: string) => (
-      <span>{moment(workingDay).format('DD/MM/YYYY')}</span>
+      <span>{moment(workingDay).format('DD/MM/YYYY h:mm:ss a')}</span>
     ),
   },
-  {
-    title: 'Trạng thái',
-    dataIndex: 'status',
-    render: (status: number) => (
-      <Radio.Group value={status}>
-        <>
-          <Radio value={1}>Nghỉ</Radio>
-          <Radio value={2}>làm nửa ngày</Radio>
-          <Radio value={3}>làm cả ngày</Radio>
-        </>
-      </Radio.Group>
-    ),
-  },
+  // {
+  //   title: 'Trạng thái',
+  //   dataIndex: 'status',
+  //   render: (status: number) => (
+  //     <Radio.Group value={status}>
+  //       <>
+  //         <Radio value={1}>Nghỉ</Radio>
+  //         <Radio value={2}>làm nửa ngày</Radio>
+  //         <Radio value={3}>làm cả ngày</Radio>
+  //       </>
+  //     </Radio.Group>
+  //   ),
+  // },
 ]
 
 export const columnsMoney = [
