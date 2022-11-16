@@ -35,20 +35,20 @@ const HistoryTimeSheets = () => {
         }}
         style={{marginRight: '1rem'}}
       />
-      <Button
+      {/* <Button
         danger
         onClick={() => {
           deleteTimeSheets()
         }}
       >
         Xóa dữ liệu chấm công ngày: {moment(workingDay).format('DD/MM/YYYY')}
-      </Button>
+      </Button> */}
 
       <TableCustom
         url={urlApi.timeSheet}
         columns={columnsTableTimeSheet}
         disableAdd
-        disableDelete
+        // disableDelete
         disableEdit
       />
     </div>
