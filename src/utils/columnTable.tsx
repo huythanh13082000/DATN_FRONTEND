@@ -159,10 +159,10 @@ export const columnsTableTimeSheet = [
     render: (personnel: PersonnelModel) => <span>{personnel.email}</span>,
   },
   {
-    title: 'Ngày làm việc',
-    dataIndex: 'workingDay',
-    render: (workingDay: string) => (
-      <span>{moment(workingDay).format('DD/MM/YYYY h:mm:ss a')}</span>
+    title: 'Thời gian chấm công',
+    dataIndex: 'createdAt',
+    render: (createdAt: string) => (
+      <span>{moment(createdAt).format('DD/MM/YYYY h:mm:ss a')}</span>
     ),
   },
   // {
