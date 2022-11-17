@@ -9,6 +9,7 @@ export const urlApi = {
   bonus: '/bonus',
   personnelBonus: '/personnelBonus',
   allowance: '/allowances',
-  fine:'/fines',
+  fine: '/fines',
   personnelAllowance: '/personnelAllowances',
+  summaryOfWorkingDays: '/timeSheets/summaryOfWorkingDays',
 }

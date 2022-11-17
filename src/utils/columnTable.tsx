@@ -197,6 +197,23 @@ export const columnsMoney = [
   },
 ]
 
+export const columnSummaryOfWorkingDays = [
+  {
+    title: 'Tên nhân viên',
+    dataIndex: 'name',
+  },
+
+  {
+    title: 'Email',
+    dataIndex: 'email',
+  },
+  {
+    title: 'Tống số công',
+    dataIndex: 'count',
+    // render: (text: string) => <span>{momentFomat(text)}</span>,
+  },
+]
+
 // export const columns = [
 //   {
 //     title: 'Tên thưởng',

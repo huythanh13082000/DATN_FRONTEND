@@ -18,6 +18,7 @@ const TableCustom = (props: {
   disableAdd?: boolean
   disableDelete?: boolean
   disableEdit?: boolean
+  paramsHeader?: {}
 }) => {
   const [limit, setLimit] = useState<number>(10)
   const [page, setPage] = useState<number>(1)
@@ -58,7 +59,7 @@ const TableCustom = (props: {
     const getListData = async () => {
       const data: {list: []; total: number} = await axiosClient.getService(
         props.url,
-        {limit, page}
+        {limit, page, ...props.paramsHeader}
       )
       const newData = data.list.map((item: any) => {
         return {...item, key: item._id}
@@ -68,7 +69,15 @@ const TableCustom = (props: {
       setTotal(data.total)
     }
     getListData()
-  }, [limit, page, props.url, openUpdate, reload, openCreate])
+  }, [
+    limit,
+    page,
+    props.url,
+    openUpdate,
+    reload,
+    openCreate,
+    props.paramsHeader,
+  ])
 
   const handleDelete = async () => {
     const messageDelete: {description: string} =

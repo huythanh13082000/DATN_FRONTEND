@@ -52,6 +52,12 @@ const MenuHome: React.FC = () => {
           case '4_9':
             navigate(Url.fine)
             break
+          case '5_8':
+            navigate(Url.timeSheetTable)
+            break
+          // case '5_8':
+          //   navigate(Url.timeSheetTable)
+          //   break
           default:
             break
         }
@@ -82,13 +88,14 @@ const MenuHome: React.FC = () => {
 
     //Tính lương
     getItem('Tính lương', '5', <i className='fa-solid fa-calculator'></i>, [
+      getItem('Bảng chấm công', '5_8'),
       getItem('Bảng lương', '5_1'),
-      getItem('Tạm ứng', '5_2'),
-      getItem('Tổng hợp lương', '5_3'),
-      getItem('Bảng phân bổ lương', '5_4'),
-      getItem('Ngân sách lương', '5_5'),
-      getItem('Bảng thuế', '5_6'),
-      getItem('Quyết toán thuế', '5_7'),
+      // getItem('Tạm ứng', '5_2'),
+      // getItem('Tổng hợp lương', '5_3'),
+      // getItem('Bảng phân bổ lương', '5_4'),
+      // getItem('Ngân sách lương', '5_5'),
+      // getItem('Bảng thuế', '5_6'),
+      // getItem('Quyết toán thuế', '5_7'),
     ]),
     getItem(
       'Chi trả lương',
