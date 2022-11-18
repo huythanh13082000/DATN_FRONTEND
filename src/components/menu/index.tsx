@@ -40,6 +40,9 @@ const MenuHome: React.FC = () => {
           case '8_10':
             navigate(Url.rank)
             break
+          case '8_11':
+            navigate(Url.user)
+            break
           case '4_1':
             navigate(Url.timeSheet)
             break
@@ -55,9 +58,6 @@ const MenuHome: React.FC = () => {
           case '5_8':
             navigate(Url.timeSheetTable)
             break
-          // case '5_8':
-          //   navigate(Url.timeSheetTable)
-          //   break
           default:
             break
         }
@@ -116,6 +116,7 @@ const MenuHome: React.FC = () => {
       getItem('Nhân viên', '8_1'),
       getItem('Phòng ban', '8_9'),
       getItem('Chức vụ', '8_10'),
+      getItem('Tài khoản', '8_11'),
       // getItem('Thông số mặc định', '8_2'),
       // getItem('Biểu mẫu', '8_3'),
       // getItem('Tùy chỉnh', '8_4'),

@@ -1,7 +1,7 @@
 export const urlApi = {
   login: '/auth/signin',
-  getProfile: '/auth/profile',
-  changePassWord: '/user/changePassWord',
+  getProfile: '/auth/users',
+  changePassWord: '/auth/users/changePassWord',
   department: '/departments',
   rank: '/ranks',
   personnel: '/personnels',
@@ -12,4 +12,5 @@ export const urlApi = {
   fine: '/fines',
   personnelAllowance: '/personnelAllowances',
   summaryOfWorkingDays: '/timeSheets/summaryOfWorkingDays',
+  user: '/auth/users',
 }

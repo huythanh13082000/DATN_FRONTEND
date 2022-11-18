@@ -6,7 +6,7 @@ export const authApi = {
     return axiosClient.postService(urlApi.login, params)
   },
   getProfile() {
-    return axiosClient.getService(urlApi.getProfile)
+    return axiosClient.getService(`${urlApi.getProfile}/detail`)
   },
   changePassWord(params: {newPassWord: string; oldPassWord: string}) {
     return axiosClient.updateService(urlApi.changePassWord, params)
