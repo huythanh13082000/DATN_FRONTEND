@@ -1,23 +1,31 @@
 import {Button, Col, DatePicker, Input, Row} from 'antd'
 import moment from 'moment'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {urlApi} from '../../apis/url'
 import {useAppDispatch} from '../../app/hooks'
 import SelectApi from '../../components/selectApi'
 import {bonusAction} from '../../feature/bonus/bonusSlice'
+import {personnelBonus} from '../../models/personnelBonus'
 
-const CreatePersonnelBonus = () => {
+const UpdatePersonnelBonus = (props: {data: personnelBonus}) => {
   const dispatch = useAppDispatch()
   const [personnel, setPersonnel] = useState('')
   const [bonus, setBonus] = useState('')
   const [dateBonus, setDateBonus] = useState<string>()
   const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
 
-  const createBonus = () => {
+  useEffect(() => {
+    setPersonnel(props.data.personnel._id)
+    setBonus(props.data.bonus._id)
+    setDateBonus(props.data.dateBonus)
+  }, [props.data])
+
+  const updateBonus = () => {
     personnel &&
       bonus &&
       dispatch(
-        bonusAction.createPersonnelBonus({
+        bonusAction.updatePersonnelBonus({
+          _id: props.data._id,
           bonus,
           personnel,
           dateBonus: dateBonus ? dateBonus : moment().format(),
@@ -49,7 +57,7 @@ const CreatePersonnelBonus = () => {
           onChange={(e) => setDateBonus(e?.format())}
         />
         <Col span={24} style={{marginTop: '1rem'}}>
-          <Button type='primary' onClick={createBonus}>
+          <Button type='primary' onClick={updateBonus}>
             Lưu
           </Button>
         </Col>
@@ -58,4 +66,4 @@ const CreatePersonnelBonus = () => {
   )
 }
 
-export default CreatePersonnelBonus
+export default UpdatePersonnelBonus

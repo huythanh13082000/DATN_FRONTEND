@@ -2,8 +2,10 @@ import {Drawer} from 'antd'
 import React from 'react'
 import CreateAllowance from '../../../pages/allowance/createAllowance'
 import CreateBonus from '../../../pages/bonus/createBonus'
+import CreatePersonnelBonus from '../../../pages/bonus/createPersonnelBonus'
 import CreateDepartment from '../../../pages/department/createDepartment'
 import CreateFine from '../../../pages/fine/createFine'
+import CreatePersonnelfine from '../../../pages/fine/createPersonnelFine'
 import PersonnelCreate from '../../../pages/personnel/createPersonnel'
 import RankCreate from '../../../pages/rank/rankCreate'
 import CreateUser from '../../../pages/user/createUser'
@@ -30,6 +32,10 @@ const CreatePage = (props: {
         return <CreateFine />
       case Url.user:
         return <CreateUser />
+      case Url.personnelBonus:
+        return <CreatePersonnelBonus />
+      case Url.personnelFine:
+        return <CreatePersonnelfine />
       default:
         break
     }

@@ -4,23 +4,23 @@ import React, {useState} from 'react'
 import {urlApi} from '../../apis/url'
 import {useAppDispatch} from '../../app/hooks'
 import SelectApi from '../../components/selectApi'
-import {bonusAction} from '../../feature/bonus/bonusSlice'
+import {fineAction} from '../../feature/fine/fineSlice'
 
-const CreatePersonnelBonus = () => {
+const CreatePersonnelfine = () => {
   const dispatch = useAppDispatch()
   const [personnel, setPersonnel] = useState('')
-  const [bonus, setBonus] = useState('')
-  const [dateBonus, setDateBonus] = useState<string>()
+  const [fine, setfine] = useState('')
+  const [datefine, setDateFine] = useState<string>()
   const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
 
-  const createBonus = () => {
+  const createFine = () => {
     personnel &&
-      bonus &&
+      fine &&
       dispatch(
-        bonusAction.createPersonnelBonus({
-          bonus,
+        fineAction.createPersonnelFine({
+          fine,
           personnel,
-          dateBonus: dateBonus ? dateBonus : moment().format(),
+          dateFine: datefine ? datefine : moment().format(),
         })
       )
   }
@@ -35,21 +35,21 @@ const CreatePersonnelBonus = () => {
           field={personnel}
           setField={(params: string) => setPersonnel(params)}
         />
-        <p>Chọn thưởng:</p>
+        <p>Chọn phạt:</p>
         <SelectApi
-          url={urlApi.bonus}
-          field={bonus}
-          setField={(params: string) => setBonus(params)}
+          url={urlApi.fine}
+          field={fine}
+          setField={(params: string) => setfine(params)}
         />
-        <p>Ngày thưởng:</p>
+        <p>Ngày phạt:</p>
         <DatePicker
           format={dateFormatList}
           style={{width: '100%'}}
-          value={moment(dateBonus)}
-          onChange={(e) => setDateBonus(e?.format())}
+          value={moment(datefine)}
+          onChange={(e) => setDateFine(e?.format())}
         />
         <Col span={24} style={{marginTop: '1rem'}}>
-          <Button type='primary' onClick={createBonus}>
+          <Button type='primary' onClick={createFine}>
             Lưu
           </Button>
         </Col>
@@ -58,4 +58,4 @@ const CreatePersonnelBonus = () => {
   )
 }
 
-export default CreatePersonnelBonus
+export default CreatePersonnelfine

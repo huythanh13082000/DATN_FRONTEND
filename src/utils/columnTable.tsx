@@ -272,8 +272,8 @@ export const personnelBonusColumn = [
     render: (bonus: MoneyModel) => <span>{bonus.value}</span>,
   },
   {
-    title: 'Ngày tạo',
-    dataIndex: 'createdAt',
+    title: 'Ngày thưởng',
+    dataIndex: 'dateBonus',
     render: (text: string) => <span>{momentFomat(text)}</span>,
   },
 ]

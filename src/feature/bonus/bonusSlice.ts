@@ -20,6 +20,22 @@ const bonusSlice = createSlice({
     createBonusFail(state) {
       state.loadding = false
     },
+    createPersonnelBonus(
+      state,
+      action: PayloadAction<{
+        personnel: string
+        bonus: string
+        dateBonus: string
+      }>
+    ) {
+      state.loadding = true
+    },
+    createPersonnelBonusSucces(state) {
+      state.loadding = false
+    },
+    createPersonnelBonusFail(state) {
+      state.loadding = false
+    },
     updateBonus(
       state,
       action: PayloadAction<{_id: string; name: string; value: string}>
@@ -30,6 +46,23 @@ const bonusSlice = createSlice({
       state.loadding = false
     },
     updateBonusFail(state) {
+      state.loadding = false
+    },
+    updatePersonnelBonus(
+      state,
+      action: PayloadAction<{
+        _id: string
+        personnel: string
+        bonus: string
+        dateBonus: string
+      }>
+    ) {
+      state.loadding = true
+    },
+    updatePersonnelBonusSucces(state) {
+      state.loadding = false
+    },
+    updatePersonnelBonusFail(state) {
       state.loadding = false
     },
   },

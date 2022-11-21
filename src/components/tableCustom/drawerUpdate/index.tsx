@@ -4,8 +4,10 @@ import React, {useEffect, useState} from 'react'
 import UpdateAllowance from '../../../pages/allowance/updateAllowance'
 import CreateBonus from '../../../pages/bonus/createBonus'
 import UpdateBonus from '../../../pages/bonus/updateBonus'
+import UpdatePersonnelBonus from '../../../pages/bonus/updatePersonnelBonus'
 import UpdateDepartment from '../../../pages/department/updateDepartment'
 import UpdateFine from '../../../pages/fine/updateFine'
+import UpdatePersonnelfine from '../../../pages/fine/updatePersonnelFine'
 import PersonnelUpdate from '../../../pages/personnel/updatePersonnel'
 import RankUpdate from '../../../pages/rank/rankUpdate'
 import {Url} from '../../../routers/paths'
@@ -30,6 +32,10 @@ const UpdatePage = (props: {
         return <UpdateAllowance data={props.dataRow} />
       case Url.fine:
         return <UpdateFine data={props.dataRow} />
+      case Url.personnelBonus:
+        return <UpdatePersonnelBonus data={props.dataRow} />
+      case Url.personnelFine:
+        return <UpdatePersonnelfine data={props.dataRow} />
       default:
         break
     }

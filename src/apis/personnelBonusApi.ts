@@ -10,6 +10,7 @@ export const personnelBonusApi = {
     return axiosClient.postService(urlApi.personnelBonus, parmas)
   },
   updatePersonnelBonus(parmas: {
+    _id: string
     personnel: string
     bonus: string
     dateBonus: string
