@@ -6,10 +6,10 @@ import {useAppDispatch} from '../../app/hooks'
 import SelectApi from '../../components/selectApi'
 import {fineAction} from '../../feature/fine/fineSlice'
 
-const CreatePersonnelfine = () => {
+const CreatePersonnelFine = () => {
   const dispatch = useAppDispatch()
   const [personnel, setPersonnel] = useState('')
-  const [fine, setfine] = useState('')
+  const [fine, setFine] = useState('')
   const [datefine, setDateFine] = useState<string>()
   const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
 
@@ -19,7 +19,7 @@ const CreatePersonnelfine = () => {
       dispatch(
         fineAction.createPersonnelFine({
           fine,
-          personnel,
+          personnel,  
           dateFine: datefine ? datefine : moment().format(),
         })
       )
@@ -39,7 +39,7 @@ const CreatePersonnelfine = () => {
         <SelectApi
           url={urlApi.fine}
           field={fine}
-          setField={(params: string) => setfine(params)}
+          setField={(params: string) => setFine(params)}
         />
         <p>Ngày phạt:</p>
         <DatePicker
@@ -58,4 +58,4 @@ const CreatePersonnelfine = () => {
   )
 }
 
-export default CreatePersonnelfine
+export default CreatePersonnelFine

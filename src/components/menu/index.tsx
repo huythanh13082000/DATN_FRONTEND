@@ -58,6 +58,9 @@ const MenuHome: React.FC = () => {
           case '5_8':
             navigate(Url.timeSheetTable)
             break
+          case '5_1':
+            navigate(Url.salalyTable)
+            break
           default:
             break
         }
@@ -103,15 +106,15 @@ const MenuHome: React.FC = () => {
       <i className='fa-solid fa-money-bill-wave'></i>,
       [getItem('Bảng chi trả', '6_1'), getItem('Tổng hợp chi trả', '6_2')]
     ),
-    getItem('Báo cáo', '7', <i className='fa-solid fa-bug'></i>, [
-      getItem('THTN nhân viên', '7_1'),
-      getItem('TKTN theo tháng', '7_2'),
-      getItem('PTCC thu nhập', '7_3'),
-      getItem('TH chi phí lương', '7_4'),
-      getItem('LS lương nhân viên', '7_5'),
-      getItem('Tổng hợp công nợ', '7_6'),
-      getItem('Ngân sách lương', '7_7'),
-    ]),
+    // getItem('Báo cáo', '7', <i className='fa-solid fa-bug'></i>, [
+    //   getItem('THTN nhân viên', '7_1'),
+    //   getItem('TKTN theo tháng', '7_2'),
+    //   getItem('PTCC thu nhập', '7_3'),
+    //   getItem('TH chi phí lương', '7_4'),
+    //   getItem('LS lương nhân viên', '7_5'),
+    //   getItem('Tổng hợp công nợ', '7_6'),
+    //   getItem('Ngân sách lương', '7_7'),
+    // ]),
     getItem('Thiết lập', '8', <i className='fa-solid fa-gear'></i>, [
       getItem('Nhân viên', '8_1'),
       getItem('Phòng ban', '8_9'),

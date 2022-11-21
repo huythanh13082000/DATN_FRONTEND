@@ -111,7 +111,7 @@ const getService = async (
   } catch (error: any) {
     // console.log('error', error.response)
     if ([401, 404].includes(error.response.status)) {
-      localStorage.removeItem(LOCAL_STORAGE.TOKEN)
+      // localStorage.removeItem(LOCAL_STORAGE.TOKEN)
       // configureStore.store.dispatch(signOut());
     }
   }

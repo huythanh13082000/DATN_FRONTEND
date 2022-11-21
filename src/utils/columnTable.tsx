@@ -295,8 +295,8 @@ export const personnelFineColumn = [
     render: (fine: MoneyModel) => <span>{fine.value}</span>,
   },
   {
-    title: 'Ngày tạo',
-    dataIndex: 'createdAt',
+    title: 'Ngày phạt',
+    dataIndex: 'dateFine',
     render: (text: string) => <span>{momentFomat(text)}</span>,
   },
 ]
