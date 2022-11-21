@@ -1,6 +1,7 @@
 import {Radio} from 'antd'
 import moment from 'moment'
 import {DepartmentModel} from '../models/department'
+import {MoneyModel} from '../models/money'
 import {PersonnelModel} from '../models/personnel'
 import {RankModel} from '../models/rank'
 import {FILE, formatNumberAsCurrency, momentFomat} from './constants'
@@ -224,9 +225,78 @@ export const columnsUser = [
     dataIndex: 'createdAt',
     render: (text: string) => <span>{momentFomat(text)}</span>,
   },
+  // {
+  //   title: 'Ngày chỉnh sửa',
+  //   dataIndex: 'updatedAt',
+  //   render: (text: string) => <span>{momentFomat(text)}</span>,
+  // },
+]
+
+export const personnelAllowanceColumn = [
   {
-    title: 'Ngày chỉnh sửa',
-    dataIndex: 'updatedAt',
+    title: 'Tên nhân viên',
+    dataIndex: 'personnel',
+    render: (personnel: PersonnelModel) => <span>{personnel.name}</span>,
+  },
+  {
+    title: 'Tên trợ cấp',
+    dataIndex: 'allowance',
+    render: (allowance: MoneyModel) => <span>{allowance.name}</span>,
+  },
+  {
+    title: 'Số tiền',
+    dataIndex: 'allowance',
+    render: (allowance: MoneyModel) => <span>{allowance.value}</span>,
+  },
+  {
+    title: 'Ngày tạo',
+    dataIndex: 'createdAt',
+    render: (text: string) => <span>{momentFomat(text)}</span>,
+  },
+]
+
+export const personnelBonusColumn = [
+  {
+    title: 'Tên nhân viên',
+    dataIndex: 'personnel',
+    render: (personnel: PersonnelModel) => <span>{personnel.name}</span>,
+  },
+  {
+    title: 'Tên thưởng',
+    dataIndex: 'bonus',
+    render: (bonus: MoneyModel) => <span>{bonus.name}</span>,
+  },
+  {
+    title: 'Số tiền',
+    dataIndex: 'bonus',
+    render: (bonus: MoneyModel) => <span>{bonus.value}</span>,
+  },
+  {
+    title: 'Ngày tạo',
+    dataIndex: 'createdAt',
+    render: (text: string) => <span>{momentFomat(text)}</span>,
+  },
+]
+
+export const personnelFineColumn = [
+  {
+    title: 'Tên nhân viên',
+    dataIndex: 'personnel',
+    render: (personnel: PersonnelModel) => <span>{personnel.name}</span>,
+  },
+  {
+    title: 'Tên phạt',
+    dataIndex: 'fine',
+    render: (fine: MoneyModel) => <span>{fine.name}</span>,
+  },
+  {
+    title: 'Số tiền',
+    dataIndex: 'fine',
+    render: (fine: MoneyModel) => <span>{fine.value}</span>,
+  },
+  {
+    title: 'Ngày tạo',
+    dataIndex: 'createdAt',
     render: (text: string) => <span>{momentFomat(text)}</span>,
   },
 ]

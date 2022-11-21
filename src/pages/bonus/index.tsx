@@ -1,11 +1,22 @@
+import {Tabs} from 'antd'
 import React from 'react'
-import { urlApi } from '../../apis/url'
+import {urlApi} from '../../apis/url'
 import TableCustom from '../../components/tableCustom'
-import { columnsMoney } from '../../utils/columnTable'
+import { personnelBonus } from '../../routers/paths/path'
+import {columnsMoney, personnelBonusColumn} from '../../utils/columnTable'
 
 const BonusPage = () => {
   return (
-    <div><TableCustom columns={columnsMoney} url={urlApi.bonus}/></div>
+    <div>
+      <Tabs defaultActiveKey='1'>
+        <Tabs.TabPane tab='Danh sách' key='1'>
+          <TableCustom columns={columnsMoney} url={urlApi.bonus} />
+        </Tabs.TabPane>
+        <Tabs.TabPane tab='Danh sách nhân viên' key='2'>
+          <TableCustom columns={personnelBonusColumn} url={urlApi.personnelBonus} />
+        </Tabs.TabPane>
+      </Tabs>
+    </div>
   )
 }
 

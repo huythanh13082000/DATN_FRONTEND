@@ -45,6 +45,22 @@ const authSlice = createSlice({
       state,
       action: PayloadAction<{newPassWord: string; oldPassWord: string}>
     ) {},
+    createUser(
+      state,
+      action: PayloadAction<{email: string; passWord: string}>
+    ) {
+      state.loadding = true
+    },
+    createUserSuccess(
+      state,
+    ) {
+      state.loadding = false
+    },
+    createUserFail(
+      state,
+    ) {
+      state.loadding = false
+    },
   },
 })
 

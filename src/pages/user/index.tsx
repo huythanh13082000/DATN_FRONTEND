@@ -6,7 +6,7 @@ import {columnsUser} from '../../utils/columnTable'
 const User = () => {
   return (
     <div>
-      <TableCustom columns={columnsUser} url={urlApi.user} />
+      <TableCustom columns={columnsUser} url={urlApi.user} disableEdit />
     </div>
   )
 }

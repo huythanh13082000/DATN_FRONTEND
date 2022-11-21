@@ -1,6 +1,5 @@
 export const urlApi = {
   login: '/auth/signin',
-  getProfile: '/auth/users',
   changePassWord: '/auth/users/changePassWord',
   department: '/departments',
   rank: '/ranks',
@@ -10,6 +9,7 @@ export const urlApi = {
   personnelBonus: '/personnelBonus',
   allowance: '/allowances',
   fine: '/fines',
+  personnelFine: '/personnelFines',
   personnelAllowance: '/personnelAllowances',
   summaryOfWorkingDays: '/timeSheets/summaryOfWorkingDays',
   user: '/auth/users',

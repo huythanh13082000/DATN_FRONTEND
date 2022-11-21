@@ -43,8 +43,23 @@ function* changePassWord(
   }
 }
 
+function* createUser(action: PayloadAction<{email: string; passWord: string}>) {
+  try {
+    const data: {description: string} = yield call(
+      authApi.createUser,
+      action.payload
+    )
+    yield put(authActions.createUserSuccess())
+    yield message.success(data.description)
+  } catch (error: any) {
+    console.log(error)
+    yield message.error(error.response.data.description)
+  }
+}
+
 export default function* authSaga() {
   yield takeEvery(authActions.login.type, login)
   yield takeEvery(authActions.getProfile.type, getProfile)
   yield takeEvery(authActions.changePassWord.type, changePassWord)
+  yield takeEvery(authActions.createUser.type, createUser)
 }

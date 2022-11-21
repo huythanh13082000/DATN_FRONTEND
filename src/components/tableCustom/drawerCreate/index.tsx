@@ -6,6 +6,7 @@ import CreateDepartment from '../../../pages/department/createDepartment'
 import CreateFine from '../../../pages/fine/createFine'
 import PersonnelCreate from '../../../pages/personnel/createPersonnel'
 import RankCreate from '../../../pages/rank/rankCreate'
+import CreateUser from '../../../pages/user/createUser'
 import {Url} from '../../../routers/paths'
 
 const CreatePage = (props: {
@@ -27,6 +28,8 @@ const CreatePage = (props: {
         return <CreateAllowance />
       case Url.fine:
         return <CreateFine />
+      case Url.user:
+        return <CreateUser />
       default:
         break
     }
