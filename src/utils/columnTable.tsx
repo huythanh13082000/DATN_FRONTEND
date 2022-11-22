@@ -300,3 +300,66 @@ export const personnelFineColumn = [
     render: (text: string) => <span>{momentFomat(text)}</span>,
   },
 ]
+
+export const summaryOfSalaryColumn = [
+  {
+    title: 'Tên nhân viên',
+    dataIndex: 'name',
+    render: (name: string) => <span>{name}</span>,
+  },
+  {
+    title: 'Email',
+    dataIndex: 'email',
+    render: (email: string) => <span>{email}</span>,
+  },
+  {
+    title: 'Số công',
+    dataIndex: 'count',
+    render: (count: string) => <span>{count}</span>,
+  },
+  {
+    title: 'Tiền phạt',
+    dataIndex: 'listFine',
+    render: (listFine: MoneyModel[]) => (
+      <>
+        {listFine.map((item, index) => {
+          // sum = +Number(item.value)
+          return (
+            <p>
+              {index + 1}, {item.name} - {formatNumberAsCurrency(item.value)}
+            </p>
+          )
+        })}
+
+        {/* <p>Tổng phạt - {sum}</p> */}
+      </>
+    ),
+  },
+  {
+    title: 'Tiền thưởng',
+    dataIndex: 'listBonus',
+    render: (listBonus: MoneyModel[]) => (
+      // if (listBonus.length !== 0)
+      <>
+        {listBonus.map((item, index) => {
+          // sum = +Number(item.value)
+          return (
+            <p>
+              {index + 1}, {item.name} - {formatNumberAsCurrency(item.value)}
+            </p>
+          )
+        })}
+        {/* <p>Tổng thưởng - {sum}</p> */}
+      </>
+    ),
+  },
+  {
+    title: 'Lương',
+    dataIndex: 'salary',
+    render: (salary: number) => (
+      <>
+        <p>{formatNumberAsCurrency(salary)}</p>
+      </>
+    ),
+  },
+]

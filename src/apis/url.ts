@@ -13,4 +13,5 @@ export const urlApi = {
   personnelAllowance: '/personnelAllowances',
   summaryOfWorkingDays: '/timeSheets/summaryOfWorkingDays',
   user: '/auth/users',
+  summaryOfSalary: '/timeSheets/summaryOfSalary',
 }

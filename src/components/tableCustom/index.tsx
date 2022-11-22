@@ -14,7 +14,7 @@ import DrawerUpdatePage from './drawerUpdate'
 
 const TableCustom = (props: {
   url: string
-  columns: ColumnsType<{}>
+  columns: ColumnsType<{}> | any
   disableAdd?: boolean
   disableDelete?: boolean
   disableEdit?: boolean
