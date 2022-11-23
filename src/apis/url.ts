@@ -14,4 +14,5 @@ export const urlApi = {
   summaryOfWorkingDays: '/timeSheets/summaryOfWorkingDays',
   user: '/auth/users',
   summaryOfSalary: '/timeSheets/summaryOfSalary',
+  salary:'/salarys'
 }

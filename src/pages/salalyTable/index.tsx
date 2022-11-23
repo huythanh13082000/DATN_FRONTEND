@@ -63,6 +63,15 @@ const SalalyTablePage = () => {
           paramsHeader={{sumWorkingDay, day}}
         />
       )}
+      {/* <Button
+        type='primary'
+        style={{marginTop: '1rem'}}
+        onClick={() => {
+          setCalculate(true)
+        }}
+      >
+        Lưu bảng lương
+      </Button> */}
     </div>
   )
 }

@@ -10,6 +10,8 @@ import {
   selectListPersonnel,
 } from '../../feature/personnel/personnelSlice'
 import moment from 'moment'
+import axiosClient from '../../apis/axiosClient'
+import {urlApi} from '../../apis/url'
 
 const Home = () => {
   const {t} = useTranslation()
@@ -17,6 +19,23 @@ const Home = () => {
   const listPersonnel = useAppSelector(selectListPersonnel)
   const [personnel, setPersonnel] = useState<{on: number; off: number}>()
   const [rank, setRank] = useState<{data: number[]; columns: string[]}>()
+  const [salary, setSalary] = useState<{data: number[]; columns: string[]}>()
+
+  useEffect(() => {
+    const getSalary = async () => {
+      const dataSalary: {data: {data:{name: string; salary: number}[]}} =
+        await axiosClient.getService(urlApi.salary)
+      console.log(444, dataSalary)
+      const columns = dataSalary.data.data.map((item) => {
+        return item.name
+      })
+      const data = dataSalary.data.data.map((item) => {
+        return item.salary
+      })
+      setSalary({data, columns})
+    }
+    getSalary()
+  }, [])
   // useEffect(() => {
   //   const b = async () => {
   //     // Its important to set the 'Content-Type': 'blob' and responseType:'arraybuffer'.
@@ -85,41 +104,23 @@ const Home = () => {
         className='home_row1'
         wrap={true}
         gutter={24}
-        
       >
-        <Col span={16}>
-          <ChartCustom
-            labels={[
-              '2022-06-07',
-              '2022-06-09',
-              '2022-06-011',
-              '2022-06-013',
-              '2022-06-15',
-              '2022-06-07',
-              '2022-06-09',
-              '2022-06-011',
-              '2022-06-013',
-              '2022-06-15',
-              '2022-06-07',
-              '2022-06-09',
-              '2022-06-011',
-              '2022-06-013',
-              '2022-06-15',
-            ]}
-            datasets={[
-              {
-                label: 'Lương',
-                data: [
-                  333, 333, 444, 55, 44, 55, 543, 333, 333, 444, 55, 44, 55,
-                  543, 333, 333, 444, 55, 44, 55, 543, 333, 333, 444,
-                ],
-                backgroundColor: '#758D96',
-              },
-            ]}
-            title={`Bảng lương tháng ${moment().month() + 1}`}
-            type='Bar'
-          />
-        </Col>
+        {salary && (
+          <Col span={16}>
+            <ChartCustom
+              labels={salary?.columns}
+              datasets={[
+                {
+                  label: 'Lương',
+                  data: salary?.data,
+                  backgroundColor: '#758D96',
+                },
+              ]}
+              title={`Bảng lương tháng ${moment().month() + 1}`}
+              type='Bar'
+            />
+          </Col>
+        )}
         {/* <Col span={12}>
           <ChartCustom
             labels={[
