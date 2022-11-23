@@ -1,44 +1,80 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Col, Row} from 'antd'
 import './home.css'
 import {useTranslation} from 'react-i18next'
 import {ChartCustom} from '../../components/chart'
 import axios, {AxiosRequestConfig} from 'axios'
+import {useAppDispatch, useAppSelector} from '../../app/hooks'
+import {
+  personnelAction,
+  selectListPersonnel,
+} from '../../feature/personnel/personnelSlice'
+import moment from 'moment'
 
 const Home = () => {
   const {t} = useTranslation()
+  const dispatch = useAppDispatch()
+  const listPersonnel = useAppSelector(selectListPersonnel)
+  const [personnel, setPersonnel] = useState<{on: number; off: number}>()
+  const [rank, setRank] = useState<{data: number[]; columns: string[]}>()
+  // useEffect(() => {
+  //   const b = async () => {
+  //     // Its important to set the 'Content-Type': 'blob' and responseType:'arraybuffer'.
+  //     const headers = {'Content-Type': 'blob'}
+  //     const config: AxiosRequestConfig = {
+  //       method: 'GET',
+  //       url: 'http://localhost:4200/api',
+  //       responseType: 'arraybuffer',
+  //       headers,
+  //     }
+
+  //     try {
+  //       const response = await axios(config)
+
+  //       const outputFilename = `${Date.now()}.xls`
+
+  //       // If you want to download file automatically using link attribute.
+  //       const url = URL.createObjectURL(new Blob([response.data]))
+  //       const link = document.createElement('a')
+  //       link.href = url
+  //       link.setAttribute('download', outputFilename)
+  //       document.body.appendChild(link)
+  //       link.click()
+
+  //       // OR you can save/write file locally.
+  //       // fs.writeFileSync(outputFilename, response.data)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
+  //   b()
+  // }, [])
   useEffect(() => {
-    const b = async () => {
-      // Its important to set the 'Content-Type': 'blob' and responseType:'arraybuffer'.
-      const headers = {'Content-Type': 'blob'}
-      const config: AxiosRequestConfig = {
-        method: 'GET',
-        url: 'http://localhost:4200/api',
-        responseType: 'arraybuffer',
-        headers,
+    dispatch(personnelAction.getListPersonnel())
+  }, [dispatch])
+  console.log(9999, listPersonnel)
+
+  useEffect(() => {
+    setPersonnel({
+      on: listPersonnel.filter((item) => item.status === true).length,
+      off: listPersonnel.filter((item) => item.status === false).length,
+    })
+    const dataRank = listPersonnel.map((item) => {
+      return item.rank.name
+    })
+    const columns: string[] = []
+    const data: number[] = []
+    dataRank.forEach((item) => {
+      if (!columns.includes(item)) {
+        columns.push(item)
       }
-
-      try {
-        const response = await axios(config)
-
-        const outputFilename = `${Date.now()}.xls`
-
-        // If you want to download file automatically using link attribute.
-        const url = URL.createObjectURL(new Blob([response.data]))
-        const link = document.createElement('a')
-        link.href = url
-        link.setAttribute('download', outputFilename)
-        document.body.appendChild(link)
-        link.click()
-
-        // OR you can save/write file locally.
-        // fs.writeFileSync(outputFilename, response.data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    b()
-  }, [])
+    })
+    columns.forEach((item) => {
+      data.push(dataRank.filter((item1) => item1 === item).length)
+    })
+    setRank({columns, data})
+  }, [listPersonnel])
+  console.log(8888, personnel)
 
   return (
     <div>
@@ -49,8 +85,9 @@ const Home = () => {
         className='home_row1'
         wrap={true}
         gutter={24}
+        
       >
-        <Col span={12}>
+        <Col span={16}>
           <ChartCustom
             labels={[
               '2022-06-07',
@@ -71,7 +108,7 @@ const Home = () => {
             ]}
             datasets={[
               {
-                label: 'Rides',
+                label: 'Lương',
                 data: [
                   333, 333, 444, 55, 44, 55, 543, 333, 333, 444, 55, 44, 55,
                   543, 333, 333, 444, 55, 44, 55, 543, 333, 333, 444,
@@ -79,11 +116,11 @@ const Home = () => {
                 backgroundColor: '#758D96',
               },
             ]}
-            title='Rides Per Hour'
+            title={`Bảng lương tháng ${moment().month() + 1}`}
             type='Bar'
           />
         </Col>
-        <Col span={12}>
+        {/* <Col span={12}>
           <ChartCustom
             labels={[
               '2022-06-07',
@@ -116,9 +153,9 @@ const Home = () => {
             type='Line'
             title='User Signups'
           />
-        </Col>
+        </Col> */}
       </Row>
-      <br></br>
+      {/* <br></br>
       <br></br>
       <Row justify='space-between' className='home_row1' wrap={true}>
         <Col span={24}>
@@ -155,33 +192,57 @@ const Home = () => {
             title='Rides:971'
           />
         </Col>
-      </Row>
+      </Row> */}
       <br></br>
       <br></br>
       <Row gutter={24}>
-        <Col span={8}>
-          <ChartCustom
-            labels={['item1', 'item2', 'item3', 'item4', 'item5', 'item6']}
-            datasets={[
-              {
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                  '#3980B5',
-                  '#3980B5',
-                  '#95BBD7',
-                  '#679DC6',
-                  '#0B62A4',
-                ],
-                borderColor: ['white', 'white', 'white', 'white', 'white'],
-                borderWidth: 2,
-              },
-            ]}
-            title='Fleet Productivity'
-            type='Doughnut'
-          />
-        </Col>
-        <Col span={8}>
+        {personnel && (
+          <Col span={8}>
+            <ChartCustom
+              labels={['Đang làm việc', 'Đã nghỉ việc']}
+              datasets={[
+                {
+                  label: '# of Votes',
+                  data: [Number(personnel?.on), Number(personnel?.off)],
+                  backgroundColor: [
+                    '#3980B5',
+                    // '#3980B5',
+                    '#95BBD7',
+                    // '#679DC6',
+                    // '#0B62A4',
+                  ],
+                  borderColor: [
+                    'white',
+                    'white',
+                    // , 'white', 'white', 'white'
+                  ],
+                  borderWidth: 2,
+                },
+              ]}
+              title='Biểu đồ nhân viên'
+              type='Doughnut'
+            />
+          </Col>
+        )}
+        {rank && (
+          <Col span={8}>
+            <ChartCustom
+              labels={rank?.columns}
+              datasets={[
+                {
+                  label: '# of Votes',
+                  data: rank.data,
+                  backgroundColor: ['#3980B5', '#95BBD7', '#679DC6', '#0B62A4'],
+                  borderColor: ['white', 'white', 'white', 'white', 'white'],
+                  borderWidth: 2,
+                },
+              ]}
+              title='Biểu đồ chức vụ'
+              type='Doughnut'
+            />
+          </Col>
+        )}
+        {/* <Col span={8}>
           <ChartCustom
             labels={['item1', 'item2', 'item3', 'item4', 'item5', 'item6']}
             datasets={[
@@ -224,7 +285,7 @@ const Home = () => {
             title='Vehicle Connectivity'
             type='Doughnut'
           />
-        </Col>
+        </Col> */}
       </Row>
     </div>
   )

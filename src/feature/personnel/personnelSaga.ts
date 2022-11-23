@@ -1,7 +1,8 @@
 import {PayloadAction} from '@reduxjs/toolkit'
 import {message} from 'antd'
-import {call, takeEvery} from 'redux-saga/effects'
+import {call, put, takeEvery} from 'redux-saga/effects'
 import {CreatePersonnel, personnelApi} from '../../apis/personnelApi'
+import {PersonnelModel} from '../../models/personnel'
 import {personnelAction} from './personnelSlice'
 
 function* createPersonnel(action: PayloadAction<FormData>) {
@@ -27,7 +28,21 @@ function* updatePersonnel(action: PayloadAction<FormData>) {
   }
 }
 
+function* getListPersonnel() {
+  try {
+    const listPersonnel: {list: PersonnelModel[]; description: string} =
+      yield call(personnelApi.getListPersonnel)
+    console.log(8907, listPersonnel)
+    yield put(personnelAction.getListPersonnelSucces(listPersonnel.list))
+    // yield message.success(messageupdate.description)
+  } catch (error: any) {
+    yield message.error(error.toString())
+    yield put(personnelAction.getListPersonnelFail())
+  }
+}
+
 export default function* personnelSaga() {
   yield takeEvery(personnelAction.createPersonnel.type, createPersonnel)
   yield takeEvery(personnelAction.updatePersonnel.type, updatePersonnel)
+  yield takeEvery(personnelAction.getListPersonnel.type, getListPersonnel)
 }

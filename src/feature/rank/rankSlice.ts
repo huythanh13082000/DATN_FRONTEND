@@ -1,10 +1,13 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {RankModel} from '../../models/rank'
 
 export interface rankState {
   loading: boolean
+  listRank: RankModel[]
 }
 const initialState: rankState = {
   loading: false,
+  listRank: [],
 }
 
 const rankSlice = createSlice({
@@ -21,6 +24,16 @@ const rankSlice = createSlice({
       state.loading = false
     },
     createRankFail(state) {
+      state.loading = false
+    },
+    getListRank(state) {
+      state.loading = true
+    },
+    getListRankSuccess(state, action: PayloadAction<RankModel[]>) {
+      state.listRank = action.payload
+      state.loading = false
+    },
+    getListRankFail(state) {
       state.loading = false
     },
     updateRank(
