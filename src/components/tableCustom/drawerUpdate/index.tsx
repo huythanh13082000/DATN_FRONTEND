@@ -10,6 +10,7 @@ import UpdateFine from '../../../pages/fine/updateFine'
 import UpdatePersonnelfine from '../../../pages/fine/updatePersonnelFine'
 import PersonnelUpdate from '../../../pages/personnel/updatePersonnel'
 import RankUpdate from '../../../pages/rank/rankUpdate'
+import UpdateUser from '../../../pages/user/updateUser'
 import {Url} from '../../../routers/paths'
 
 const UpdatePage = (props: {
@@ -36,6 +37,8 @@ const UpdatePage = (props: {
         return <UpdatePersonnelBonus data={props.dataRow} />
       case Url.personnelFine:
         return <UpdatePersonnelfine data={props.dataRow} />
+        case Url.user:
+          return <UpdateUser data={props.dataRow} />
       default:
         break
     }

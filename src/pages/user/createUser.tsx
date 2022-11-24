@@ -1,4 +1,4 @@
-import {Button, Col, Input, message, Row} from 'antd'
+import {Button, Col, Input, message, Row, Select} from 'antd'
 import React, {useState} from 'react'
 import {useAppDispatch} from '../../app/hooks'
 import {authActions} from '../../feature/auth/authSlice'
@@ -8,9 +8,13 @@ const CreateUser = () => {
   const [email, setEmail] = useState<string>()
   const [passWord, setPassWord] = useState<string>()
   const [checkPassWord, setCheckPassWord] = useState<string>()
+  const [role, setRole] = useState<string>()
   const createUser = () => {
     if (passWord === checkPassWord)
-      email && passWord && dispatch(authActions.createUser({email, passWord}))
+      email &&
+        passWord &&
+        role &&
+        dispatch(authActions.createUser({email, passWord, role}))
     else {
       message.error('Mật khẩu không khớp!')
     }
@@ -18,6 +22,26 @@ const CreateUser = () => {
 
   return (
     <Row>
+      <p>Quyền :</p>
+      <Select
+        style={{width: '100%'}}
+        onChange={(e) => setRole(e)}
+        options={[
+          {
+            value: 'admin',
+            label: 'Admin',
+          },
+          {
+            value: 'manage',
+            label: 'Quản lý',
+          },
+          {
+            value: 'member',
+            label: 'Nhân viên',
+          },
+        ]}
+      />
+      <br />
       <p>Email :</p>
       <Input
         placeholder='Nhập email'

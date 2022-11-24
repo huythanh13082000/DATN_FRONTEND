@@ -1,19 +1,28 @@
-import {Button, Col, Input, message, Row} from 'antd'
-import React, {useState} from 'react'
+import {Button, Col, Input, message, Row, Select} from 'antd'
+import React, {useState, useEffect} from 'react'
 import {useAppDispatch} from '../../app/hooks'
 import {authActions} from '../../feature/auth/authSlice'
+import {UserModel} from '../../models/user.model'
 
-const CreateUser = () => {
+const UpdateUser = (props: {data: UserModel}) => {
   const dispatch = useAppDispatch()
   const [email, setEmail] = useState<string>()
-  const [passWord, setPassWord] = useState<string>()
-  const [checkPassWord, setCheckPassWord] = useState<string>()
-  const createUser = () => {
-    if (passWord === checkPassWord)
-      email && passWord && dispatch(authActions.createUser({email, passWord}))
-    else {
-      message.error('Mật khẩu không khớp!')
-    }
+  const [role, setRole] = useState<string>()
+  useEffect(() => {
+    setEmail(props.data.email)
+    setRole(props.data.role)
+  }, [props])
+
+  const updateUser = () => {
+    // if (passWord === checkPassWord)
+    email &&
+      role &&
+      props.data._id &&
+      dispatch(authActions.updateUser({email, role, _id: props.data._id}))
+    // else {
+    console.log(1233)
+    //   message.error('Mật khẩu không khớp!')
+    // }
   }
 
   return (
@@ -26,29 +35,29 @@ const CreateUser = () => {
           setEmail(e.target.value)
         }}
       />
-      <p>Mật khẩu :</p>
-      <Input
-        value={passWord}
-        onChange={(e) => {
-          setPassWord(e.target.value)
-        }}
-        placeholder='Nhập mật khẩu'
+      <p>Quyền :</p>
+      <Select
         style={{width: '100%'}}
-        type={'passWord'}
-      />
-      <p>Xác nhận mật khẩu :</p>
-      <Input
-        value={checkPassWord}
-        onChange={(e) => {
-          setCheckPassWord(e.target.value)
-        }}
-        placeholder='Xác nhận mật khẩu'
-        style={{width: '100%'}}
-        type={'passWord'}
+        onChange={(e) => setRole(e)}
+        value={role}
+        options={[
+          {
+            value: 'admin',
+            label: 'Admin',
+          },
+          {
+            value: 'manage',
+            label: 'Quản lý',
+          },
+          {
+            value: 'member',
+            label: 'Nhân viên',
+          },
+        ]}
       />
 
       <Col span={24} style={{marginTop: '1rem'}}>
-        <Button type='primary' onClick={createUser}>
+        <Button type='primary' onClick={updateUser}>
           Lưu
         </Button>
       </Col>
@@ -56,4 +65,4 @@ const CreateUser = () => {
   )
 }
 
-export default CreateUser
+export default UpdateUser

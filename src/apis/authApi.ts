@@ -12,7 +12,10 @@ export const authApi = {
   changePassWord(params: {newPassWord: string; oldPassWord: string}) {
     return axiosClient.updateService(urlApi.changePassWord, params)
   },
-  createUser(params: {email: string; passWord: string}) {
+  createUser(params: {email: string; passWord: string; role: string}) {
     return axiosClient.postService(urlApi.user, params)
+  },
+  updateUser(params: {email: string; role: string; _id: string}) {
+    return axiosClient.updateService(urlApi.user, params)
   },
 }

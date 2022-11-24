@@ -43,7 +43,9 @@ function* changePassWord(
   }
 }
 
-function* createUser(action: PayloadAction<{email: string; passWord: string}>) {
+function* createUser(
+  action: PayloadAction<{email: string; passWord: string; role: string}>
+) {
   try {
     const data: {description: string} = yield call(
       authApi.createUser,
@@ -56,10 +58,26 @@ function* createUser(action: PayloadAction<{email: string; passWord: string}>) {
     yield message.error(error.response.data.description)
   }
 }
+function* updateUser(
+  action: PayloadAction<{email: string; _id: string; role: string}>
+) {
+  try {
+    const data: {description: string} = yield call(
+      authApi.updateUser,
+      action.payload
+    )
+    yield put(authActions.updateUserSuccess())
+    yield message.success(data.description)
+  } catch (error: any) {
+    console.log(error)
+    yield message.error(error.response.data.description)
+  }
+}
 
 export default function* authSaga() {
   yield takeEvery(authActions.login.type, login)
   yield takeEvery(authActions.getProfile.type, getProfile)
   yield takeEvery(authActions.changePassWord.type, changePassWord)
   yield takeEvery(authActions.createUser.type, createUser)
+  yield takeEvery(authActions.updateUser.type, updateUser)
 }

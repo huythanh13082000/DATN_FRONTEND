@@ -47,18 +47,26 @@ const authSlice = createSlice({
     ) {},
     createUser(
       state,
-      action: PayloadAction<{email: string; passWord: string}>
+      action: PayloadAction<{email: string; passWord: string; role: string}>
     ) {
       state.loadding = true
     },
-    createUserSuccess(
-      state,
-    ) {
+    createUserSuccess(state) {
       state.loadding = false
     },
-    createUserFail(
+    createUserFail(state) {
+      state.loadding = false
+    },
+    updateUser(
       state,
+      action: PayloadAction<{email: string; _id: string; role: string}>
     ) {
+      state.loadding = true
+    },
+    updateUserSuccess(state) {
+      state.loadding = false
+    },
+    updateUserFail(state) {
       state.loadding = false
     },
   },

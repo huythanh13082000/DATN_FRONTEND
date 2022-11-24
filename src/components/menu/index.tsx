@@ -1,8 +1,10 @@
-import type {MenuProps} from 'antd'
+import {MenuProps, message} from 'antd'
 import {Button, Menu} from 'antd'
 import React, {useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useLocation, useNavigate} from 'react-router-dom'
+import {useAppSelector} from '../../app/hooks'
+import {selectUser} from '../../feature/auth/authSlice'
 import {Url} from '../../routers/paths'
 import './menu.css'
 
@@ -14,6 +16,7 @@ const MenuHome: React.FC = () => {
   const [defaultSelectedKeys, setDefaultSelectedKeys] = useState<string[]>()
   const [defaultOpenKeys, setDefaultOpenKeys] = useState<string[]>()
   const location = useLocation()
+  const user = useAppSelector(selectUser)
 
   function getItem(
     label: React.ReactNode,
@@ -39,12 +42,12 @@ const MenuHome: React.FC = () => {
           case '8_9':
             navigate(Url.department)
             break
-
           case '8_10':
             navigate(Url.rank)
             break
           case '8_11':
-            navigate(Url.user)
+            if (user?.role === 'admin') navigate(Url.user)
+            else message.info('Bạn không có quyền sử dụng chức năng này!')
             break
           case '4_1':
             navigate(Url.timeSheet)
