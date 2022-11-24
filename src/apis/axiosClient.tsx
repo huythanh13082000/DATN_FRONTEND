@@ -1,11 +1,10 @@
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {Config, LOCAL_STORAGE} from '../utils/constants'
 
 const req = axios.create({
   baseURL: Config.HOST_API,
 })
-
 
 const postService = async (
   url: string,
@@ -39,6 +38,7 @@ const postService = async (
   } catch (error: any) {
     if ([401, 404].includes(error.response.status)) {
       localStorage.removeItem(LOCAL_STORAGE.TOKEN)
+      
       // configureStore.store.dispatch(signOut());
     }
   }
@@ -111,7 +111,7 @@ const getService = async (
   } catch (error: any) {
     // console.log('error', error.response)
     if ([401, 404].includes(error.response.status)) {
-      // localStorage.removeItem(LOCAL_STORAGE.TOKEN)
+      localStorage.removeItem(LOCAL_STORAGE.TOKEN)
       // configureStore.store.dispatch(signOut());
     }
   }
@@ -148,7 +148,6 @@ const deleteService = async (
     // console.log('error', error.response)
     if ([401, 404].includes(error.response.status)) {
       localStorage.removeItem(LOCAL_STORAGE.TOKEN)
-      
       // configureStore.store.dispatch(signOut());
     }
   }

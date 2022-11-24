@@ -23,7 +23,7 @@ const Home = () => {
 
   useEffect(() => {
     const getSalary = async () => {
-      const dataSalary: {data: {data:{name: string; salary: number}[]}} =
+      const dataSalary: {data: {data: {name: string; salary: number}[]}} =
         await axiosClient.getService(urlApi.salary)
       console.log(444, dataSalary)
       const columns = dataSalary.data.data.map((item) => {
@@ -118,6 +118,52 @@ const Home = () => {
               ]}
               title={`Bảng lương tháng ${moment().month() + 1}`}
               type='Bar'
+              height='70vh'
+            />
+          </Col>
+        )}
+        {personnel?.off && personnel.on && rank?.columns && rank.data && salary&&(
+          <Col span={8}>
+            <ChartCustom
+              labels={['Đang làm việc', 'Đã nghỉ việc']}
+              datasets={[
+                {
+                  label: '# of Votes',
+                  data: [Number(personnel?.on), Number(personnel?.off)],
+                  backgroundColor: [
+                    '#3980B5',
+                    // '#3980B5',
+                    '#95BBD7',
+                    // '#679DC6',
+                    // '#0B62A4',
+                  ],
+                  borderColor: [
+                    'white',
+                    'white',
+                    // , 'white', 'white', 'white'
+                  ],
+                  borderWidth: 2,
+                },
+              ]}
+              height='35vh'
+              title='Biểu đồ nhân viên'
+              type='Doughnut'
+            />
+
+            <ChartCustom
+              labels={rank?.columns}
+              datasets={[
+                {
+                  label: '# of Votes',
+                  data: rank.data,
+                  backgroundColor: ['#3980B5', '#95BBD7', '#679DC6', '#0B62A4'],
+                  borderColor: ['white', 'white', 'white', 'white', 'white'],
+                  borderWidth: 2,
+                },
+              ]}
+              title='Biểu đồ chức vụ'
+              type='Doughnut'
+              height='35vh'
             />
           </Col>
         )}
@@ -196,54 +242,8 @@ const Home = () => {
       </Row> */}
       <br></br>
       <br></br>
-      <Row gutter={24}>
-        {personnel && (
-          <Col span={8}>
-            <ChartCustom
-              labels={['Đang làm việc', 'Đã nghỉ việc']}
-              datasets={[
-                {
-                  label: '# of Votes',
-                  data: [Number(personnel?.on), Number(personnel?.off)],
-                  backgroundColor: [
-                    '#3980B5',
-                    // '#3980B5',
-                    '#95BBD7',
-                    // '#679DC6',
-                    // '#0B62A4',
-                  ],
-                  borderColor: [
-                    'white',
-                    'white',
-                    // , 'white', 'white', 'white'
-                  ],
-                  borderWidth: 2,
-                },
-              ]}
-              title='Biểu đồ nhân viên'
-              type='Doughnut'
-            />
-          </Col>
-        )}
-        {rank && (
-          <Col span={8}>
-            <ChartCustom
-              labels={rank?.columns}
-              datasets={[
-                {
-                  label: '# of Votes',
-                  data: rank.data,
-                  backgroundColor: ['#3980B5', '#95BBD7', '#679DC6', '#0B62A4'],
-                  borderColor: ['white', 'white', 'white', 'white', 'white'],
-                  borderWidth: 2,
-                },
-              ]}
-              title='Biểu đồ chức vụ'
-              type='Doughnut'
-            />
-          </Col>
-        )}
-        {/* <Col span={8}>
+
+      {/* <Col span={8}>
           <ChartCustom
             labels={['item1', 'item2', 'item3', 'item4', 'item5', 'item6']}
             datasets={[
@@ -287,7 +287,6 @@ const Home = () => {
             type='Doughnut'
           />
         </Col> */}
-      </Row>
     </div>
   )
 }

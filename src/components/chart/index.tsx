@@ -42,6 +42,7 @@ export function ChartCustom(props: {
   type: 'Bar' | 'Line' | 'Doughnut'
   labels: string[]
   datasets: DataSetChart[]
+  height: string
 }) {
   const [data, setData] = useState<{
     labels: string[]
@@ -61,7 +62,7 @@ export function ChartCustom(props: {
             background: '#FFFFFF',
             padding: '1rem',
             borderRadius: '5px',
-            height: '309px',
+            height: props.height,
           }}
         >
           <p className='bc_p1'>{props.title}</p>

@@ -2,7 +2,7 @@ import type {MenuProps} from 'antd'
 import {Button, Menu} from 'antd'
 import React, {useState} from 'react'
 import {useTranslation} from 'react-i18next'
-import {useNavigate} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import {Url} from '../../routers/paths'
 import './menu.css'
 
@@ -11,6 +11,9 @@ type MenuItem = Required<MenuProps>['items'][number]
 const MenuHome: React.FC = () => {
   const {t} = useTranslation()
   const navigate = useNavigate()
+  const [defaultSelectedKeys, setDefaultSelectedKeys] = useState<string[]>()
+  const [defaultOpenKeys, setDefaultOpenKeys] = useState<string[]>()
+  const location = useLocation()
 
   function getItem(
     label: React.ReactNode,
@@ -135,7 +138,8 @@ const MenuHome: React.FC = () => {
       style={{
         color: '#758D96',
       }}
-      defaultSelectedKeys={['1']}
+      defaultSelectedKeys={['4_8']}
+      defaultOpenKeys={['4']}
       mode='inline'
       theme='light'
       items={items}
