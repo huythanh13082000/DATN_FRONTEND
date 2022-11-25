@@ -12,10 +12,12 @@ import {
 import moment from 'moment'
 import axiosClient from '../../apis/axiosClient'
 import {urlApi} from '../../apis/url'
+import {selectUser} from '../../feature/auth/authSlice'
 
 const Home = () => {
   const {t} = useTranslation()
   const dispatch = useAppDispatch()
+  const user = useAppSelector(selectUser)
   const listPersonnel = useAppSelector(selectListPersonnel)
   const [personnel, setPersonnel] = useState<{on: number; off: number}>()
   const [rank, setRank] = useState<{data: number[]; columns: string[]}>()
@@ -122,51 +124,60 @@ const Home = () => {
             />
           </Col>
         )}
-        {personnel?.off && personnel.on && rank?.columns && rank.data && salary&&(
-          <Col span={8}>
-            <ChartCustom
-              labels={['Đang làm việc', 'Đã nghỉ việc']}
-              datasets={[
-                {
-                  label: '# of Votes',
-                  data: [Number(personnel?.on), Number(personnel?.off)],
-                  backgroundColor: [
-                    '#3980B5',
-                    // '#3980B5',
-                    '#95BBD7',
-                    // '#679DC6',
-                    // '#0B62A4',
-                  ],
-                  borderColor: [
-                    'white',
-                    'white',
-                    // , 'white', 'white', 'white'
-                  ],
-                  borderWidth: 2,
-                },
-              ]}
-              height='35vh'
-              title='Biểu đồ nhân viên'
-              type='Doughnut'
-            />
+        {personnel?.off &&
+          personnel.on &&
+          rank?.columns &&
+          rank.data &&
+          salary && (
+            <Col span={8}>
+              <ChartCustom
+                labels={['Đang làm việc', 'Đã nghỉ việc']}
+                datasets={[
+                  {
+                    label: '# of Votes',
+                    data: [Number(personnel?.on), Number(personnel?.off)],
+                    backgroundColor: [
+                      '#3980B5',
+                      // '#3980B5',
+                      '#95BBD7',
+                      // '#679DC6',
+                      // '#0B62A4',
+                    ],
+                    borderColor: [
+                      'white',
+                      'white',
+                      // , 'white', 'white', 'white'
+                    ],
+                    borderWidth: 2,
+                  },
+                ]}
+                height='35vh'
+                title='Biểu đồ nhân viên'
+                type='Doughnut'
+              />
 
-            <ChartCustom
-              labels={rank?.columns}
-              datasets={[
-                {
-                  label: '# of Votes',
-                  data: rank.data,
-                  backgroundColor: ['#3980B5', '#95BBD7', '#679DC6', '#0B62A4'],
-                  borderColor: ['white', 'white', 'white', 'white', 'white'],
-                  borderWidth: 2,
-                },
-              ]}
-              title='Biểu đồ chức vụ'
-              type='Doughnut'
-              height='35vh'
-            />
-          </Col>
-        )}
+              <ChartCustom
+                labels={rank?.columns}
+                datasets={[
+                  {
+                    label: '# of Votes',
+                    data: rank.data,
+                    backgroundColor: [
+                      '#3980B5',
+                      '#95BBD7',
+                      '#679DC6',
+                      '#0B62A4',
+                    ],
+                    borderColor: ['white', 'white', 'white', 'white', 'white'],
+                    borderWidth: 2,
+                  },
+                ]}
+                title='Biểu đồ chức vụ'
+                type='Doughnut'
+                height='35vh'
+              />
+            </Col>
+          )}
         {/* <Col span={12}>
           <ChartCustom
             labels={[

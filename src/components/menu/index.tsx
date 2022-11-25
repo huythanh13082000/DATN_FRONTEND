@@ -1,6 +1,6 @@
 import {MenuProps, message} from 'antd'
 import {Button, Menu} from 'antd'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useLocation, useNavigate} from 'react-router-dom'
 import {useAppSelector} from '../../app/hooks'
@@ -46,8 +46,7 @@ const MenuHome: React.FC = () => {
             navigate(Url.rank)
             break
           case '8_11':
-            if (user?.role === 'admin') navigate(Url.user)
-            else message.info('Bạn không có quyền sử dụng chức năng này!')
+            navigate(Url.user)
             break
           case '4_1':
             navigate(Url.timeSheet)
@@ -74,6 +73,9 @@ const MenuHome: React.FC = () => {
       style: {color: '#758D96'},
     } as MenuItem
   }
+  // useEffect(()=>{
+  //   navigate('/home')
+  // },[navigate])
 
   const items: MenuItem[] = [
     //tong quan
@@ -141,8 +143,8 @@ const MenuHome: React.FC = () => {
       style={{
         color: '#758D96',
       }}
-      defaultSelectedKeys={['4_8']}
-      defaultOpenKeys={['4']}
+      defaultSelectedKeys={['1']}
+      // defaultOpenKeys={['4']}
       mode='inline'
       theme='light'
       items={items}

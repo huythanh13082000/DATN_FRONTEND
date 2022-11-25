@@ -18,6 +18,7 @@ const CardInfor = (props: {user: UserModel}) => {
   const hanleLogout = () => {
     localStorage.removeItem(LOCAL_STORAGE.TOKEN)
     dispatch(authActions.setLoginStatus(false))
+    dispatch(authActions.setUser(undefined))
     navigate('/login')
   }
   // useEffect(() => {

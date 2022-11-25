@@ -69,6 +69,9 @@ const authSlice = createSlice({
     updateUserFail(state) {
       state.loadding = false
     },
+    setUser(state, action: PayloadAction<any>) {
+      state.user = action.payload
+    },
   },
 })
 

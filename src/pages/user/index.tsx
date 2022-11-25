@@ -9,16 +9,13 @@ import {columnsUser} from '../../utils/columnTable'
 
 const User = () => {
   const user = useAppSelector(selectUser)
-  const navigate = useNavigate()
-  useEffect(() => {
-    if (user?.role !== 'admin') {
-      navigate(-1)
-    }
-  }, [user, navigate])
-
   return (
     <div>
-      <TableCustom columns={columnsUser} url={urlApi.user} />
+      {user?.role === 'admin' ? (
+        <TableCustom columns={columnsUser} url={urlApi.user} />
+      ) : (
+        <>Không có quyền thao tác!</>
+      )}
     </div>
   )
 }

@@ -2,12 +2,17 @@ import {
   DeleteOutlined,
   EditOutlined,
   FileAddOutlined,
+  FileExcelOutlined,
   ReloadOutlined,
 } from '@ant-design/icons'
 import {Button, Col, message, Row, Table, Tooltip} from 'antd'
 import type {ColumnsType} from 'antd/es/table'
+import axios, {AxiosRequestConfig} from 'axios'
+import moment from 'moment'
 import React, {useState, useEffect} from 'react'
+import {useLocation} from 'react-router-dom'
 import axiosClient from '../../apis/axiosClient'
+import {LOCAL_STORAGE} from '../../utils/constants'
 import CreatePage from './drawerCreate'
 import UpdatePage from './drawerUpdate'
 import DrawerUpdatePage from './drawerUpdate'
@@ -18,6 +23,7 @@ const TableCustom = (props: {
   disableAdd?: boolean
   disableDelete?: boolean
   disableEdit?: boolean
+  disableExportExcel?: boolean
   paramsHeader?: {}
 }) => {
   const [limit, setLimit] = useState<number>(10)
@@ -31,6 +37,7 @@ const TableCustom = (props: {
   const [openCreate, setOpenCreate] = useState(false)
   const [disableAdd, setDisableAdd] = useState(false)
   const [reload, setReload] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     !props.disableEdit
@@ -108,6 +115,38 @@ const TableCustom = (props: {
   }
   const hasSelected = selectedRowKeys.length > 0
 
+  const exportExcel = async () => {
+    // Its important to set the 'Content-Type': 'blob' and responseType:'arraybuffer'.
+    const headers = {
+      'Content-Type': 'blob',
+      Authorization: `Bearer ${localStorage.getItem(LOCAL_STORAGE.TOKEN)}`,
+    }
+    const config: AxiosRequestConfig = {
+      method: 'GET',
+      url: `https://datn-pht1308.herokuapp.com/api${props.url}/export-excel`,
+      responseType: 'arraybuffer',
+      headers,
+      params: {...props.paramsHeader},
+    }
+    try {
+      const response = await axios(config)
+      const outputFilename = `${location.pathname}_${moment().format(
+        'DD/MM/YYYY,h:mm:ss'
+      )}.csv`
+      // If you want to download file automatically using link attribute.
+      const url = URL.createObjectURL(new Blob([response.data]))
+      const link = document.createElement('a')
+      link.href = url
+      link.setAttribute('download', outputFilename)
+      document.body.appendChild(link)
+      link.click()
+      // OR you can save/write file locally.
+      // fs.writeFileSync(outputFilename, response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div>
       <Row justify='space-between' align='middle' style={{marginTop: '2rem'}}>
@@ -122,6 +161,13 @@ const TableCustom = (props: {
               </Button>
             </Tooltip>
           ) : null}
+          {!props.disableExportExcel && (
+            <Tooltip title='Xuất excel'>
+              <Button onClick={() => exportExcel()}>
+                <FileExcelOutlined />
+              </Button>
+            </Tooltip>
+          )}
           <div style={{margin: '0 8px'}}></div>
           {!props.disableAdd && (
             <Tooltip title='Thêm'>

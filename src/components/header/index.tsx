@@ -11,11 +11,7 @@ import './header.css'
 const buttonWidth = 70
 
 const HeaderComponent = () => {
-  const dispatch = useAppDispatch()
   const user = useAppSelector(selectUser)
-  useEffect(() => {
-    dispatch(authActions.getProfile())
-  }, [dispatch])
   console.log(6666, user)
   return (
     <div className='header-container'>
