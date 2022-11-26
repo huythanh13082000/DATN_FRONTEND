@@ -14,7 +14,7 @@ const Router = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem(LOCAL_STORAGE.TOKEN);
-    if (!token) navigate(Url.login);
+    if (!token) navigate('/login');
   }, [navigate]);
 
   return (

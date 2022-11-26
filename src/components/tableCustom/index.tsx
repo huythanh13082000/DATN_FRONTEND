@@ -6,7 +6,16 @@ import {
   MailOutlined,
   ReloadOutlined,
 } from '@ant-design/icons'
-import {Button, Col, message, Popconfirm, Row, Table, Tooltip} from 'antd'
+import {
+  Button,
+  Col,
+  Input,
+  message,
+  Popconfirm,
+  Row,
+  Table,
+  Tooltip,
+} from 'antd'
 import type {ColumnsType} from 'antd/es/table'
 import axios, {AxiosRequestConfig} from 'axios'
 import moment from 'moment'
@@ -39,6 +48,7 @@ const TableCustom = (props: {
   const [openUpdate, setOpenUpdate] = useState(false)
   const [openCreate, setOpenCreate] = useState(false)
   const [disableAdd, setDisableAdd] = useState(false)
+  const [name, setName] = useState('')
   const [reload, setReload] = useState(false)
   const location = useLocation()
 
@@ -67,22 +77,19 @@ const TableCustom = (props: {
                 placement='bottom'
                 title={'Xác nhận gửi mail ?'}
                 onConfirm={async () => {
-                  await axiosClient.getService(
-                    `http://localhost:8080/api/timeSheets/summaryOfSalary/sendMail`,
-                    dataRow
-                  )
+                  await axiosClient.getService(`${props.url}/sendMail`, {
+                    ...dataRow,
+                    ...props.paramsHeader,
+                  })
                 }}
                 okText='Yes'
                 cancelText='No'
               >
-                  <Tooltip
-                    title='Gửi phiếu lương'
-                    style={{marginRight: '1rem'}}
-                  >
-                    <Button>
-                      <MailOutlined />
-                    </Button>
-                  </Tooltip>
+                <Tooltip title='Gửi phiếu lương' style={{marginRight: '1rem'}}>
+                  <Button>
+                    <MailOutlined />
+                  </Button>
+                </Tooltip>
               </Popconfirm>
             )}
           </>
@@ -95,13 +102,15 @@ const TableCustom = (props: {
     props.sendMail,
     props.disableAction,
     dataRow,
+    props.url,
+    props.paramsHeader,
   ])
 
   useEffect(() => {
     const getListData = async () => {
       const data: {list: []; total: number} = await axiosClient.getService(
         props.url,
-        {limit, page, ...props.paramsHeader}
+        {limit, page, ...props.paramsHeader, name}
       )
       const newData = data.list.map((item: any) => {
         return {...item, key: item._id}
@@ -119,6 +128,7 @@ const TableCustom = (props: {
     reload,
     openCreate,
     props.paramsHeader,
+    name,
   ])
 
   const handleDelete = async () => {
@@ -218,6 +228,12 @@ const TableCustom = (props: {
             </Button>
           </Tooltip>
         </div>
+      </Row>
+      <Row>
+        <Col span={4}>
+          <p>Tìm kiếm theo tên: </p>
+          <Input placeholder='name' onChange={(e) => setName(e.target.value)} />
+        </Col>
       </Row>
 
       <Table

@@ -36,7 +36,7 @@ const postService = async (
   try {
     await response
   } catch (error: any) {
-    if ([401, 404].includes(error.response.status)) {
+    if ([401].includes(error.response.status)) {
       localStorage.removeItem(LOCAL_STORAGE.TOKEN)
       
       // configureStore.store.dispatch(signOut());
@@ -73,7 +73,7 @@ const updateService = async (
     await response
   } catch (error: any) {
     // console.log('error', error.response)
-    if ([401, 404].includes(error.response.status)) {
+    if ([401].includes(error.response.status)) {
       localStorage.removeItem(LOCAL_STORAGE.TOKEN)
       // configureStore.store.dispatch(signOut());
     }
@@ -110,7 +110,7 @@ const getService = async (
     await response
   } catch (error: any) {
     // console.log('error', error.response)
-    if ([401, 404].includes(error.response.status)) {
+    if ([401].includes(error.response.status)) {
       localStorage.removeItem(LOCAL_STORAGE.TOKEN)
       // configureStore.store.dispatch(signOut());
     }
@@ -146,7 +146,7 @@ const deleteService = async (
     await response
   } catch (error: any) {
     // console.log('error', error.response)
-    if ([401, 404].includes(error.response.status)) {
+    if ([401].includes(error.response.status)) {
       localStorage.removeItem(LOCAL_STORAGE.TOKEN)
       // configureStore.store.dispatch(signOut());
     }
