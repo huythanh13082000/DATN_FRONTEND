@@ -3,9 +3,10 @@ import {
   EditOutlined,
   FileAddOutlined,
   FileExcelOutlined,
+  MailOutlined,
   ReloadOutlined,
 } from '@ant-design/icons'
-import {Button, Col, message, Row, Table, Tooltip} from 'antd'
+import {Button, Col, message, Popconfirm, Row, Table, Tooltip} from 'antd'
 import type {ColumnsType} from 'antd/es/table'
 import axios, {AxiosRequestConfig} from 'axios'
 import moment from 'moment'
@@ -23,8 +24,10 @@ const TableCustom = (props: {
   disableAdd?: boolean
   disableDelete?: boolean
   disableEdit?: boolean
+  disableAction?: boolean
   disableExportExcel?: boolean
   paramsHeader?: {}
+  sendMail?: boolean
 }) => {
   const [limit, setLimit] = useState<number>(10)
   const [page, setPage] = useState<number>(1)
@@ -40,13 +43,14 @@ const TableCustom = (props: {
   const location = useLocation()
 
   useEffect(() => {
-    !props.disableEdit
-      ? setColumns([
-          ...props.columns,
-          {
-            title: 'Hành động',
-            dataIndex: '_id',
-            render: (text: string) => (
+    setColumns([
+      ...props.columns,
+      !props.disableAction && {
+        title: 'Hành động',
+        dataIndex: '_id',
+        render: (text: string) => (
+          <>
+            {!props.disableEdit && (
               <Tooltip title='Sửa' style={{marginRight: '1rem'}}>
                 <Button
                   onClick={() => {
@@ -56,11 +60,42 @@ const TableCustom = (props: {
                   <EditOutlined />
                 </Button>
               </Tooltip>
-            ),
-          },
-        ])
-      : setColumns([...props.columns])
-  }, [props.columns, props.disableEdit])
+            )}
+            {props.sendMail && (
+              <Popconfirm
+                className='abc'
+                placement='bottom'
+                title={'Xác nhận gửi mail ?'}
+                onConfirm={async () => {
+                  await axiosClient.getService(
+                    `http://localhost:8080/api/timeSheets/summaryOfSalary/sendMail`,
+                    dataRow
+                  )
+                }}
+                okText='Yes'
+                cancelText='No'
+              >
+                  <Tooltip
+                    title='Gửi phiếu lương'
+                    style={{marginRight: '1rem'}}
+                  >
+                    <Button>
+                      <MailOutlined />
+                    </Button>
+                  </Tooltip>
+              </Popconfirm>
+            )}
+          </>
+        ),
+      },
+    ])
+  }, [
+    props.columns,
+    props.disableEdit,
+    props.sendMail,
+    props.disableAction,
+    dataRow,
+  ])
 
   useEffect(() => {
     const getListData = async () => {

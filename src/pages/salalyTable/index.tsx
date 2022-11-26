@@ -60,6 +60,7 @@ const SalalyTablePage = () => {
           disableAdd
           disableDelete
           disableEdit
+          sendMail
           paramsHeader={{sumWorkingDay, day}}
         />
       )}

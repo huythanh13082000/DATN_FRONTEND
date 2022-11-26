@@ -354,7 +354,7 @@ export const summaryOfSalaryColumn = [
     ),
   },
   {
-    title: 'Lương',
+    title: 'Thực nhận',
     dataIndex: 'salary',
     render: (salary: number) => (
       <>
