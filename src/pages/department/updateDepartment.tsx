@@ -19,6 +19,7 @@ const UpdateDepartment = (props: {data: DepartmentModel}) => {
       <Input
         placeholder='name'
         value={name}
+        status={!name ? 'error' : ''}
         onChange={(e) => {
           setName(e.target.value)
         }}

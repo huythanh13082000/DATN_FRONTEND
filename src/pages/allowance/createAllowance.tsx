@@ -1,7 +1,7 @@
 import {Button, Col, Input, Row} from 'antd'
 import React, {useState} from 'react'
 import {useAppDispatch} from '../../app/hooks'
-import { allowanceAction } from '../../feature/allowance/allowanceSlice'
+import {allowanceAction} from '../../feature/allowance/allowanceSlice'
 
 const CreateAllowance = () => {
   const dispatch = useAppDispatch()
@@ -17,6 +17,7 @@ const CreateAllowance = () => {
         <Input
           placeholder='Tên trợ cấp'
           value={name}
+          status={!name ? 'error' : ''}
           onChange={(e) => {
             setName(e.target.value)
           }}
@@ -25,6 +26,7 @@ const CreateAllowance = () => {
         <Input
           placeholder='Nhập số tiền'
           value={value}
+          status={!value ? 'error' : ''}
           onChange={(e) => {
             setValue(e.target.value)
           }}

@@ -16,6 +16,7 @@ const CreateDepartment = () => {
       <Input
         placeholder='name'
         value={name}
+        status={!name ? 'error' : ''}
         onChange={(e) => {
           setName(e.target.value)
         }}

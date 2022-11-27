@@ -78,6 +78,7 @@ const PersonnelCreate = () => {
         onChange={(e) => {
           setName(e.target.value)
         }}
+        status={!name ? 'error' : ''}
       />
       <p>Địa chỉ :</p>
       <Input
@@ -86,6 +87,7 @@ const PersonnelCreate = () => {
         onChange={(e) => {
           setAddress(e.target.value)
         }}
+        status={!address ? 'error' : ''}
       />
       <p>Email :</p>
       <Input
@@ -94,6 +96,7 @@ const PersonnelCreate = () => {
         onChange={(e) => {
           setEmail(e.target.value)
         }}
+        status={!email ? 'error' : ''}
       />
       <p>Số điện thoại :</p>
       <Input
@@ -102,6 +105,7 @@ const PersonnelCreate = () => {
         onChange={(e) => {
           setPhoneNumber(e.target.value)
         }}
+        status={!phoneNumber ? 'error' : ''}
       />
       <p>Chức vụ :</p>
       <SelectApi
@@ -115,6 +119,7 @@ const PersonnelCreate = () => {
         style={{width: '100%'}}
         value={moment(dateOfBirth)}
         onChange={(e) => setDateOfBirth(e?.format())}
+        status={!dateFormatList ? 'error' : ''}
       />
       <div style={{width: '100%', display: 'flex', margin: '0.5rem 0'}}>
         <p style={{margin: 0}}>Giới tính : &nbsp;</p>

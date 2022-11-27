@@ -17,6 +17,7 @@ const CreateBonus = () => {
         <Input
           placeholder='tên thưởng'
           value={name}
+          status={!name ? 'error' : ''}
           onChange={(e) => {
             setName(e.target.value)
           }}
@@ -25,6 +26,7 @@ const CreateBonus = () => {
         <Input
           placeholder='Nhập số tiền'
           value={value}
+          status={!value ? 'error' : ''}
           onChange={(e) => {
             setValue(e.target.value)
           }}

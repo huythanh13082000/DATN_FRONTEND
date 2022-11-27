@@ -12,7 +12,11 @@ const buttonWidth = 70
 
 const HeaderComponent = () => {
   const user = useAppSelector(selectUser)
+  const dispatch = useAppDispatch()
   console.log(6666, user)
+  useEffect(()=>{
+    dispatch(authActions.getProfile())
+  },[dispatch])
   return (
     <div className='header-container'>
       <Popover placement='top' content={<CardHelp />} trigger='click'>

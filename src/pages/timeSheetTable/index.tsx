@@ -32,6 +32,7 @@ const TimeSheetTablePage = () => {
           disableAdd
           disableDelete
           paramsHeader={{day}}
+          searchName
         />
       </div>
     </>

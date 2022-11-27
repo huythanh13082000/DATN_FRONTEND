@@ -28,6 +28,7 @@ const RankCreate = () => {
         onChange={(e) => {
           setName(e.target.value)
         }}
+        status={!name ? 'error' : ''}
       />
       <p>Lương :</p>
       <InputNumber
@@ -37,9 +38,11 @@ const RankCreate = () => {
         }}
         style={{width: '100%'}}
         type={'number'}
+        status={!value ? 'error' : ''}
       />
       <p>Phòng ban :</p>
       <SelectApi
+      
         url={urlApi.department}
         field={department}
         setField={(params: string) => setDepartment(params)}

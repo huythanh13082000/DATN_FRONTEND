@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import {useTranslation} from 'react-i18next'
 import {useNavigate} from 'react-router-dom'
 import axiosClient from '../../apis/axiosClient'
-import {useAppDispatch} from '../../app/hooks'
-import {authActions} from '../../feature/auth/authSlice'
+import {useAppDispatch, useAppSelector} from '../../app/hooks'
+import {authActions, selectUser} from '../../feature/auth/authSlice'
 import {PersonnelModel} from '../../models/personnel'
 import {UserModel} from '../../models/user.model'
 import {FILE, LOCAL_STORAGE} from '../../utils/constants'
@@ -15,12 +15,14 @@ const CardInfor = (props: {user: UserModel}) => {
   const {t} = useTranslation()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const personnel = useAppSelector(selectUser)
   const hanleLogout = () => {
     localStorage.removeItem(LOCAL_STORAGE.TOKEN)
     dispatch(authActions.setLoginStatus(false))
     dispatch(authActions.setUser(undefined))
     navigate('/login')
   }
+  console.log(456, personnel)
   // useEffect(() => {
   //   const getPersonnel = async () => {
   //     const data: {data: PersonnelModel} = await axiosClient.getService(
@@ -34,7 +36,7 @@ const CardInfor = (props: {user: UserModel}) => {
   return (
     <div className='ci_div1'>
       <img
-        src={`${FILE}/${props.user?.avatar}`}
+        src={'/img/userImage.png'}
         alt=''
         style={{
           width: '70px',
@@ -43,10 +45,10 @@ const CardInfor = (props: {user: UserModel}) => {
           objectFit: 'cover',
         }}
       />
-      {/* <p className='ci_p1'>{props.user}</p> */}
-      <p className='ci_p2'>{props.user?.name}</p>
-      <p className='ci_p3'>{props.user?.rank}</p>
-      <p className='ci_p3'>{props.user?.email}</p>
+      <p className='ci_p1'>{personnel?.role}</p>
+      <p className='ci_p2'>{personnel?.name}</p>
+      <p className='ci_p3'>{personnel?.rank}</p>
+      <p className='ci_p3'>{personnel?.email}</p>
       <p style={{borderTop: '1px solid #E1E1E1'}}></p>
       <div className='ci_div2'>
         <ChangePassWord />

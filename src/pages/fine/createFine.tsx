@@ -21,6 +21,7 @@ const CreateFine = () => {
           onChange={(e) => {
             setName(e.target.value)
           }}
+          status={!name ? 'error' : ''}
         />
         <p>Số tiền :</p>
         <Input
@@ -29,6 +30,7 @@ const CreateFine = () => {
           onChange={(e) => {
             setValue(e.target.value)
           }}
+          status={!value ? 'error' : ''}
         />
         <Col span={24} style={{marginTop: '1rem'}}>
           <Button type='primary' onClick={createFine}>

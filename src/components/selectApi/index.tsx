@@ -12,7 +12,7 @@ const SelectApi = (props: {
     const getListData = async () => {
       const data: {list: []; total: number} = await axiosClient.getService(
         props.url,
-        {limit: 100, page: 1}
+        {limit: 100, page: 1, name: ''}
       )
       const newData = data.list.map((item: {_id: string; name: string}) => {
         return {value: item._id, label: item.name}
@@ -25,6 +25,7 @@ const SelectApi = (props: {
   return (
     <div style={{width: '100%'}}>
       <Select
+        status={!props.field ? 'error' : ''}
         defaultValue={props.field}
         showSearch
         value={props.field}
