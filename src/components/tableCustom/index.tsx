@@ -37,6 +37,7 @@ const TableCustom = (props: {
   disableExportExcel?: boolean
   paramsHeader?: {}
   sendMail?: boolean
+  searchName?: boolean
 }) => {
   const [limit, setLimit] = useState<number>(10)
   const [page, setPage] = useState<number>(1)
@@ -229,12 +230,17 @@ const TableCustom = (props: {
           </Tooltip>
         </div>
       </Row>
-      <Row>
-        <Col span={4}>
-          <p>Tìm kiếm theo tên: </p>
-          <Input placeholder='name' onChange={(e) => setName(e.target.value)} />
-        </Col>
-      </Row>
+      {props.searchName && (
+        <Row>
+          <Col span={4}>
+            <p>Tìm kiếm theo tên: </p>
+            <Input
+              placeholder='name'
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Col>
+        </Row>
+      )}
 
       <Table
         rowSelection={rowSelection}

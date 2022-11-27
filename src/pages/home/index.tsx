@@ -38,65 +38,35 @@ const Home = () => {
     }
     getSalary()
   }, [])
-  // useEffect(() => {
-  //   const b = async () => {
-  //     // Its important to set the 'Content-Type': 'blob' and responseType:'arraybuffer'.
-  //     const headers = {'Content-Type': 'blob'}
-  //     const config: AxiosRequestConfig = {
-  //       method: 'GET',
-  //       url: 'http://localhost:4200/api',
-  //       responseType: 'arraybuffer',
-  //       headers,
-  //     }
-
-  //     try {
-  //       const response = await axios(config)
-
-  //       const outputFilename = `${Date.now()}.xls`
-
-  //       // If you want to download file automatically using link attribute.
-  //       const url = URL.createObjectURL(new Blob([response.data]))
-  //       const link = document.createElement('a')
-  //       link.href = url
-  //       link.setAttribute('download', outputFilename)
-  //       document.body.appendChild(link)
-  //       link.click()
-
-  //       // OR you can save/write file locally.
-  //       // fs.writeFileSync(outputFilename, response.data)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   b()
-  // }, [])
   useEffect(() => {
     dispatch(personnelAction.getListPersonnel())
   }, [dispatch])
   console.log(9999, listPersonnel)
 
   useEffect(() => {
-    setPersonnel({
-      on: listPersonnel.filter((item) => item.status === true).length,
-      off: listPersonnel.filter((item) => item.status === false).length,
-    })
-    const dataRank = listPersonnel.map((item) => {
-      return item.rank.name
-    })
-    const columns: string[] = []
-    const data: number[] = []
-    dataRank.forEach((item) => {
-      if (!columns.includes(item)) {
-        columns.push(item)
-      }
-    })
-    columns.forEach((item) => {
-      data.push(dataRank.filter((item1) => item1 === item).length)
-    })
-    setRank({columns, data})
+    if (listPersonnel && listPersonnel.length > 0) {
+      setPersonnel({
+        on: listPersonnel.filter((item) => item.status === true).length,
+        off: listPersonnel.filter((item) => item.status === false).length,
+      })
+      const dataRank = listPersonnel.map((item) => {
+        return item.rank.name
+      })
+      console.log(786, dataRank)
+      const columns: string[] = []
+      const data: number[] = []
+      dataRank.forEach((item) => {
+        if (!columns.includes(item)) {
+          columns.push(item)
+        }
+      })
+      columns.forEach((item) => {
+        data.push(dataRank.filter((item1) => item1 === item).length)
+      })
+      setRank({columns, data})
+    }
   }, [listPersonnel])
-  console.log(8888, personnel)
-
+  console.log(444, rank)
   return (
     <div>
       <br></br>

@@ -5,7 +5,7 @@ import { columnsMoney } from '../../utils/columnTable'
 
 const AllowancePage = () => {
   return (
-    <div><TableCustom columns={columnsMoney} url={urlApi.allowance}/></div>
+    <div><TableCustom columns={columnsMoney} url={urlApi.allowance} searchName/></div>
   )
 }
 

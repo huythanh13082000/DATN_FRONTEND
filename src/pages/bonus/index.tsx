@@ -10,10 +10,10 @@ const BonusPage = () => {
     <div>
       <Tabs defaultActiveKey='1'>
         <Tabs.TabPane tab='Danh sách' key='1'>
-          <TableCustom columns={columnsMoney} url={urlApi.bonus} />
+          <TableCustom columns={columnsMoney} url={urlApi.bonus} searchName/>
         </Tabs.TabPane>
         <Tabs.TabPane tab='Danh sách nhân viên' key='2'>
-          <TableCustom columns={personnelBonusColumn} url={urlApi.personnelBonus} />
+          <TableCustom columns={personnelBonusColumn} url={urlApi.personnelBonus} searchName/>
         </Tabs.TabPane>
       </Tabs>
     </div>

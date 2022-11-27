@@ -9,6 +9,7 @@ const Department = () => {
       <TableCustom
         url={urlApi.department}
         columns={columnsDepartment}
+        searchName
       />
     </div>
   )

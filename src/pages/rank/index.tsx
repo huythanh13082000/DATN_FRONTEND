@@ -6,7 +6,7 @@ import {columnsRank} from '../../utils/columnTable'
 const Rank = () => {
   return (
     <div>
-      <TableCustom url={urlApi.rank} columns={columnsRank} />
+      <TableCustom url={urlApi.rank} columns={columnsRank} searchName/>
     </div>
   )
 }

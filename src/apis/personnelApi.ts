@@ -25,6 +25,10 @@ export const personnelApi = {
     return axiosClient.updateService(urlApi.personnel, params, true)
   },
   getListPersonnel() {
-    return axiosClient.getService(urlApi.personnel, {limit: 100, offset: 0})
+    return axiosClient.getService(urlApi.personnel, {
+      limit: 100,
+      offset: 0,
+      name: '',
+    })
   },
 }
