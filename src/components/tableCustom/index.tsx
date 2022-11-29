@@ -201,12 +201,13 @@ const TableCustom = (props: {
         </span>
         <div style={{display: 'flex'}}>
           {selectedRowKeys.length > 0 && !props.disableDelete ? (
-            <Tooltip title='Xóa' style={{marginRight: '1rem'}}>
+            <Tooltip title='Xóa'>
               <Button onClick={() => handleDelete()}>
                 <DeleteOutlined />
               </Button>
             </Tooltip>
           ) : null}
+          <div style={{margin: '0 8px'}}></div>
           {!props.disableExportExcel && (
             <Tooltip title='Xuất excel'>
               <Button onClick={() => exportExcel()}>

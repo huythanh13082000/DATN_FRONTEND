@@ -213,6 +213,11 @@ export const columnSummaryOfWorkingDays = [
     dataIndex: 'count',
     // render: (text: string) => <span>{momentFomat(text)}</span>,
   },
+  {
+    title: 'Tổng ngày nghỉ có phép',
+    dataIndex: 'sumDayOff',
+    // render: (text: string) => <span>{momentFomat(text)}</span>,
+  },
 ]
 
 export const columnsUser = [
