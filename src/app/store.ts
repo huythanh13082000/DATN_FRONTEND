@@ -8,6 +8,7 @@ import createSagaMiddleware from 'redux-saga'
 import {allowanceReducer} from '../feature/allowance/allowanceSlice'
 import {authReducer} from '../feature/auth/authSlice'
 import {bonusReducer} from '../feature/bonus/bonusSlice'
+import {dayOffReducer} from '../feature/dayOff/dayOffSlice'
 import {departmentReducer} from '../feature/department/departmentSlice'
 import {fineReducer} from '../feature/fine/fineSlice'
 import {personnelReducer} from '../feature/personnel/personnelSlice'
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   bonus: bonusReducer,
   allowance: allowanceReducer,
   fine: fineReducer,
+  dayOff: dayOffReducer,
 })
 
 const sagaMiddleware = createSagaMiddleware()

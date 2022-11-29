@@ -301,6 +301,32 @@ export const personnelFineColumn = [
   },
 ]
 
+export const personnelDayOffColumn = [
+  {
+    title: 'Tên nhân viên',
+    dataIndex: 'personnel',
+    render: (personnel: PersonnelModel) => <span>{personnel.name}</span>,
+  },
+  {
+    title: 'Ngày nghỉ',
+    dataIndex: 'dayOff',
+    render: (dayOff: string) => <span>{momentFomat(dayOff)}</span>,
+  },
+  {
+    title: 'Trạng thái',
+    dataIndex: 'status',
+    render: (status: number) => (
+      <span>
+        {status < 0.5
+          ? 'Nghỉ chiều'
+          : status > 0.5
+          ? 'Nghỉ cả ngày'
+          : 'Nghỉ sáng'}
+      </span>
+    ),
+  },
+]
+
 export const summaryOfSalaryColumn = [
   {
     title: 'Tên nhân viên',

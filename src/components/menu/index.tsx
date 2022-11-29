@@ -66,6 +66,9 @@ const MenuHome: React.FC = () => {
           case '5_1':
             navigate(Url.salalyTable)
             break
+          case '6':
+            navigate(Url.personnelDayOff)
+            break
           default:
             break
         }
@@ -108,12 +111,7 @@ const MenuHome: React.FC = () => {
       // getItem('Bảng thuế', '5_6'),
       // getItem('Quyết toán thuế', '5_7'),
     ]),
-    getItem(
-      'Chi trả lương',
-      '6',
-      <i className='fa-solid fa-money-bill-wave'></i>,
-      [getItem('Bảng chi trả', '6_1'), getItem('Tổng hợp chi trả', '6_2')]
-    ),
+    getItem('Nghỉ phép', '6', <i className='fa-solid fa-money-bill-wave'></i>),
     // getItem('Báo cáo', '7', <i className='fa-solid fa-bug'></i>, [
     //   getItem('THTN nhân viên', '7_1'),
     //   getItem('TKTN theo tháng', '7_2'),

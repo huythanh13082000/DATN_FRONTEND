@@ -2,6 +2,7 @@ import {all} from 'redux-saga/effects'
 import AllowanceSaga from '../feature/allowance/allowanceSaga'
 import authSaga from '../feature/auth/authSaga'
 import bonusSaga from '../feature/bonus/bonusSaga'
+import dayOffSaga from '../feature/dayOff/dayOffSaga'
 import {departmentSaga} from '../feature/department/departmentSaga'
 import fineSaga from '../feature/fine/fineSaga'
 import personnelSaga from '../feature/personnel/personnelSaga'
@@ -18,5 +19,6 @@ export default function* rootSaga() {
     bonusSaga(),
     AllowanceSaga(),
     fineSaga(),
+    dayOffSaga(),
   ])
 }

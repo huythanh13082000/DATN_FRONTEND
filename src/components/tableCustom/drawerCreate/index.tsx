@@ -3,6 +3,7 @@ import React from 'react'
 import CreateAllowance from '../../../pages/allowance/createAllowance'
 import CreateBonus from '../../../pages/bonus/createBonus'
 import CreatePersonnelBonus from '../../../pages/bonus/createPersonnelBonus'
+import CreatePersonnelDayOff from '../../../pages/dayOff/createPersonnelDayOff'
 import CreateDepartment from '../../../pages/department/createDepartment'
 import CreateFine from '../../../pages/fine/createFine'
 import CreatePersonnelfine from '../../../pages/fine/createPersonnelFine'
@@ -36,6 +37,8 @@ const CreatePage = (props: {
         return <CreatePersonnelBonus />
       case Url.personnelFine:
         return <CreatePersonnelfine />
+      case Url.personnelDayOff:
+        return <CreatePersonnelDayOff />
       default:
         break
     }

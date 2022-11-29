@@ -12,6 +12,7 @@ import FinePage from '../pages/fine'
 import TimeSheetTablePage from '../pages/timeSheetTable'
 import User from '../pages/user'
 import SalalyTablePage from '../pages/salalyTable'
+import PersonnelDayOff from '../pages/dayOff'
 
 const routes: Array<RouteProps> = [
   {
@@ -42,6 +43,6 @@ const routes: Array<RouteProps> = [
   {path: Url.timeSheetTable, element: <TimeSheetTablePage />},
   {path: Url.user, element: <User />},
   {path: Url.salalyTable, element: <SalalyTablePage />},
-  // {path: Url.user, element: <User />},
+  {path: Url.personnelDayOff, element: <PersonnelDayOff />},
 ]
 export default routes
