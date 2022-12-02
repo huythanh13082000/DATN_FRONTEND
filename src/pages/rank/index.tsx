@@ -6,7 +6,12 @@ import {columnsRank} from '../../utils/columnTable'
 const Rank = () => {
   return (
     <div>
-      <TableCustom url={urlApi.rank} columns={columnsRank} searchName/>
+      <TableCustom
+        url={urlApi.rank}
+        columns={columnsRank}
+        searchName
+        disableExportExcel
+      />
     </div>
   )
 }

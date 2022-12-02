@@ -6,7 +6,7 @@ import { columnsPersonnel } from '../../utils/columnTable'
 const Personnel = () => {
   return (
     <div>
-      <TableCustom url={urlApi.personnel} columns={columnsPersonnel} searchName/>
+      <TableCustom url={urlApi.personnel} columns={columnsPersonnel} searchName disableExportExcel/>
     </div>
   )
 }

@@ -1,14 +1,15 @@
 import moment from 'moment'
 
 export const Config = {
-  // HOST_API: 'http://localhost:4200/api/',
-  HOST_API: 'https://datn-pht1308.herokuapp.com/api/',
+  HOST_API: 'http://localhost:8080/api/',
+  // HOST_API: 'https://datn-pht1308.herokuapp.com/api/',
 }
 
 export enum LOCAL_STORAGE {
   TOKEN = 'access_token',
 }
-export const FILE = `https://datn-pht1308.herokuapp.com/`
+// export const FILE = `https://datn-pht1308.herokuapp.com/`
+export const FILE = `http://localhost:8080/`
 
 export const PATH_NO_LAYOUT = ['/login']
 export const IS_LOGGED: boolean = true

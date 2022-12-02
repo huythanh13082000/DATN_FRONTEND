@@ -10,6 +10,7 @@ const Department = () => {
         url={urlApi.department}
         columns={columnsDepartment}
         searchName
+        disableExportExcel
       />
     </div>
   )

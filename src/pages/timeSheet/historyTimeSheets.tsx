@@ -25,7 +25,7 @@ const HistoryTimeSheets = () => {
   }
   return (
     <div>
-      <DatePicker
+      {/* <DatePicker
         // defaultValue={moment('01/01/2015', dateFormatList[0])}
         // value={workingDay}
         format={dateFormatList}
@@ -34,7 +34,7 @@ const HistoryTimeSheets = () => {
           setWorkingDay(moment(e).format())
         }}
         style={{marginRight: '1rem'}}
-      />
+      /> */}
       {/* <Button
         danger
         onClick={() => {
@@ -50,6 +50,8 @@ const HistoryTimeSheets = () => {
         disableAdd
         // disableDelete
         disableEdit
+        disableExportExcel
+        // searchName
       />
     </div>
   )

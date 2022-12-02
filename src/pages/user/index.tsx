@@ -12,7 +12,7 @@ const User = () => {
   return (
     <div>
       {user?.role === 'admin' ? (
-        <TableCustom columns={columnsUser} url={urlApi.user} />
+        <TableCustom columns={columnsUser} url={urlApi.user} disableExportExcel/>
       ) : (
         <>Không có quyền thao tác!</>
       )}

@@ -5,7 +5,7 @@ import { personnelDayOffColumn } from '../../utils/columnTable'
 
 const PersonnelDayOff = () => {
   return (
-    <div><TableCustom url={Url.personnelDayOff} columns={personnelDayOffColumn}/></div>
+    <div><TableCustom url={Url.personnelDayOff} columns={personnelDayOffColumn} disableExportExcel/></div>
   )
 }
 

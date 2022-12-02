@@ -22,7 +22,7 @@ import moment from 'moment'
 import React, {useState, useEffect} from 'react'
 import {useLocation} from 'react-router-dom'
 import axiosClient from '../../apis/axiosClient'
-import {LOCAL_STORAGE} from '../../utils/constants'
+import {Config, LOCAL_STORAGE} from '../../utils/constants'
 import CreatePage from './drawerCreate'
 import UpdatePage from './drawerUpdate'
 import DrawerUpdatePage from './drawerUpdate'
@@ -169,7 +169,7 @@ const TableCustom = (props: {
     }
     const config: AxiosRequestConfig = {
       method: 'GET',
-      url: `https://datn-pht1308.herokuapp.com/api${props.url}/export-excel`,
+      url: `${Config.HOST_API}${props.url}/export-excel`,
       responseType: 'arraybuffer',
       headers,
       params: {...props.paramsHeader},

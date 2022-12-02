@@ -14,22 +14,22 @@ const HeaderComponent = () => {
   const user = useAppSelector(selectUser)
   const dispatch = useAppDispatch()
   console.log(6666, user)
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(authActions.getProfile())
-  },[dispatch])
+  }, [dispatch])
   return (
     <div className='header-container'>
       <Popover placement='top' content={<CardHelp />} trigger='click'>
         <img className='header-img' src={Images.headerIcon} alt='' />
       </Popover>
-      <Popover placement='top' content={<CardGift />} trigger='click'>
+      {/* <Popover placement='top' content={<CardGift />} trigger='click'>
         <img className='header-img' src={Images.gift} alt='' />
       </Popover>
       <div className='header-div1'>
         <img className='header-img' src={Images.sms} alt='' />
         <img className='header-img1' src={Images.headerIcon1} alt='' />
         <span className='header-span1'>11</span>
-      </div>
+      </div> */}
       {user && (
         <Popover
           placement='bottomRight'
@@ -37,7 +37,7 @@ const HeaderComponent = () => {
           trigger='click'
         >
           <p className='header-p1'>
-            {user.username} <i className='fa-solid fa-angle-down'></i>
+            {user.role} <i className='fa-solid fa-angle-down'></i>
           </p>
         </Popover>
       )}
