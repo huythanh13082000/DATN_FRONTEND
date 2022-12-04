@@ -134,6 +134,7 @@ const MenuHome: React.FC = () => {
       // getItem('Kết nối', '8_7'),
       // getItem('Hệ thống', '8_8'),
     ]),
+    getItem('Thông báo', '9', <i className="fa-solid fa-bell"></i>),
   ]
 
   return (

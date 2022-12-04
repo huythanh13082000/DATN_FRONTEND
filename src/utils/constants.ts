@@ -7,7 +7,9 @@ export const Config = {
 
 export enum LOCAL_STORAGE {
   TOKEN = 'access_token',
+  REFRESH_TOKEN = 'refresh_token'
 }
+
 // export const FILE = `https://datn-pht1308.herokuapp.com/`
 export const FILE = `http://localhost:8080/`
 

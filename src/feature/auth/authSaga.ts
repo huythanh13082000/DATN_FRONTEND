@@ -14,6 +14,7 @@ function* login(action: PayloadAction<{email: string; passWord: string}>) {
     )
     yield put(authActions.loginSuccess())
     yield localStorage.setItem(LOCAL_STORAGE.TOKEN, token.accessToken)
+    yield localStorage.setItem(LOCAL_STORAGE.REFRESH_TOKEN, token.refreshToken)
     // console.log(token)
   } catch (error: any) {
     yield message.error(error.response.data.message)

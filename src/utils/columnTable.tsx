@@ -2,8 +2,10 @@ import {Radio} from 'antd'
 import moment from 'moment'
 import {DepartmentModel} from '../models/department'
 import {MoneyModel} from '../models/money'
+import { NotificationModel } from '../models/notification'
 import {PersonnelModel} from '../models/personnel'
 import {RankModel} from '../models/rank'
+import { UserModel } from '../models/user.model'
 import {FILE, formatNumberAsCurrency, momentFomat} from './constants'
 
 export const columnsDepartment: any = [
@@ -293,6 +295,29 @@ export const personnelFineColumn = [
     title: 'Tên phạt',
     dataIndex: 'fine',
     render: (fine: MoneyModel) => <span>{fine.name}</span>,
+  },
+  {
+    title: 'Số tiền',
+    dataIndex: 'fine',
+    render: (fine: MoneyModel) => <span>{fine.value}</span>,
+  },
+  {
+    title: 'Ngày phạt',
+    dataIndex: 'dateFine',
+    render: (text: string) => <span>{momentFomat(text)}</span>,
+  },
+]
+
+export const notificationColumn = [
+  {
+    title: 'Thông báo',
+    dataIndex: 'name',
+    render: (name: string) => <span>{name}</span>,
+  },
+  {
+    title: 'Người tạo',
+    dataIndex: 'sender',
+    render: (sender: UserModel) => <span>{sender.name}</span>,
   },
   {
     title: 'Số tiền',

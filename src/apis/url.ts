@@ -16,4 +16,6 @@ export const urlApi = {
   summaryOfSalary: '/timeSheets/summaryOfSalary',
   salary: '/salarys',
   personnelDayOff: '/personnelDayOff',
+  notification: '/notification',
+  refreshtoken: '/auth/refreshtoken',
 }

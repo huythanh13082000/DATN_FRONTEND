@@ -1,10 +1,35 @@
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import {Config, LOCAL_STORAGE} from '../utils/constants'
+import {urlApi} from './url'
 
 const req = axios.create({
   baseURL: Config.HOST_API,
 })
+
+req.interceptors.request.use(
+  (config) => {
+    console.log('tr')
+    return config
+  },
+  (err) => {
+    console.log(err)
+  }
+)
+req.interceptors.response.use(
+  (res) => {
+    return res
+  },
+  async (err) => {
+    console.log('sau')
+    const res = await axios.post(`${Config.HOST_API}${urlApi.refreshtoken}`, {
+      refreshToken: localStorage.getItem(LOCAL_STORAGE.REFRESH_TOKEN),
+    })
+    localStorage.setItem(LOCAL_STORAGE.REFRESH_TOKEN,res.data.refreshToken)
+    localStorage.setItem(LOCAL_STORAGE.TOKEN,res.data.accessToken)
+    // console.log('1323212322', res.data.accessToken)
+  }
+)
 
 const postService = async (
   url: string,
@@ -36,11 +61,10 @@ const postService = async (
   try {
     await response
   } catch (error: any) {
-    if ([401].includes(error.response.status)) {
-      localStorage.removeItem(LOCAL_STORAGE.TOKEN)
-      
-      // configureStore.store.dispatch(signOut());
-    }
+    // if ([401].includes(error.response.status)) {
+    //   localStorage.removeItem(LOCAL_STORAGE.TOKEN)
+    //   // configureStore.store.dispatch(signOut());
+    // }
   }
 
   return (await response).data
@@ -73,10 +97,10 @@ const updateService = async (
     await response
   } catch (error: any) {
     // console.log('error', error.response)
-    if ([401].includes(error.response.status)) {
-      localStorage.removeItem(LOCAL_STORAGE.TOKEN)
-      // configureStore.store.dispatch(signOut());
-    }
+    // if ([401].includes(error.response.status)) {
+    //   localStorage.removeItem(LOCAL_STORAGE.TOKEN)
+    //   // configureStore.store.dispatch(signOut());
+    // }
   }
 
   return (await response).data
@@ -110,10 +134,10 @@ const getService = async (
     await response
   } catch (error: any) {
     // console.log('error', error.response)
-    if ([401].includes(error.response.status)) {
-      localStorage.removeItem(LOCAL_STORAGE.TOKEN)
-      // configureStore.store.dispatch(signOut());
-    }
+    // if ([401].includes(error.response.status)) {
+    //   localStorage.removeItem(LOCAL_STORAGE.TOKEN)
+    //   // configureStore.store.dispatch(signOut());
+    // }
   }
 
   return (await response).data
@@ -146,10 +170,10 @@ const deleteService = async (
     await response
   } catch (error: any) {
     // console.log('error', error.response)
-    if ([401].includes(error.response.status)) {
-      localStorage.removeItem(LOCAL_STORAGE.TOKEN)
-      // configureStore.store.dispatch(signOut());
-    }
+    // if ([401].includes(error.response.status)) {
+    //   localStorage.removeItem(LOCAL_STORAGE.TOKEN)
+    //   // configureStore.store.dispatch(signOut());
+    // }
   }
 
   return (await response).data
