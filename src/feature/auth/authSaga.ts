@@ -8,14 +8,12 @@ import {authActions} from './authSlice'
 
 function* login(action: PayloadAction<{email: string; passWord: string}>) {
   try {
-    const token: {accessToken: string; refreshToken: string} = yield call(
-      authApi.login,
-      action.payload
-    )
+    const token: {accessToken: string; refreshToken: string; exp: string} =
+      yield call(authApi.login, action.payload)
     yield put(authActions.loginSuccess())
     yield localStorage.setItem(LOCAL_STORAGE.TOKEN, token.accessToken)
     yield localStorage.setItem(LOCAL_STORAGE.REFRESH_TOKEN, token.refreshToken)
-    // console.log(token)
+    yield localStorage.setItem(LOCAL_STORAGE.EXP, token.exp)
   } catch (error: any) {
     yield message.error(error.response.data.message)
   }

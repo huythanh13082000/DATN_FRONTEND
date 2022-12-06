@@ -8,8 +8,32 @@ const req = axios.create({
 })
 
 req.interceptors.request.use(
-  (config) => {
-    console.log('tr')
+  async (config) => {
+    console.log(888, Math.floor(Date.now() / 1000))
+    console.log(777, Number(localStorage.getItem(LOCAL_STORAGE.EXP)))
+    if (
+      Math.floor(Date.now() / 1000) >
+      Number(localStorage.getItem(LOCAL_STORAGE.EXP))
+    ) {
+      console.log('hết hạn rồi')
+      try {
+        const res = await axios.post(
+          `${Config.HOST_API}${urlApi.refreshtoken}`,
+          {
+            refreshToken: localStorage.getItem(LOCAL_STORAGE.REFRESH_TOKEN),
+          }
+        )
+        localStorage.setItem(LOCAL_STORAGE.REFRESH_TOKEN, res.data.refreshToken)
+        localStorage.setItem(LOCAL_STORAGE.TOKEN, res.data.accessToken)
+        localStorage.setItem(LOCAL_STORAGE.EXP, res.data.exp)
+        console.log('đã refesh token')
+      } catch (error) {
+        console.log('refesh token hết hạn')
+        localStorage.removeItem(LOCAL_STORAGE.TOKEN)
+        localStorage.removeItem(LOCAL_STORAGE.EXP)
+        localStorage.removeItem(LOCAL_STORAGE.REFRESH_TOKEN)
+      }
+    }
     return config
   },
   (err) => {
@@ -22,12 +46,6 @@ req.interceptors.response.use(
   },
   async (err) => {
     console.log('sau')
-    const res = await axios.post(`${Config.HOST_API}${urlApi.refreshtoken}`, {
-      refreshToken: localStorage.getItem(LOCAL_STORAGE.REFRESH_TOKEN),
-    })
-    localStorage.setItem(LOCAL_STORAGE.REFRESH_TOKEN,res.data.refreshToken)
-    localStorage.setItem(LOCAL_STORAGE.TOKEN,res.data.accessToken)
-    // console.log('1323212322', res.data.accessToken)
   }
 )
 
