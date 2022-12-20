@@ -38,6 +38,7 @@ const TableCustom = (props: {
   paramsHeader?: {}
   sendMail?: boolean
   searchName?: boolean
+  filter?: any
 }) => {
   const [limit, setLimit] = useState<number>(10)
   const [page, setPage] = useState<number>(1)
@@ -111,7 +112,7 @@ const TableCustom = (props: {
     const getListData = async () => {
       const data: {list: []; total: number} = await axiosClient.getService(
         props.url,
-        {limit, page, name, ...props.paramsHeader}
+        {limit, page, ...props.paramsHeader, ...props.filter}
       )
       const newData = data.list.map((item: any) => {
         return {...item, key: item._id}
@@ -130,6 +131,7 @@ const TableCustom = (props: {
     openCreate,
     props.paramsHeader,
     name,
+    props.filter,
   ])
 
   const handleDelete = async () => {
@@ -231,7 +233,7 @@ const TableCustom = (props: {
           </Tooltip>
         </div>
       </Row>
-      {props.searchName && (
+      {/* {props.searchName && (
         <Row>
           <Col span={4}>
             <p>Tìm kiếm theo tên: </p>
@@ -241,7 +243,7 @@ const TableCustom = (props: {
             />
           </Col>
         </Row>
-      )}
+      )} */}
 
       <Table
         rowSelection={rowSelection}
