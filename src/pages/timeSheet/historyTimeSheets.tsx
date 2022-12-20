@@ -1,4 +1,4 @@
-import {Button, DatePicker, message} from 'antd'
+import {Button, Col, DatePicker, Input, message, Row} from 'antd'
 import moment from 'moment'
 import React, {useState} from 'react'
 import axiosClient from '../../apis/axiosClient'
@@ -8,29 +8,44 @@ import TableCustom from '../../components/tableCustom'
 import {columnsTableTimeSheet} from '../../utils/columnTable'
 
 const HistoryTimeSheets = () => {
-  const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY']
-  const dispatch = useAppDispatch()
-  const [workingDay, setWorkingDay] = useState<string>(moment().format())
-  const deleteTimeSheets = async () => {
-    try {
-      const data: {description: string} = await axiosClient.deleteService(
-        urlApi.timeSheet,
-        {workingDay}
-      )
-      console.log(4444, data)
-      message.success(data.description)
-    } catch (error) {
-      message.success('xóa dữ liệu Thất bại')
-    }
-  }
+  const [filter, setFilter] = useState<any>()
   return (
     <div>
+      <Row gutter={16}>
+        <Col span={4}>
+          <p>Tìm kiếm theo tên: </p>
+          <Input
+            placeholder='Nhập tên'
+            onChange={(e) => setFilter({...filter, name: e.target.value})}
+          />
+        </Col>
+        <Col span={4}>
+          <p>Tìm kiếm theo email: </p>
+          <Input
+            placeholder='Nhập email'
+            onChange={(e) => setFilter({...filter, email: e.target.value})}
+          />
+        </Col>
+        <Col span={4}>
+          <p>Tìm kiếm theo ngày chấm công: </p>
+          <DatePicker
+            onChange={(e) => {
+              setFilter({
+                ...filter,
+                createdAt: e?.format(),
+              })
+            }}
+            style={{width: '100%'}}
+          />
+        </Col>
+      </Row>
       <TableCustom
         url={urlApi.timeSheet}
         columns={columnsTableTimeSheet}
         disableAdd
         disableEdit
         disableExportExcel
+        filter={filter}
       />
     </div>
   )

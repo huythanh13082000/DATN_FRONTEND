@@ -17,10 +17,6 @@ const Rank = () => {
             onChange={(e) => setFilter({...filter, name: e.target.value})}
           />
         </Col>
-        <Col span={4}>
-          <p>Tìm kiếm theo tên phòng ban: </p>
-          {/* <SelectApi url={urlApi.department} field={}/> */}
-        </Col>
       </Row>
       <TableCustom
         url={urlApi.rank}
