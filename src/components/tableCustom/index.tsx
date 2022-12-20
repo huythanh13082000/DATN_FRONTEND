@@ -111,7 +111,7 @@ const TableCustom = (props: {
     const getListData = async () => {
       const data: {list: []; total: number} = await axiosClient.getService(
         props.url,
-        {limit, page, ...props.paramsHeader, name}
+        {limit, page, name, ...props.paramsHeader}
       )
       const newData = data.list.map((item: any) => {
         return {...item, key: item._id}

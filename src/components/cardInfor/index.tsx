@@ -22,17 +22,6 @@ const CardInfor = (props: {user: UserModel}) => {
     dispatch(authActions.setUser(undefined))
     navigate('/login')
   }
-  console.log(456, personnel)
-  // useEffect(() => {
-  //   const getPersonnel = async () => {
-  //     const data: {data: PersonnelModel} = await axiosClient.getService(
-  //       `/personnelsEmail/${props.user.email}`
-  //     )
-  //     setPersonnel(data.data)
-  //     console.log(333, data)
-  //   }
-  //   getPersonnel()
-  // }, [props.user.email])
   return (
     <div className='ci_div1'>
       <img

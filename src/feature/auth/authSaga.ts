@@ -15,7 +15,7 @@ function* login(action: PayloadAction<{email: string; passWord: string}>) {
     yield localStorage.setItem(LOCAL_STORAGE.REFRESH_TOKEN, token.refreshToken)
     yield localStorage.setItem(LOCAL_STORAGE.EXP, token.exp)
   } catch (error: any) {
-    yield message.error(error.response.data.message)
+    yield message.error('Tài khoản hoặc mật khẩu không chính xác!')
   }
 }
 

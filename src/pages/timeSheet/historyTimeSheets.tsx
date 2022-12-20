@@ -25,33 +25,12 @@ const HistoryTimeSheets = () => {
   }
   return (
     <div>
-      {/* <DatePicker
-        // defaultValue={moment('01/01/2015', dateFormatList[0])}
-        // value={workingDay}
-        format={dateFormatList}
-        onChange={(e) => {
-          console.log(1111, moment(e).format())
-          setWorkingDay(moment(e).format())
-        }}
-        style={{marginRight: '1rem'}}
-      /> */}
-      {/* <Button
-        danger
-        onClick={() => {
-          deleteTimeSheets()
-        }}
-      >
-        Xóa dữ liệu chấm công ngày: {moment(workingDay).format('DD/MM/YYYY')}
-      </Button> */}
-
       <TableCustom
         url={urlApi.timeSheet}
         columns={columnsTableTimeSheet}
         disableAdd
-        // disableDelete
         disableEdit
         disableExportExcel
-        // searchName
       />
     </div>
   )

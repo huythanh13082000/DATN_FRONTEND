@@ -22,13 +22,11 @@ const Login = () => {
       navigate('/home')
     }
   }, [loginStatus, navigate])
-  console.log(111, loginStatus)
   return (
     <>
       <div className='login-container'>
         <div className='login-form'>
           <p className='login-p1'>{t('Login.login')}</p>
-          {/* <p className='login-p2'>{t('Login.sign')}</p> */}
           <Row className='login-row'>
             <Col span={22}>
               <Input
@@ -59,19 +57,11 @@ const Login = () => {
             </Col>
           </Row>
 
-          <Button className='login-buuton' onClick={handleLogin}>
+          <Button className='login-buuton' onClick={() => handleLogin()}>
             {t('Login.login')}
           </Button>
         </div>
       </div>
-
-      {/* <Button type='primary'>Primary Button</Button>
-      <Button>Default Button</Button>
-      <Button type='dashed'>Dashed Button</Button>
-      <br />
-      <Button type='text'>Text Button</Button>
-      <Button type='link'>Link Button</Button>
-      <Button></Button> */}
     </>
   )
 }
