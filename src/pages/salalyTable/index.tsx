@@ -1,4 +1,4 @@
-import {Button, DatePicker, Input} from 'antd'
+import {Button, Col, DatePicker, Input, Row} from 'antd'
 import moment from 'moment'
 import React, {useState} from 'react'
 import {urlApi} from '../../apis/url'
@@ -11,6 +11,7 @@ const SalalyTablePage = () => {
   const [day, setDay] = useState<string>()
   const [sumWorkingDay, setSumWorkingDay] = useState('')
   const [calculate, setCalculate] = useState(false)
+  const [filter, setFilter] = useState<any>()
   return (
     <div>
       <div style={{display: 'flex'}}>
@@ -54,15 +55,34 @@ const SalalyTablePage = () => {
         style={{fontSize: '30px', textAlign: 'center'}}
       >{`Bảng lương tháng ${moment(day).format('MM YYYY')}`}</p>
       {calculate && (
-        <TableCustom
-          url={urlApi.summaryOfSalary}
-          columns={summaryOfSalaryColumn}
-          disableAdd
-          disableDelete
-          disableEdit
-          sendMail
-          paramsHeader={{sumWorkingDay, day}}
-        />
+        <>
+          <Row gutter={16}>
+            <Col span={4}>
+              <p>Tìm kiếm theo tên: </p>
+              <Input
+                placeholder='Nhập tên'
+                onChange={(e) => setFilter({...filter, name: e.target.value})}
+              />
+            </Col>
+            <Col span={4}>
+              <p>Tìm kiếm theo email: </p>
+              <Input
+                placeholder='Nhập email'
+                onChange={(e) => setFilter({...filter, email: e.target.value})}
+              />
+            </Col>
+          </Row>
+          <TableCustom
+            url={urlApi.summaryOfSalary}
+            columns={summaryOfSalaryColumn}
+            disableAdd
+            disableDelete
+            disableEdit
+            sendMail
+            paramsHeader={{sumWorkingDay, day}}
+            filter={filter}
+          />
+        </>
       )}
       {/* <Button
         type='primary'
