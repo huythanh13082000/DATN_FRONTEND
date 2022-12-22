@@ -19,7 +19,7 @@ const Router = () => {
           key={item.path}
           {...item}
           element={
-            item.path !== Url.login ? (
+            item.path !== Url.login && item.path !== Url.timeKeeping ? (
               <DashboardLayout>{item.element}</DashboardLayout>
             ) : (
               item.element

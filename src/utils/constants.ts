@@ -8,7 +8,9 @@ export const Config = {
 export enum LOCAL_STORAGE {
   TOKEN = 'access_token',
   REFRESH_TOKEN = 'refresh_token',
-  EXP = 'exp'
+  EXP = 'exp',
+  ROLE = 'role',
+  EMAIL = 'email',
 }
 
 // export const FILE = `https://datn-pht1308.herokuapp.com/`

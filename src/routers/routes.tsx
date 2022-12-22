@@ -13,6 +13,7 @@ import TimeSheetTablePage from '../pages/timeSheetTable'
 import User from '../pages/user'
 import SalalyTablePage from '../pages/salalyTable'
 import PersonnelDayOff from '../pages/dayOff'
+import Timekeeping from '../pages/timekeeping'
 
 const routes: Array<RouteProps> = [
   {
@@ -44,5 +45,6 @@ const routes: Array<RouteProps> = [
   {path: Url.user, element: <User />},
   {path: Url.salalyTable, element: <SalalyTablePage />},
   {path: Url.personnelDayOff, element: <PersonnelDayOff />},
+  {path: Url.timeKeeping, element: <Timekeeping />},
 ]
 export default routes

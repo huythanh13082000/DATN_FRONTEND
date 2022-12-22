@@ -6,6 +6,7 @@ import {useTranslation} from 'react-i18next'
 import {useAppDispatch, useAppSelector} from '../../app/hooks'
 import {authActions, selectLoginStatus} from '../../feature/auth/authSlice'
 import {useNavigate} from 'react-router-dom'
+import {LOCAL_STORAGE} from '../../utils/constants'
 
 const Login = () => {
   const {t} = useTranslation()
@@ -18,10 +19,12 @@ const Login = () => {
     dispatch(authActions.login({email, passWord}))
   }
   useEffect(() => {
-    if (loginStatus) {
-      navigate('/home')
+    const role = localStorage.getItem(LOCAL_STORAGE.ROLE)
+    if (loginStatus && role) {
+      localStorage.setItem(LOCAL_STORAGE.EMAIL, email)
+      role !== 'member' ? navigate('/home') : navigate('/timekeeping')
     }
-  }, [loginStatus, navigate])
+  }, [loginStatus, navigate, email])
   return (
     <>
       <div className='login-container'>

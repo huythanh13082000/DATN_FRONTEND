@@ -8,12 +8,17 @@ import {authActions} from './authSlice'
 
 function* login(action: PayloadAction<{email: string; passWord: string}>) {
   try {
-    const token: {accessToken: string; refreshToken: string; exp: string} =
-      yield call(authApi.login, action.payload)
-    yield put(authActions.loginSuccess())
+    const token: {
+      accessToken: string
+      refreshToken: string
+      exp: string
+      role: string
+    } = yield call(authApi.login, action.payload)
     yield localStorage.setItem(LOCAL_STORAGE.TOKEN, token.accessToken)
     yield localStorage.setItem(LOCAL_STORAGE.REFRESH_TOKEN, token.refreshToken)
     yield localStorage.setItem(LOCAL_STORAGE.EXP, token.exp)
+    yield localStorage.setItem(LOCAL_STORAGE.ROLE, token.role)
+    yield put(authActions.loginSuccess())
   } catch (error: any) {
     yield message.error('Tài khoản hoặc mật khẩu không chính xác!')
   }

@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {Col, Row} from 'antd'
-import './home.css'
 import {useTranslation} from 'react-i18next'
 import {ChartCustom} from '../../components/chart'
-import axios, {AxiosRequestConfig} from 'axios'
 import {useAppDispatch, useAppSelector} from '../../app/hooks'
 import {
   personnelAction,

@@ -1,0 +1,25 @@
+.home-p1 {
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  margin: 0 0.2rem;
+  text-align: center;
+}
+.home-p2 {
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  padding-left: 2rem;
+}
+.home-p {
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+.home-span {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+}
