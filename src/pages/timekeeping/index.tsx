@@ -5,8 +5,8 @@ import './home.css'
 import moment from 'moment'
 import {useNavigate} from 'react-router-dom'
 import {FILE, LOCAL_STORAGE} from '../../utils/constants'
-import { useAppDispatch } from '../../app/hooks'
-import { authActions } from '../../feature/auth/authSlice'
+import {useAppDispatch} from '../../app/hooks'
+import {authActions} from '../../feature/auth/authSlice'
 
 const Timekeeping = () => {
   const [personnel, setPersonnel] = useState<any>()
@@ -137,10 +137,10 @@ const Timekeeping = () => {
       {personnel && listTimeSheet ? (
         <div
           style={{
-            padding: '2rem 0',
             backgroundImage: `url("/img/background.jpg")`,
             maxWidth: '502px',
             margin: '0 auto',
+            height: '100vh',
           }}
         >
           <div
