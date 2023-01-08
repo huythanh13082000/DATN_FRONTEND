@@ -1,6 +1,7 @@
 import {
   DeleteOutlined,
   EditOutlined,
+  EyeOutlined,
   FileAddOutlined,
   FileExcelOutlined,
   MailOutlined,
@@ -26,6 +27,7 @@ import {Config, LOCAL_STORAGE} from '../../utils/constants'
 import CreatePage from './drawerCreate'
 import UpdatePage from './drawerUpdate'
 import DrawerUpdatePage from './drawerUpdate'
+import ModelDetail from './modelDetail'
 
 const TableCustom = (props: {
   url: string
@@ -49,6 +51,7 @@ const TableCustom = (props: {
   const [dataRow, setDataRow] = useState<any>()
   const [openUpdate, setOpenUpdate] = useState(false)
   const [openCreate, setOpenCreate] = useState(false)
+  const [openDetail, setOpenDetail] = useState(false)
   const [disableAdd, setDisableAdd] = useState(false)
   const [name, setName] = useState('')
   const [reload, setReload] = useState(false)
@@ -63,16 +66,27 @@ const TableCustom = (props: {
         render: (text: string) => (
           <>
             {!props.disableEdit && (
-              <Tooltip title='Sửa' style={{marginRight: '1rem'}}>
+              <Tooltip title='Sửa'>
                 <Button
                   onClick={() => {
                     setOpenUpdate(true)
                   }}
+                  style={{marginRight: '1rem'}}
                 >
                   <EditOutlined />
                 </Button>
               </Tooltip>
             )}
+            <Tooltip title='xem'>
+              <Button
+                style={{marginRight: '1rem'}}
+                onClick={() => {
+                  setOpenDetail(true)
+                }}
+              >
+                <EyeOutlined />
+              </Button>
+            </Tooltip>
             {props.sendMail && (
               <Popconfirm
                 className='abc'
@@ -199,35 +213,38 @@ const TableCustom = (props: {
     <div>
       <Row justify='space-between' align='middle' style={{marginTop: '2rem'}}>
         <span style={{marginLeft: 8}}>
-          {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
+          {hasSelected ? `Đã chọn ${selectedRowKeys.length} bản ghi` : ''}
         </span>
         <div style={{display: 'flex'}}>
           {selectedRowKeys.length > 0 && !props.disableDelete ? (
             <Tooltip title='Xóa'>
-              <Button onClick={() => handleDelete()}>
+              <Button style={{margin: '0 8px'}} onClick={() => handleDelete()}>
                 <DeleteOutlined />
               </Button>
             </Tooltip>
           ) : null}
-          <div style={{margin: '0 8px'}}></div>
           {!props.disableExportExcel && (
             <Tooltip title='Xuất excel'>
-              <Button onClick={() => exportExcel()}>
+              <Button style={{margin: '0 8px'}} onClick={() => exportExcel()}>
                 <FileExcelOutlined />
               </Button>
             </Tooltip>
           )}
-          <div style={{margin: '0 8px'}}></div>
           {!props.disableAdd && (
             <Tooltip title='Thêm'>
-              <Button onClick={() => setOpenCreate(true)}>
+              <Button
+                style={{margin: '0 8px'}}
+                onClick={() => setOpenCreate(true)}
+              >
                 <FileAddOutlined />
               </Button>
             </Tooltip>
           )}
-          <div style={{margin: '0 8px'}}></div>
           <Tooltip title='làm mới'>
-            <Button onClick={() => setReload(!reload)}>
+            <Button
+              style={{margin: '0 8px'}}
+              onClick={() => setReload(!reload)}
+            >
               <ReloadOutlined />
             </Button>
           </Tooltip>
@@ -281,6 +298,15 @@ const TableCustom = (props: {
           setOpen={() => {
             setOpenCreate(false)
           }}
+        />
+      )}
+      {openDetail && (
+        <ModelDetail
+          open={openDetail}
+          setOpen={() => {
+            setOpenDetail(false)
+          }}
+          data={dataRow}
         />
       )}
     </div>
