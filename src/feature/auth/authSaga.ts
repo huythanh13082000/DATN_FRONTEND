@@ -43,7 +43,7 @@ function* changePassWord(
     )
     yield message.success(mess.description)
   } catch (error: any) {
-    yield message.error(error.response.data.description)
+    message.error('Mật khẩu không đúng!')
   }
 }
 

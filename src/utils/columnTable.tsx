@@ -2,10 +2,10 @@ import {Radio} from 'antd'
 import moment from 'moment'
 import {DepartmentModel} from '../models/department'
 import {MoneyModel} from '../models/money'
-import { NotificationModel } from '../models/notification'
+import {NotificationModel} from '../models/notification'
 import {PersonnelModel} from '../models/personnel'
 import {RankModel} from '../models/rank'
-import { UserModel } from '../models/user.model'
+import {UserModel} from '../models/user.model'
 import {FILE, formatNumberAsCurrency, momentFomat} from './constants'
 
 export const columnsDepartment: any = [
@@ -372,6 +372,11 @@ export const summaryOfSalaryColumn = [
     title: 'Số công',
     dataIndex: 'count',
     render: (count: string) => <span>{count}</span>,
+  },
+  {
+    title: 'Số ngày nghỉ phép',
+    dataIndex: 'sumDayOff',
+    render: (sumDayOff: string) => <span>{sumDayOff}</span>,
   },
   {
     title: 'Tiền phạt',

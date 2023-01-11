@@ -24,15 +24,9 @@ const ChangePassWord: React.FC = () => {
   }
 
   const handleOk = () => {
-    setModalText('The modal will be closed after two seconds')
-
     if (newPassWord !== confirmPassWord)
       return message.error('!Confirm PassWord Wrong')
-
-    dispatch(authActions.changePassWord({newPassWord, oldPassWord}))
-    // setTimeout(() => {
-    //   setConfirmLoading(false)
-    // }, 2000)
+    else dispatch(authActions.changePassWord({newPassWord, oldPassWord}))
   }
 
   const handleCancel = () => {

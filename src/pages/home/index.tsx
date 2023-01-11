@@ -32,6 +32,7 @@ const Home = () => {
       const data = dataSalary.data.data.map((item) => {
         return item.salary
       })
+      console.log('data', dataSalary)
       setSalary({data, columns})
     }
     getSalary()
@@ -64,7 +65,7 @@ const Home = () => {
       setRank({columns, data})
     }
   }, [listPersonnel])
-  console.log(444, rank)
+  console.log(444, salary)
   return (
     <div>
       <br></br>
